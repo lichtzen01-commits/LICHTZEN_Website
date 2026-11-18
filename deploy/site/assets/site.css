@@ -202,3 +202,49 @@ body{word-break:keep-all;overflow-wrap:break-word}
  .need-card span{font-size:12px}
  .need-card svg{display:none}
 }
+/* friendly buttons, Toss-like motion (2026-11-18 feedback) */
+:root{--ease-out:cubic-bezier(.2,.8,.2,1);--radius-btn:14px;--radius-card:18px}
+.button,.header-cta,.floating-contact,.manual-card-controls button,.client-marquee-toggle,.contact-form button,.contact-form .button{border-radius:var(--radius-btn);transition:transform .18s var(--ease-out),box-shadow .18s var(--ease-out),background-color .18s,color .18s,border-color .18s}
+.button{font-weight:700;letter-spacing:-.02em;gap:16px;padding:15px 22px}
+.button:not(.text):hover,.header-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px #18241026}
+.button:not(.text):active,.header-cta:active,.floating-contact:active,.manual-card-controls button:active{transform:translateY(0) scale(.97);box-shadow:none}
+.button svg,.header-cta svg,.inline-link svg,.floating-contact svg{transition:transform .2s var(--ease-out)}
+.button:hover svg,.header-cta:hover svg{transform:translateX(4px)}
+.button.text{border-radius:10px;padding:12px 10px}
+.button.text:hover{background:#ffffff14}
+.header-cta{padding:12px 20px}
+.home-page .header-cta,.home .header-cta{background:var(--green);border-color:transparent;color:#182410}
+.manual-card-controls button{padding:10px 18px;border-color:#d1dec5;font-weight:600}
+.manual-card-controls button:hover{background:#eef5e4;border-color:#b9d48f}
+.floating-contact{border-radius:999px;background:var(--green);color:#182410;font-weight:700;font-size:14px;padding:14px 22px;box-shadow:0 10px 28px #2c4a1a40;animation:float-in .6s var(--ease-out) both}
+.floating-contact:hover{transform:translateY(-3px);box-shadow:0 16px 34px #2c4a1a55}
+.floating-contact svg{stroke:#182410}
+@keyframes float-in{from{opacity:0;transform:translateY(16px) scale(.9)}to{opacity:1;transform:none}}
+.inline-link{border-radius:8px}
+.inline-link:hover{color:#3d6614}
+.product-card,.featured-card,.application-teasers>a,.capability-card,.solution-card{border-radius:var(--radius-card);overflow:hidden;transition:transform .22s var(--ease-out),box-shadow .22s var(--ease-out)}
+.product-card:hover,.featured-card:hover,.application-teasers>a:hover,.solution-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px #1f331a1f}
+.contact-form input,.contact-form select,.contact-form textarea{border-radius:12px}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #8bbd3e;outline-offset:3px;border-radius:10px}
+@media(max-width:600px){.floating-contact{padding:12px 18px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.floating-contact{animation:none}}
+.language-picker summary{border-radius:12px}
+/* inner pages: pale page background, white cards for content blocks (2026-11-18 feedback) */
+body:not(.home-page) main{background:#f2f5ee}
+body:not(.home-page) .b2b-section,body:not(.home-page) .content-section{background:#f2f5ee}
+body:not(.home-page) .b2b-section.pale{background:#e9efe2}
+body:not(.home-page) .page-top,body:not(.home-page) .b2b-masthead{background:#fff;border-bottom:1px solid #e1e8da}
+.technology-row,.technology-comparison .table-scroll,.resource-list,.faq-list details,.support-hub-grid>*,.service-route-grid>*,.selection-guide-layout>*,.technical-resource-intro,.legacy-content,.product-overview,.solution-card,.capability-card{background:#fff;border:1px solid #e1e8da;border-radius:20px;box-shadow:0 2px 10px #1f331a0d}
+.technology-row{padding:36px;margin-bottom:22px}
+.technology-comparison .table-scroll{padding:8px 18px 18px;overflow-x:auto}
+.resource-list{padding:6px 22px;list-style:none}
+.resource-list li+li{border-top:1px solid #edf1e8}
+.resource-list li:hover{background:#f7faf3}
+.faq-list details{padding:6px 22px;margin-bottom:10px}
+.support-hub-grid>*,.service-route-grid>*{padding:26px 24px;border-top:3px solid #8bbd3e}
+.selection-guide-layout>*{padding:28px}
+.technical-resource-intro{padding:28px 30px}
+.legacy-content{padding:34px 36px}
+.product-overview{padding:28px;margin-top:36px}
+.section-head h2,.technology-row h2,.b2b-section .container>div>h2{position:relative}
+@media(max-width:600px){.technology-row,.legacy-content,.product-overview{padding:20px 18px;border-radius:16px}.selection-guide-layout>*,.technical-resource-intro{padding:20px}}

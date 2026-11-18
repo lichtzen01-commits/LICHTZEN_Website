@@ -106,7 +106,7 @@ def mobile(url):
     cur = current_index(url)
     links = "".join(f'<a{" aria-current=\"page\"" if i == cur else ""} href="{html.escape(h)}">{t}</a>'
                     for i, (t, h, _, _) in enumerate(MENU))
-    return f'<nav aria-label="모바일 메뉴" class="mobile-nav" id="mobile-nav">{links}<a href="/contact/">상담·견적 문의</a></nav>'
+    return f'<nav aria-label="모바일 메뉴" class="mobile-nav" id="mobile-nav">{links}<a href="/contact/">문의하기</a></nav>'
 
 
 FOOTER_COMPANY_OLD = re.compile(r'(<div><strong>리트젠</strong>)(.*?)(</div>)', re.S)

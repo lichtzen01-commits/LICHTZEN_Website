@@ -1,0 +1,25 @@
+id: gpt-image-neon-graffiti-black-white-portrait
+title:
+  en: Black and white graffiti portrait with neon green eyes
+  zh: 霓虹绿眼睛的黑白涂鸦肖像
+model: GPT Image 2
+mode: text-to-image
+category: portrait
+tags:
+- graffiti
+- black-and-white
+- neon
+- street-art
+- portrait
+source:
+  name: '@harboriis on X'
+  url: https://x.com/harboriis/status/2060208419811074350
+  credit: harboriis
+  captured: '2026-10-28'
+  posted: '2026-05-29'
+  via: https://github.com/freestylefly/awesome-gpt-image-2
+notes:
+  en: One neon green accent runs through an otherwise monochrome image, brightest in the glowing eyes and repeated in the paint splashes and slogans, which ties the face to the background. Layered street art elements such as crowns, arrows and handwritten words fill the concrete wall around the face but leave it clear.
+  zh: 画面整体为黑白，只用一种霓虹绿点缀，最亮处在发光的眼睛，颜料飞溅和标语中也有重复，把人脸和背景联系起来。皇冠、箭头和手写文字等层叠街头涂鸦元素铺满脸部周围的水泥墙，脸部本身保持干净。
+prompt: |
+  High-contrast black-and-white urban portrait of a curly-haired bearded man in a black leather jacket, holding two fingers near glowing neon green eyes, with bold graffiti doodles, colorful paint splashes, abstract arrows, crown sketches, and grunge street-art textures on a concrete background, cinematic lighting, edgy graphic poster style.

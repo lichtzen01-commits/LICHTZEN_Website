@@ -1,0 +1,59 @@
+id: gpt-image-golden-thread-travel-poster-template
+title:
+  en: Golden thread links city photo to ink sketch poster
+  zh: 金线串联城市实景与水墨速写的旅行海报
+model: GPT Image 2.5
+mode: text-to-image
+category: poster
+tags:
+- travel-poster
+- golden-thread
+- ink-illustration
+- template
+- cinematic
+source:
+  name: '@Goodmanprotocol on X'
+  url: https://x.com/Goodmanprotocol/status/2105230944617775113
+  credit: Saul Goodman
+  likes: 113
+  captured: '2026-10-28'
+  posted: '2026-09-30'
+notes:
+  en: One golden thread grows from a landmark in the cinematic upper photo down into a small ink drawing on ivory paper, so the two styles read as one picture instead of a split screen. Change the destination in the placeholders or the final line; the sample shown was made for Shanghai.
+  zh: 一根金线从上方电影感实景中的地标延伸到下方象牙纸上的小幅水墨插画，让两种风格连成一幅画面，而不是生硬的分屏。替换占位符或最后一行的目的地即可，示例图生成的是上海。
+prompt: |
+  Create a premium 4:5 vertical conceptual travel-art poster for [COUNTRY / CITY / LOCATION / SUBJECT].
+
+  TEXT-TO-IMAGE ONLY — generate the entire artwork from [COUNTRY / CITY / LOCATION / SUBJECT] alone.
+
+  CORE CONCEPT
+  Create a poetic travel memory in which a cinematic realistic destination scene gradually transforms into a delicate hand-drawn illustration through one continuous golden thread.
+
+  UPPER SCENE
+  Create a breathtaking, highly realistic cinematic view of the most iconic location associated with [COUNTRY / CITY / LOCATION / SUBJECT]. Automatically choose the most atmospheric lighting—sunrise, sunset, golden hour, or blue hour.
+
+  Show authentic architecture, landscape, proportions, recognizable local details, realistic materials, atmospheric depth, natural light, subtle film grain, and sophisticated editorial travel-photography composition.
+
+  GOLDEN THREAD
+  Choose one meaningful visual element from the scene—such as the sun, tower, dome, window, streetlight, mountain peak, river, bridge, cable, or architectural detail—and transform it into one thin golden thread that naturally extends downward from the scene.
+
+  The thread should remain continuous, delicate, slightly imperfect, and elegant as it travels into the open space below.
+
+  LOWER STORY
+  On warm ivory textured paper, let the golden thread evolve into a tiny minimalist ink illustration inspired by [COUNTRY / CITY / LOCATION / SUBJECT].
+
+  Automatically choose one meaningful local symbol, traveler, traditional object, miniature landmark, street scene, boat, train, flower, map element, or cultural detail. Draw it with fine black ink lines, subtle hatching, tiny golden accents, and very little detail.
+
+  Keep the illustration small and surrounded by generous negative space. It should feel like a quiet continuation of the upper scene rather than a separate picture.
+
+  TYPOGRAPHY
+  Add minimal refined editorial typography based on [COUNTRY / CITY / LOCATION / SUBJECT]. Use a small destination name, landmark name, or short poetic phrase. Keep the typography subtle and secondary.
+
+  FINAL AESTHETIC
+  Cinematic travel photography × delicate ink illustration × continuous golden thread × warm ivory paper × poetic visual storytelling × premium editorial art print.
+
+  The upper scene should feel authentic and visually dominant, while the lower illustration feels like a beautiful hand-drawn memory emerging naturally from the destination.
+
+  Avoid split-screen rigidity, collage clutter, disconnected illustration, random objects, cartoon styling, distorted architecture, excessive text, logos, watermarks, heavy vintage effects, or generic travel imagery.
+
+  FORMAT: 4:5 vertical, sophisticated museum-quality travel artwork, generous negative space. Generate for new york

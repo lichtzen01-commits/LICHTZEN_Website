@@ -1,0 +1,25 @@
+id: gpt-image-fashion-lookbook-burgundy-top-collage
+title:
+  en: Fashion lookbook web page with one model in burgundy
+  zh: 酒红上衣模特的时尚画册网页拼贴
+model: GPT Image 2
+mode: text-to-image
+category: collage
+tags:
+- fashion
+- lookbook
+- e-commerce
+- collage
+- layout
+source:
+  name: '@Mind_Boticni on X'
+  url: https://x.com/Mind_Boticni/status/2061310969192870028
+  credit: Mind_Boticni
+  captured: '2026-10-28'
+  posted: '2026-06-01'
+  via: https://github.com/freestylefly/awesome-gpt-image-2
+notes:
+  en: Locking the garment colors keeps one model consistent across duplicated frames in varied relaxed poses. Perspective tilt, minimal UI composition and shopping website aesthetic turn the collage into an e-commerce lookbook page with its own type and color palette.
+  zh: 锁定服装颜色，让同一模特在多个重复画框中以不同的放松姿势保持一致。透视倾斜、极简界面构图和购物网站美学把拼贴变成带有标题文字和配色色卡的电商画册页面。
+prompt: |
+  Stylish fashion catalog shoot blending streetwear and luxury branding. Female model wearing burgundy slim-fit top and ivory tailored pants, posed in confident relaxed positions across multiple duplicated frames. Slight perspective tilt, dynamic layout collage, soft daylight studio lighting with warm tone grading. Modern shopping website aesthetic, minimal UI-inspired composition, high resolution fashion photography.

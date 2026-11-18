@@ -1,0 +1,23 @@
+id: gpt-image-coffee-machine-flow-infographic
+title:
+  en: Automatic coffee machine cutaway infographic with color coded flows
+  zh: 全自动咖啡机剖面信息图与彩色流程线
+model: GPT Image 2.5
+mode: text-to-image
+category: infographic
+tags:
+- infographic
+- technical
+- diagram
+source:
+  name: OpenAI image prompting guide
+  url: https://developers.openai.com/api/docs/guides/image-prompting#explain-a-process-visually
+  credit: OpenAI
+  captured: '2026-10-28'
+notes:
+  en: Three plain sentences name the machine, list the parts in order and state the goal of understanding the flow, so the model builds a numbered cutaway with color coded paths for beans, water, steam and milk. Check the technical figures in the labels for accuracy.
+  zh: 三句平实的话点明机器类型、按顺序列出部件并说明想看懂流程，模型便生成带编号的剖面图，用不同颜色标出咖啡豆、冷水、蒸汽和牛奶的路径。请核对标注中的技术参数是否准确。
+prompt: |
+  Create a detailed Infographic of the functioning and flow of an automatic coffee machine like a Jura.
+  From bean basket, to grinding, to scale, water tank, boiler, etc.
+  I'd like to understand technically and visually the flow.

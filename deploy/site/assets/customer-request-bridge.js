@@ -1,0 +1,8 @@
+/* The configurator remains sandboxed. Only its request submission is passed to
+   the signed-in parent; the customer frame never receives staff state. */
+(()=>{if(window.LTZCustomerBridgeInstalled)return;window.LTZCustomerBridgeInstalled=true;const documents=new Map();
+window.addEventListener('message',async e=>{const message=e.data;if(!message||!['ltz-customer-request','ltz-customer-download'].includes(message.type))return;const frame=[...document.querySelectorAll('iframe')].find(f=>f.contentWindow===e.source);if(!frame||!frame.src.includes('lamp-configurator')&&!frame.srcdoc.includes('UV Lamp 3D Configurator'))return;
+ if(message.type==='ltz-customer-download'){const result=documents.get(e.source);if(!result||result.document?.fileId!==message.fileId)return;if(window.top.LTZ_WORKFLOW_DOWNLOAD){window.top.LTZ_WORKFLOW_DOWNLOAD(result);return;}const a=document.createElement('a');a.href=result.pdfUrl||('/api/files/'+result.document.fileId);a.download=result.document.fileName||'LICHTZEN_Customer_Request.pdf';document.body.appendChild(a);a.click();a.remove();return;}
+ const reply=data=>e.source.postMessage({type:'ltz-customer-request-result',id:message.id,...data},'*');
+ try{if(JSON.stringify(message.payload).length>2000000)throw Error('요청서가 너무 큽니다.');let result;if(window.top.LTZ_WORKFLOW_REQUEST)result=await window.top.LTZ_WORKFLOW_REQUEST(message.payload);else{const response=await fetch('/api/customer-requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(message.payload)});result=await response.json();if(!response.ok)throw Error(result.error||'요청서 접수 실패');}documents.set(e.source,result);reply({result});}catch(err){reply({error:err.message||'요청서를 처리할 수 없습니다.'});}
+});})();

@@ -1,0 +1,47 @@
+id: gpt-image-photo-to-ink-wash-split-seaside-tower
+title:
+  en: Seaside tower photo above watercolor splash version
+  zh: 海边塔楼照片与下方水彩晕染版
+model: GPT Image 2.5
+mode: text-to-image
+category: photo-to-art
+tags:
+- ink-wash
+- split-layout
+- photo-to-art
+- negative-space
+- eastern-aesthetics
+source:
+  name: '@Ziha_ai on X'
+  url: https://x.com/Ziha_ai/status/2109118256045002828
+  credit: Ziha
+  likes: 257
+  captured: '2026-10-28'
+  posted: '2026-10-11'
+notes:
+  en: The prompt locks a 3:4 canvas into two equal halves, keeping the photo faithful on top and redrawing the same scene below on textured paper. Rules on paper tone, a few accent colors and wide negative space make the lower half fade into soft pigment blooms.
+  zh: 提示词把3:4画面严格分成上下两半，上半保留原照片，下半在纸纹底上重绘同一场景。纸色、少量点染色和大面积留白的要求让下半部分化作柔和的颜料晕染。
+prompt: |
+  The image is in a 3:4 vertical composition, divided into two regions, with a strict 1:1 ratio, each taking up 50% of the image.
+
+  Upper Region - Original Photo Shoot Area
+
+  Preserves the subject's identity, structure, perspective, and true material, natural light, and original color atmosphere, with only slight high-end color grading and image purification, presenting it with the texture of art magazines or exhibition photography. It allows for a moderate expansion of the background to fit the screen size, but does not stretch, distort, or reshape the subject, without changing the subject's structure, posture, and core composition.
+
+  Lower Region - Minimalist Ink Wash Reconstruction Area
+
+  First, refine the subject with the most memorable details, such as the outline, structure, trend, perspective, rhythm, and atmosphere, and then reconstruct the same scene into a minimalist ink wash material landscape. Do not copy the photo details, do not make a realistic copy, only preserve the most recognizable structure and charm, allowing people to recognize the corresponding relationship between the upper region and the original photo at first glance.
+
+  The overall base of the lower half is milky white, warm white or paper white, with delicate paper fiber and natural texture. The main body is reconstructed in ink wash blending, dry-wet interplay, flying white, seepage, ink accumulation, and white space, forming a quiet, restrained, and poetic Eastern visual. Removing secondary details, only retaining the most distinctive contours, structural turns, spatial layers, and breath, not pursuing realistic completeness, but rather summarizing, refining, and leaving a lingering impression. The use of ink in black, gray, and light ink tones, layered and progressing, with varying intensities and rhythms.
+
+  The most vibrant colors can be extracted from the original image to create a few spots of dyeing or coloring, without mechanically replicating the color values. The colors can be transformed locally into clear blue-gray, distant blue, soft gold, warm yellow, vermilion red, light cyan, etc., to emphasize the main focus and emotional rhythm, but the overall composition is still dominated by ink tones and negative space. Avoiding dull, heavy, old brown, excessive decoration, and vulgar color combinations.
+
+  The main core areas should be more refined and concentrated, with edges gradually loosening, breaking away, disappearing, and scattering, forming a sense of breathing with the large negative space. The lower half of the composition should account for about 30%-45%, with the rest reserved for large negative spaces. The composition can be biased, framed, suspended, or slightly cut, but must maintain an asymmetrical balance and a high-end editorial feel. Negative space is not blank, but an important component of the visual structure. It is better to reduce information than to fill the entire image, so that the main focus looks like an ink seal or an oriental material work displayed on a page.
+
+  Text Treatment
+
+  Text is only allowed a very small amount of editing intervention, without preset titles and numbers. A small number of words or short sentences can be extracted from the subject, location, time, action, emotion, or metaphor, and quietly placed in the blank area or the edge of the subject. The text should be restrained, sparse, and have a sense of breathing, not noisy or dominant.
+
+  Overall Presentation
+
+  Contemporary Eastern aesthetics, minimalist ink wash reconstruction, large-scale art blank, small-scale seal impression, quiet editing layout and exhibition poster style. Avoid complex backgrounds, piled-up real details, overly decorative, excessive text, template layout and filled composition

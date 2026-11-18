@@ -1,0 +1,49 @@
+id: gpt-image-realistic-woman-3d-girl-night-park
+title:
+  en: Realistic woman on park bench with 3D animated girl
+  zh: 公园长椅上的真人女子与3D动画女孩
+model: GPT Image 2.5
+mode: image-edit
+category: portrait
+tags:
+- mixed-style
+- 3d-character
+- night-park
+- identity-reference
+- golden-light
+source:
+  name: '@Alina_with_Ai on X'
+  url: https://x.com/Alina_with_Ai/status/2102960952266432853
+  credit: Alina Ai
+  likes: 185
+  captured: '2026-10-28'
+  posted: '2026-09-24'
+notes:
+  en: An uploaded photo sets the woman's identity, and a separate detailed description keeps the girl in a cute 3D animated style with a matching streetwear outfit. Warm streetlight rim lighting and soft city bokeh blend the two styles into one night scene, though the model loosely interpreted the requested pose.
+  zh: 上传的照片锁定女子的身份，另一段详细描述让女孩保持可爱的3D动画风格并穿着同款街头服装。暖色路灯轮廓光和柔和的城市散景把两种风格融进同一个夜景，不过模型对指定姿势的执行比较宽松。
+prompt: |
+  Create a single cinematic vertical 9:16 image based closely on the uploaded reference.
+
+  Show TWO characters standing side by side at night in a beautiful city park.
+
+  The adult woman is the main realistic character. Use my uploaded photo as her identity reference and preserve my facial identity, facial structure, skin tone, and recognizable appearance. She has long dark brown hair and wears masculine oversized streetwear: a dark olive/black oversized utility jacket, black oversized hoodie, extremely loose black cargo pants, and white chunky sneakers.
+
+  The woman is standing naturally and looking DOWN toward the little girl with a warm, genuine smile. Her body is slightly turned toward the little girl. One hand is casually inside her jacket/pants pocket, while her other hand is raised and her index finger is POINTING toward the little girl, as if proudly introducing or showing her. Make the pointing gesture very clear and natural.
+
+  Beside her stands an adorable small 3D animated girl. Keep the little girl extremely cute: oversized expressive brown eyes, rosy cheeks, tiny face, brown hair in a messy high bun with loose strands, black oversized hoodie with a small crown emblem, loose black cargo pants, and white chunky sneakers. She is standing upright and looking up at the woman with a sweet playful smile.
+
+  IMPORTANT:
+  - Both characters must be FULLY STANDING.
+  - One single image only, NOT a collage or split screen.
+  - The woman must be pointing toward the little girl.
+  - The woman must be looking at the little girl and smiling.
+  - The little girl must be looking up at the woman.
+  - Keep a clear height difference between them.
+  - Do not make the little girl photorealistic; keep her cute high-quality 3D animated appearance.
+  - Do not change the little girl's outfit, hairstyle, facial style, or body proportions.
+
+  Set them on a nighttime park walkway with leafy trees, warm glowing streetlights, distant city lights, soft bokeh, golden rim lighting around their hair and shoulders, realistic shadows, and a cozy magical atmosphere.
+
+  Photorealistic adult woman + adorable 3D animated girl, seamless integration, cinematic photography, realistic skin and clothing textures, warm golden color grading, shallow depth of field, ultra-detailed, natural proportions, professional composition, vertical 9:16.
+
+  The final composition should clearly communicate: the big girl is proudly pointing at the cute little girl while smiling at her.

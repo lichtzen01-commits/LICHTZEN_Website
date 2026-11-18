@@ -1,0 +1,42 @@
+id: gpt-image-teddy-bear-holiday-card
+title:
+  en: Nostalgic Christmas card with a worn teddy bear
+  zh: 旧泰迪熊怀旧圣诞贺卡
+model: GPT Image 2.5
+mode: text-to-image
+category: poster
+tags:
+- christmas
+- holiday
+- card
+- text-render
+source:
+  name: OpenAI image prompting guide
+  url: https://developers.openai.com/api/docs/guides/image-prompting#design-a-holiday-card
+  credit: OpenAI
+  captured: '2026-10-28'
+notes:
+  en: Labeled blocks for scene, mood, style and constraints keep each instruction separate, and giving the card text verbatim as the only text allowed gets clean typography. The line about a grown child adds story details such as old photos and a handwritten note.
+  zh: 场景、情绪、风格和限制分成带标签的段落，各项指令互不干扰；贺卡文字逐字给出并限定为唯一文字，排版因此干净。孩子已长大这句设定让画面多了旧照片和手写便签等叙事细节。
+prompt: |
+  Create a Christmas holiday card illustration.
+
+  Scene:
+  a cozy Christmas scene with an old teddy bear sitting inside a keepsake box, slightly worn fur, soft stitching repairs, placed near a window with falling snow outside. The scene suggests the child has grown up, but the memories remain.
+
+  Mood:
+  Warm, nostalgic, gentle, emotional.
+
+  Style:
+  Premium holiday card photography, soft cinematic lighting,
+  realistic textures, shallow depth of field,
+  tasteful bokeh lights, high print-quality composition.
+
+  Constraints:
+  - Original artwork only
+  - No trademarks
+  - No watermarks
+  - No logos
+
+  Include ONLY this card text (verbatim):
+  "Merry Christmas — some memories never fade."

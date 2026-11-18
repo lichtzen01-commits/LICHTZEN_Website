@@ -1,0 +1,25 @@
+id: gpt-image-futuristic-paris-vintage-travel-poster
+title:
+  en: Retro futurist Paris travel poster with giant flowers
+  zh: 巨型花卉复古未来巴黎旅行海报
+model: GPT Image 2
+mode: text-to-image
+category: poster
+tags:
+- travel-poster
+- futuristic
+- surreal-architecture
+- vintage
+- editorial
+source:
+  name: '@Naiknelofar788 on X'
+  url: https://x.com/Naiknelofar788/status/2093230701986672924
+  credit: Naiknelofar788
+  captured: '2026-10-28'
+  posted: '2026-08-28'
+  via: https://github.com/freestylefly/awesome-gpt-image-2
+notes:
+  en: The prompt never names a place and only asks for one iconic focal point and an instantly recognizable silhouette, so the model picks a landmark city itself. Fusing vintage travel poster and luxury editorial styles with muted colors, paper texture, film grain and a no photorealism constraint keeps the result looking like a printed collectible.
+  zh: 提示词没有指定地点，只要求一个标志性焦点和一眼可辨的轮廓，由模型自行选择地标城市。复古旅行海报与高端杂志风格融合，加上低饱和色彩、纸张质感、胶片颗粒和禁止写实的约束，让成品像一张可收藏的印刷海报。
+prompt: |
+  Create a visually unforgettable editorial art poster of a dreamlike futuristic world where familiar everyday life meets surreal architecture. Grand sculptural buildings, winding roads, oversized plants, tiny people, unexpected floating elements, dramatic perspective, cinematic atmosphere, and one iconic focal point. Blend vintage travel-poster design with modern luxury editorial aesthetics, sophisticated muted colors, soft natural light, subtle film grain, tactile paper texture, clean geometric shapes, minimal composition, nostalgic yet futuristic, whimsical but premium, highly detailed, instantly recognizable silhouette, Pinterest-worthy, Instagram-viral aesthetic, collectible art print, no clutter, no photorealism, vertical 4:5.

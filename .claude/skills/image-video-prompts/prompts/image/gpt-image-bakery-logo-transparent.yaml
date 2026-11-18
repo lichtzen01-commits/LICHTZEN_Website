@@ -1,0 +1,24 @@
+id: gpt-image-bakery-logo-transparent
+title:
+  en: Bakery logo on a transparent background
+  zh: 透明背景的烘焙店标志
+model: GPT Image 2.5
+mode: text-to-image
+category: brand
+tags:
+- logo
+- transparent
+- vector
+source:
+  name: OpenAI image prompting guide
+  url: https://developers.openai.com/api/docs/guides/image-prompting#design-a-reusable-logo
+  credit: OpenAI
+  captured: '2026-10-28'
+notes:
+  en: Asks for an original flat mark that reads at small and large sizes, then spells out the transparent background with clean alpha edges and no backdrop, checkerboard or watermark. Pair it with background=transparent in the API.
+  zh: 要求设计一个原创扁平标志，在大小尺寸下都清晰可辨，并明确写出透明背景的要求：干净的透明边缘，不要底色、棋盘格或水印。调用 API 时配合 background=transparent 使用。
+prompt: |
+  Create an original, non-infringing logo for a company called Field & Flour, a local bakery.
+  The logo should feel warm, simple, and timeless. Use clean, vector-like shapes, a strong silhouette, and balanced negative space.
+  Favor simplicity over detail so it reads clearly at small and large sizes. Flat design, minimal strokes, no gradients unless essential.
+  Fully transparent background. Deliver a single centered logo with generous padding, clean alpha edges, and no solid backdrop, scenery, checkerboard, or watermark.

@@ -1,0 +1,11 @@
+# 리트젠 LICHTZEN
+
+> 1995년 설립한 한국의 광응용 제조기업. UV 램프(수은·메탈할라이드·갈륨)·MIR/NIR 램프·UV LED 모듈과 UV 경화·IR/MIR 건조 시스템을 설계·제조합니다. 본사·공장·연구소: 경기도 군포시. ISO 9001·ISO 14001.
+
+## 주요 페이지
+
+- [제품 찾기](https://www.lichtzen.com/products/): UV 경화 장비, UV LED, IR·MIR 건조, 램프·광원, UV-C 살균, 부품
+- [적용 분야](https://www.lichtzen.com/solutions/): 필름·인쇄·코팅, PCB, 정밀 본딩, IR 가열·건조
+- [기술](https://www.lichtzen.com/technology/): 광원 선택과 공정 검토
+- [회사소개](https://www.lichtzen.com/company/): 연혁, 조직, 특허·인증
+- [상담·견적](https://www.lichtzen.com/contact/): 제품·공정 문의

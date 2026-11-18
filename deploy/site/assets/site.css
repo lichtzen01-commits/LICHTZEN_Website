@@ -81,3 +81,35 @@
 body{word-break:keep-all;overflow-wrap:break-word}
 @media(max-width:600px){.header-inner .language-picker{margin-left:auto}}
 .map-origin-label{font-size:11px;paint-order:stroke;stroke:#142e24;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}
+/* hero (2026-11-18 feedback) */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.75}
+.hero .hero-description{white-space:pre-line;max-width:none}
+@media(min-width:901px){.hero .hero-description{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
+/* mega dropdown (2026-11-18 feedback) */
+@media(min-width:901px){
+.header-inner{position:relative}
+.desktop-nav .nav-group{position:static}
+.nav-panel.nav-mega{left:0;right:0;top:calc(100% - 6px);min-width:0;padding:28px 32px 32px;border-radius:0 0 18px 18px;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-rows:auto 1fr;column-gap:40px;box-shadow:0 24px 48px #0f1f1626}
+.nav-group:hover .nav-mega,.nav-group:focus-within .nav-mega,.nav-group.is-open .nav-mega{display:grid}
+.mega-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;margin-bottom:12px;border-bottom:1px solid #e3e9de}
+.mega-head strong{font-size:20px;letter-spacing:-.04em;color:#17201e}
+.mega-head a{font-size:13px;color:#477611;font-weight:600}
+.mega-links{display:grid;grid-template-columns:1fr 1fr;align-content:start;column-gap:8px}
+.nav-mega .mega-links a{padding:13px 14px;border-radius:10px;font-size:15px;font-weight:600;color:#26332a;transition:background .18s,color .18s,transform .18s}
+.nav-mega .mega-links a:hover,.nav-mega .mega-links a.is-active{background:#eef5e4;color:#3d6614;transform:translateX(3px)}
+.mega-figure{margin:0;align-self:start;border-radius:14px;overflow:hidden;background:#f3f6f0;position:relative}
+.mega-figure img{display:block;width:100%;height:280px;object-fit:cover}
+.mega-figure figcaption{position:absolute;left:16px;bottom:14px;background:#ffffffe6;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#26332a}
+}
+/* keep labels off photos (2026-11-18 feedback) */
+.capability-image{display:flex;flex-direction:column}
+.capability-image>span{order:-1;position:static;display:block;padding:18px 20px 0;font-size:12px;font-weight:600;color:#3f5a2a}
+.capability-image img{padding:14px 28px 26px}
+@media(max-width:600px){.capability-image>span{padding:14px 14px 0;font-size:11px}.capability-image img{padding:10px 12px 18px}}
+.corporate-building{flex-direction:column;align-items:stretch;justify-content:space-between;gap:18px}
+.corporate-building>span{position:static;order:-1;font-size:12px;letter-spacing:1px;color:#dbe6cf}
+.corporate-building img{flex:1;min-height:0}
+/* company hero: no dark box behind the building (2026-11-18 feedback) */
+.corporate-building{background:none;padding:0}
+.corporate-building>span{color:#4b5d50}

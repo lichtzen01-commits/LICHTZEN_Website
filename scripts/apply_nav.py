@@ -51,6 +51,25 @@ MENU = [
     ], ("/support/", "/resources/", "/news/", "/privacy/")),
 ]
 CHEVRON = "⌄"
+# picture shown on the right of the dropdown for each submenu link
+IMAGES = {
+ "/products/": "/assets/optimized/c0d798d248f8.webp",
+ "/products/?category=equipment": "/assets/optimized/b624afd8869d.webp",
+ "/products/?category=led": "/assets/optimized/86a255b9898c.webp",
+ "/products/?category=lamps": "/assets/optimized/4ead903d2b00.webp",
+ "/products/?category=ir": "/assets/optimized/2f4d31281ba9.webp",
+ "/products/?category=uvc": "/assets/optimized/5ef1a6a7eb47.webp",
+ "/products/?category=components": "/assets/optimized/26a8372c9a06.webp",
+ "/conveyors/": "/assets/optimized/be08f86da32c.webp",
+ "/lamp/": "/assets/optimized/80ace7326584.webp",
+ "/selection-guide/": "/assets/optimized/a23e62ee0e74.webp",
+ "/solutions/": "/assets/legacy/d103cbec0791.webp",
+ "/solutions/film/": "/assets/optimized/6630029cc0f6.webp",
+ "/solutions/pcb-printing/": "/assets/optimized/a23e62ee0e74.webp",
+ "/solutions/bonding/": "/assets/optimized/a68c5ad53dfe.webp",
+ "/solutions/ir-drying/": "/assets/optimized/2f4d31281ba9.webp"
+}
+GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": "/assets/optimized/4ead903d2b00.webp"}
 
 
 def current_index(url):
@@ -72,9 +91,14 @@ def desktop(url):
         if not sub:
             parts.append(link)
             continue
-        panel = "".join(f'<a href="{html.escape(h)}">{t}</a>' for t, h in sub)
+        default = IMAGES.get(sub[0][1]) or GROUP_IMAGE.get(href, "")
+        links = "".join(f'<a data-mega-img="{IMAGES.get(h) or default}" href="{html.escape(h)}">{t}</a>' for t, h in sub)
+        figure = (f'<figure class="mega-figure"><img alt="" decoding="async" height="386" loading="lazy" src="{default}" width="750"/>'
+                  f'<figcaption>{sub[0][0]}</figcaption></figure>') if default else ""
         parts.append(f'<div class="nav-group">{link}<button aria-expanded="false" aria-label="{label} 하위 메뉴" '
-                     f'class="nav-expand" type="button">{CHEVRON}</button><div class="nav-panel">{panel}</div></div>')
+                     f'class="nav-expand" type="button">{CHEVRON}</button><div class="nav-panel nav-mega">'
+                     f'<div class="mega-head"><strong>{label}</strong><a href="{html.escape(href)}">{label} 전체 보기 →</a></div>'
+                     f'<div class="mega-links">{links}</div>{figure}</div></div>')
     return '<nav aria-label="주 메뉴" class="desktop-nav">' + "".join(parts) + "</nav>"
 
 
@@ -103,6 +127,8 @@ def main(root):
         new = re.sub(r'<nav aria-label="주 메뉴" class="desktop-nav">.*?</nav>', lambda m: desktop(url), h, count=1, flags=re.S)
         new = re.sub(r'<nav aria-label="모바일 메뉴"[^>]*>.*?</nav>', lambda m: mobile(url), new, count=1, flags=re.S)
         new = FOOTER_COMPANY_OLD.sub(lambda m: m.group(1) + FOOTER_COMPANY_NEW + m.group(3), new, count=1)
+        if 'class="desktop-nav"' in new and "/assets/nav-mega.js" not in new:
+            new = new.replace("</head>", '<script defer src="/assets/nav-mega.js"></script></head>', 1)
         if new != h:
             open(path, "w", encoding="utf-8").write(new)
             changed += 1

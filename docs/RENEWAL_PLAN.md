@@ -30,7 +30,7 @@
 | **0. 기준선 진단** ✅ | 테스트 사이트 배치 정리, 현재 상태 점수화(제안서 7개 항목: Technical SEO·On-page·Content·GEO·EEAT·해외 B2B·CRO), 화면 품질·접근성 진단, 문제 목록 | seo-audit, audit-website-aeo, web-interface-guidelines, impeccable, agent-browser, playwright-skill | 진단 결과 공유 |
 | **1. 정보 구조 확정 (M1)** ✅ | 메뉴·페이지 목록·URL 표, 페이지별 검색 의도·고객 질문 가설, 기존 URL 이전 대응표 초안 | site-architecture, research-keywords, geo-content-research, front-end-system-design | **메뉴 결정**, 공개할 수치·고객사 결정 |
 | **2. 기술 SEO 기반** ✅ | 페이지별 고유 title·description(현재 제품 32개가 같은 설명), canonical, OG 태그, JSON-LD(Organization·BreadcrumbList·Product, 가격·리뷰 없음), sitemap.xml·robots.txt, hreflang 구조, 이미지 alt·크기, 성능 예산(초기 JS 150KB) | seo-technical, seo-schema, schema, seo-sitemap, improve-aeo-geo, seo-images | 없음 (기술 작업) |
-| **3. 메인·디자인 (M2)** | 메인을 "요약 + 신뢰" 순서로 재구성(Hero → Why LTZ → 제품 → 적용 분야 → 기술 → 글로벌 → 소식 → 문의), 핵심 메시지 확정, 디자인 시스템(DESIGN.md) 정리, 모바일 개선, 겹치는 플로팅 버튼 정리 | design-md, impeccable, design-taste-frontend, ui-ux-pro-max, copywriting, apple-design, gsap-* | **시안 승인** |
+| **3. 메인·디자인 (M2)** ✅ | 메인을 "요약 + 신뢰" 순서로 재구성(Hero → Why LTZ → 제품 → 적용 분야 → 기술 → 글로벌 → 소식 → 문의), 핵심 메시지 확정, 디자인 시스템(DESIGN.md) 정리, 모바일 개선, 겹치는 플로팅 버튼 정리 | design-md, impeccable, design-taste-frontend, ui-ux-pro-max, copywriting, apple-design, gsap-* | **시안 승인** |
 | **4. 문의 흐름 (CRO)** | 필수 3개(회사명·이메일·요청 내용), 목적별 분기(램프 교체·소량 제작 / 신규 장비·품질 개선 / OEM), 제품 페이지에서 제품명 자동 전달, 사진·도면 첨부, 모든 페이지 고정 버튼(견적 요청·엔지니어 상담) | cro, signup, copywriting, web-interface-guidelines | 문의 항목 승인 |
 | **5. 핵심 콘텐츠** | 소량 제작·OEM·품질과 인증 페이지, 기술 FAQ 6개, 품질 개선 사례 2개, 제품 상세 공통 양식(사양 HTML 표·적용 조건·관련 제품·문의), Technology·Global Business 페이지, 게시 전 사실 검증 | write-seo-geo-content, seo-content-brief, faq-page, audit-content, create-geo-charts, copy-editing | **원고·근거 자료 제공 및 승인** |
 | **6. 영문 핵심 6페이지** | 메인·회사소개·제품군·맞춤 제작과 OEM·품질과 인증·문의, 국문 대응 페이지와 hreflang 연결 | seo-hreflang, copywriting | 영문 원고 승인 |
@@ -68,6 +68,7 @@
 
 - 2026-11-18 3단계 1차 시안: 메인 첫 화면 문구(A안), "왜 리트젠인가" 6가지 강점(회사소개서 근거), 턴키 방향의 "프로젝트 진행 방식" 6단계 영역 추가, 글자 대비 부족 38곳 수정(axe 0건), 한국어 단어 단위 줄바꿈, 모바일 상단 메뉴 정렬, 고정 상담 버튼과 겹치던 SCROLL 문구 제거. 남은 3단계: 모바일 첫 화면 속도(LCP 3.0초), 디자인 기준 문서(DESIGN.md).
 - 2026-11-18 메뉴 변경: 승인된 구조(제품 / 적용 분야 / 기술 / 품질·인증 / 회사소개 / 자료·고객지원 + 상담·견적)를 65페이지에 적용. 램프·컨베이어는 제품 아래로 이동, 인사말·채용은 하단 링크로. 맞춤 제작·OEM 메뉴는 5단계에서 페이지를 채운 뒤 추가. 실행: `python3 scripts/apply_nav.py deploy/site`.
+- 2026-11-18 3단계 마무리: 메인 HTML 156KB → 38KB(세계지도를 `assets/world-land.svg`로 분리), 모바일 LCP 3.0초 → 2.2~2.3초, Lighthouse 모바일 성능 98~99·접근성 100. 지도를 가로지르던 선과 "군포·대한민국" 글자 뭉개짐 수정. 디자인 기준 `DESIGN.md` 작성. 담당자 의견 반영 대기.
 
 ## 8. 진행 방식
 

@@ -80,3 +80,4 @@
 /* Korean line breaking and mobile header (2026-11 renewal) */
 body{word-break:keep-all;overflow-wrap:break-word}
 @media(max-width:600px){.header-inner .language-picker{margin-left:auto}}
+.map-origin-label{font-size:11px;paint-order:stroke;stroke:#142e24;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}

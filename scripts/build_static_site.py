@@ -6,7 +6,11 @@ Only the public homepage is exported. The sales workspace, the admin preview
 and the embedded business data (quotes, orders, claims) stay out of the build.
 
 Usage:
-    python3 scripts/build_static_site.py <bundle.html> <output_dir>
+    python3 scripts/build_static_site.py <bundle.html> <output_dir> [base_path]
+
+base_path is for hosting under a sub-path, e.g. "/LICHTZEN_Website" for
+GitHub Pages at https://lichtzen01-commits.github.io/LICHTZEN_Website/.
+Leave it out when the site is served from the domain root.
 """
 import base64
 import glob
@@ -20,7 +24,27 @@ import sys
 SKIP_PAGES = {"/sales/", "/admin-preview.html"}
 
 
-def main(bundle, out):
+def rebase(out, base):
+    """Prefix root-relative links with `base` so the site works under a
+    sub-path such as https://<owner>.github.io/<repo>/."""
+    tops = sorted({p.split(os.sep)[0] for p in os.listdir(out)} - {"index.html", "404.html"})
+    tops = [t for t in tops if os.path.isdir(os.path.join(out, t))]
+    seg = "|".join(re.escape(t) for t in tops)
+    # "/assets/x", '/products/', `/company/...` and url(/assets/...)
+    inner = re.compile(r'(["\'`(])/(?=(?:' + seg + r')(?:[/?#"\'`)]|$))')
+    home = re.compile(r'((?:href|action)=["\'])/(?=["\'?#])')
+    for path in glob.glob(os.path.join(out, "**", "*"), recursive=True):
+        if not path.endswith((".html", ".js", ".css")):
+            continue
+        text = open(path, encoding="utf-8").read()
+        new = inner.sub(lambda m: m.group(1) + base + "/", text)
+        new = home.sub(lambda m: m.group(1) + base + "/", new)
+        if new != text:
+            open(path, "w", encoding="utf-8").write(new)
+
+
+def main(bundle, out, base=""):
+    base = base.rstrip("/")
     src = open(bundle, encoding="utf-8").read()
     meta = json.loads(re.search(r'<script id="ltz-index" type="application/json">(.*?)</script>', src, re.S).group(1))
     blobs = dict(re.findall(r'<script id="(r\d+)" type="application/octet-stream">(.*?)</script>', src, re.S))
@@ -69,6 +93,16 @@ def main(bundle, out):
                     "new URLSearchParams(window.LTZ_PORTABLE_SEARCH||location.search)")
     open(site_js, "w", encoding="utf-8").write(js)
 
+    # The contact page preview form jumped into the excluded sales workspace.
+    contact = os.path.join(out, "contact", "index.html")
+    html = open(contact, encoding="utf-8").read()
+    html = html.replace('location.href="/sales/?view=quotes"',
+                        'alert("테스트 사이트입니다. 문의 내용은 아직 실제로 전송되지 않습니다.")')
+    open(contact, "w", encoding="utf-8").write(html)
+
+    if base:
+        rebase(out, base)
+
     # Test site: keep it out of search engines until launch.
     with open(os.path.join(out, "robots.txt"), "w") as f:
         f.write("User-agent: *\nDisallow: /\n")
@@ -78,4 +112,4 @@ def main(bundle, out):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "")

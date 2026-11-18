@@ -1,0 +1,46 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main, sales-system-v1]
+    paths:
+      - "deploy/site/**"
+      - "scripts/build_static_site.py"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # deploy/site links from the domain root ("/products/"). A project site
+      # lives under /<repo>/, so prefix the links with the repository name.
+      # When a custom domain (e.g. preview.lichtzen.com) is set up, set
+      # SITE_BASE to an empty string.
+      - name: Prepare site
+        env:
+          SITE_BASE: /${{ github.event.repository.name }}
+        run: |
+          cp -r deploy/site _site
+          python3 -c "import sys; sys.path.insert(0, 'scripts'); import build_static_site as b; b.rebase('_site', '$SITE_BASE')"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

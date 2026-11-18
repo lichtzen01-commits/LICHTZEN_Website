@@ -20,24 +20,25 @@
     as: '예) 장비 모델·구입 시기, 증상, 사진',
     other: '예) 궁금한 점을 편하게 적어주세요.',
   };
+  const T = window.LTZ_T || (x => x);
   const chips = form.querySelector('[data-pain-chips]');
   const msg = form.querySelector('#message');
   const select = need => {
     chips.innerHTML = '';
     (PAIN[need] || PAIN.other).forEach(text => {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'pain-chip'; b.textContent = text; b.setAttribute('aria-pressed', 'false');
+      b.type = 'button'; b.className = 'pain-chip'; b.textContent = T(text); b.setAttribute('aria-pressed', 'false');
       b.addEventListener('click', () => {
         const on = b.getAttribute('aria-pressed') !== 'true';
         b.setAttribute('aria-pressed', String(on));
-        const lines = msg.value.split('\n').filter(l => l.trim() && l.trim() !== '· ' + text);
-        if (on) lines.unshift('· ' + text);
+        const lines = msg.value.split('\n').filter(l => l.trim() && l.trim() !== '· ' + T(text));
+        if (on) lines.unshift('· ' + T(text));
         msg.value = lines.join('\n') + (lines.length ? '\n' : '');
         msg.focus();
       });
       chips.appendChild(b);
     });
-    msg.placeholder = PLACEHOLDER[need] || PLACEHOLDER.other;
+    msg.placeholder = T(PLACEHOLDER[need] || PLACEHOLDER.other);
   };
   form.querySelectorAll('input[name=need]').forEach(r => r.addEventListener('change', () => select(r.value)));
   const params = new URLSearchParams(window.LTZ_PORTABLE_SEARCH || location.search);
@@ -55,7 +56,7 @@
     form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
     if (missing.length || (email.value && !email.checkValidity())) {
       (missing.length ? missing : [email]).forEach(el => el.classList.add('is-invalid'));
-      status.textContent = missing.length ? '빨간색으로 표시된 칸을 확인해 주세요.' : '이메일 주소를 다시 확인해 주세요.';
+      status.textContent = T(missing.length ? '빨간색으로 표시된 칸을 확인해 주세요.' : '이메일 주소를 다시 확인해 주세요.');
       (missing[0] || email).focus();
       return;
     }

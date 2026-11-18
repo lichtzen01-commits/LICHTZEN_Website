@@ -4,7 +4,9 @@ on:
   push:
     branches: [main]
     paths:
+      - "deploy/site/**"
       - "deploy/bundle/**"
+      - "scripts/build_static_site.py"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -26,12 +28,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # deploy/bundle is the test HTML (homepage, sales workspace, admin preview)
-      # with business data replaced by sample data. index.html loads its
-      # resources from data/, so it works under any path.
+      # /      = the homepage being renewed (deploy/site). Its links start at
+      #          the domain root, so they are prefixed with /<repo>.
+      # /test/ = the test HTML with the sales workspace (deploy/bundle, sample
+      #          data only). It loads data/ relatively and needs no rewrite.
+      # With a custom domain at the root, set SITE_BASE to an empty string.
+      - name: Prepare site
+        env:
+          SITE_BASE: /${{ github.event.repository.name }}
+        run: |
+          cp -r deploy/site _site
+          python3 -c "import sys; sys.path.insert(0, 'scripts'); import build_static_site as b; b.rebase('_site', '$SITE_BASE')"
+          cp -r deploy/bundle _site/test
+          touch _site/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: deploy/bundle
+          path: _site
 
       - id: deployment
         uses: actions/deploy-pages@v4

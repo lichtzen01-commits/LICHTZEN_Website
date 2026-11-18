@@ -28,7 +28,7 @@
 | 단계 | 내용 | 주요 스킬 | 담당자 확인 |
 |---|---|---|---|
 | **0. 기준선 진단** ✅ | 테스트 사이트 배치 정리, 현재 상태 점수화(제안서 7개 항목: Technical SEO·On-page·Content·GEO·EEAT·해외 B2B·CRO), 화면 품질·접근성 진단, 문제 목록 | seo-audit, audit-website-aeo, web-interface-guidelines, impeccable, agent-browser, playwright-skill | 진단 결과 공유 |
-| **1. 정보 구조 확정 (M1)** | 메뉴·페이지 목록·URL 표, 페이지별 검색 의도·고객 질문 가설, 기존 URL 이전 대응표 초안 | site-architecture, research-keywords, geo-content-research, front-end-system-design | **메뉴 결정**, 공개할 수치·고객사 결정 |
+| **1. 정보 구조 확정 (M1)** ✅ | 메뉴·페이지 목록·URL 표, 페이지별 검색 의도·고객 질문 가설, 기존 URL 이전 대응표 초안 | site-architecture, research-keywords, geo-content-research, front-end-system-design | **메뉴 결정**, 공개할 수치·고객사 결정 |
 | **2. 기술 SEO 기반** | 페이지별 고유 title·description(현재 제품 32개가 같은 설명), canonical, OG 태그, JSON-LD(Organization·BreadcrumbList·Product, 가격·리뷰 없음), sitemap.xml·robots.txt, hreflang 구조, 이미지 alt·크기, 성능 예산(초기 JS 150KB) | seo-technical, seo-schema, schema, seo-sitemap, improve-aeo-geo, seo-images | 없음 (기술 작업) |
 | **3. 메인·디자인 (M2)** | 메인을 "요약 + 신뢰" 순서로 재구성(Hero → Why LTZ → 제품 → 적용 분야 → 기술 → 글로벌 → 소식 → 문의), 핵심 메시지 확정, 디자인 시스템(DESIGN.md) 정리, 모바일 개선, 겹치는 플로팅 버튼 정리 | design-md, impeccable, design-taste-frontend, ui-ux-pro-max, copywriting, apple-design, gsap-* | **시안 승인** |
 | **4. 문의 흐름 (CRO)** | 필수 3개(회사명·이메일·요청 내용), 목적별 분기(램프 교체·소량 제작 / 신규 장비·품질 개선 / OEM), 제품 페이지에서 제품명 자동 전달, 사진·도면 첨부, 모든 페이지 고정 버튼(견적 요청·엔지니어 상담) | cro, signup, copywriting, web-interface-guidelines | 문의 항목 승인 |
@@ -45,6 +45,9 @@
 2. **재무 수치: 수출실적만 남김** — 2025년 수출실적(한국무역협회 증명서 기준)만 게시하고 매출액·영업이익은 뺀다.
 3. **고객사 로고: 동의 받음 → 유지.**
 4. **핵심 메시지: 새로 제안** — 3단계 시안에서 후보 2~3개를 제시하고 선택한다.
+5. **1단계 정보 구조안(`docs/IA.md`) 승인.**
+6. **수출 국가: 39개국** (2026 회사소개서 Global Presence 기준).
+7. **이란·러시아: 국가 목록·지도에 표시하지 않음** (국가 수에는 포함).
 
 ## 6. 회사에서 준비할 자료
 

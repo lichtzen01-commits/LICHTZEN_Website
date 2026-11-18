@@ -16,3 +16,10 @@
     }, 6000);
   });
 })();
+// Sections fade up as they come into view.
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const sections = document.querySelectorAll('.home-page main>section:not(.hero), .home-page .global-business, .home-page .final-screen');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), {threshold: 0.18});
+  sections.forEach(s => { s.classList.add('reveal-ready'); io.observe(s); });
+})();

@@ -47,5 +47,3 @@ Source: https://github.com/greatfrontend/awesome-front-end-system-design (MIT, s
   - Tooltip/Popover
   - Design Systems
 - Miscellaneous
-- {Product Name}
-- {UI Component Name}

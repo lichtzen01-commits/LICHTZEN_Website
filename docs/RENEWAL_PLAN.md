@@ -48,6 +48,7 @@
 5. **1단계 정보 구조안(`docs/IA.md`) 승인.**
 6. **수출 국가: 39개국** (2026 회사소개서 Global Presence 기준).
 7. **이란·러시아: 국가 목록·지도에 표시하지 않음** (국가 수에는 포함).
+8. **핵심 메시지: A안 "램프 한 개부터 생산 라인 전체까지."** 회사의 최종 목표는 PM(프로젝트 관리·턴키)이므로 메시지와 구성은 턴키 방향으로 맞춘다.
 
 ## 6. 회사에서 준비할 자료
 
@@ -64,6 +65,8 @@
 
 - 2026-11-18 1단계 완료: `docs/IA.md` 승인. 회사 사실 정리표 `docs/reference/company_facts.md`. 매출·영업이익 삭제, 수출 39개국 표시.
 - 2026-11-18 2단계 완료: 제목·설명문 중복 0 (`docs/seo/pages.json`), canonical·OG·JSON-LD(Organization·WebSite·WebPage·BreadcrumbList·Product, 가격·리뷰 없음) 66페이지, sitemap.xml·llms.txt, `/website/` → 메인 이동, 제품 페이지 공통 문구를 제품별 소개로 교체. 실행: `python3 scripts/seo_enhance.py deploy/site docs/seo/pages.json` (다시 실행해도 안전). 남은 항목: hreflang(6단계), 공개 시 noindex·robots 해제(8단계), SVG 아이콘 크기 속성(영향 작음).
+
+- 2026-11-18 3단계 1차 시안: 메인 첫 화면 문구(A안), "왜 리트젠인가" 6가지 강점(회사소개서 근거), 턴키 방향의 "프로젝트 진행 방식" 6단계 영역 추가, 글자 대비 부족 38곳 수정(axe 0건), 한국어 단어 단위 줄바꿈, 모바일 상단 메뉴 정렬, 고정 상담 버튼과 겹치던 SCROLL 문구 제거. 남은 3단계: 전체 메뉴를 승인된 구조로 변경, 모바일 첫 화면 속도(LCP 3.0초), 디자인 기준 문서(DESIGN.md).
 
 ## 8. 진행 방식
 

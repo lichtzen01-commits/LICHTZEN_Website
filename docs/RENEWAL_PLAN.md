@@ -27,7 +27,7 @@
 
 | 단계 | 내용 | 주요 스킬 | 담당자 확인 |
 |---|---|---|---|
-| **0. 기준선 진단** | 테스트 사이트 배치 정리, 현재 상태 점수화(제안서 7개 항목: Technical SEO·On-page·Content·GEO·EEAT·해외 B2B·CRO), 화면 품질·접근성 진단, 문제 목록 | seo-audit, audit-website-aeo, web-interface-guidelines, impeccable, agent-browser, playwright-skill | 진단 결과 공유 |
+| **0. 기준선 진단** ✅ | 테스트 사이트 배치 정리, 현재 상태 점수화(제안서 7개 항목: Technical SEO·On-page·Content·GEO·EEAT·해외 B2B·CRO), 화면 품질·접근성 진단, 문제 목록 | seo-audit, audit-website-aeo, web-interface-guidelines, impeccable, agent-browser, playwright-skill | 진단 결과 공유 |
 | **1. 정보 구조 확정 (M1)** | 메뉴·페이지 목록·URL 표, 페이지별 검색 의도·고객 질문 가설, 기존 URL 이전 대응표 초안 | site-architecture, research-keywords, geo-content-research, front-end-system-design | **메뉴 결정**, 공개할 수치·고객사 결정 |
 | **2. 기술 SEO 기반** | 페이지별 고유 title·description(현재 제품 32개가 같은 설명), canonical, OG 태그, JSON-LD(Organization·BreadcrumbList·Product, 가격·리뷰 없음), sitemap.xml·robots.txt, hreflang 구조, 이미지 alt·크기, 성능 예산(초기 JS 150KB) | seo-technical, seo-schema, schema, seo-sitemap, improve-aeo-geo, seo-images | 없음 (기술 작업) |
 | **3. 메인·디자인 (M2)** | 메인을 "요약 + 신뢰" 순서로 재구성(Hero → Why LTZ → 제품 → 적용 분야 → 기술 → 글로벌 → 소식 → 문의), 핵심 메시지 확정, 디자인 시스템(DESIGN.md) 정리, 모바일 개선, 겹치는 플로팅 버튼 정리 | design-md, impeccable, design-taste-frontend, ui-ux-pro-max, copywriting, apple-design, gsap-* | **시안 승인** |
@@ -55,7 +55,11 @@
 - 공개 가능한 품질 개선 사례 2건(문제·검토·조치·결과)
 - 최신 카탈로그·브로슈어 PDF, 자주 받는 기술 질문
 
-## 7. 진행 방식
+## 7. 진행 기록
+
+- 2026-11-18 0단계 완료: `docs/audit/2026-11-18_baseline.md` (종합 43/100). 테스트 사이트 `/` = 홈페이지, `/test/` = 영업 시스템 테스트.
+
+## 8. 진행 방식
 
 - 단계가 끝날 때마다 테스트 사이트에 배포하고 링크와 변경 요약을 공유합니다.
 - 진행 상황은 이 문서의 표에 표시합니다.

@@ -1,0 +1,31 @@
+id: nano-banana-colossal-guardian-statue-fantasy-template
+title:
+  en: Winged Marble Guardian Statue Above City Under Ringed Planet
+  zh: 环形行星下俯瞰城市的大理石天使守护者雕像
+model: Nano Banana 2
+mode: text-to-image
+category: illustration
+tags:
+- template
+- fantasy
+- statue
+- scale
+- cinematic
+source:
+  name: '@yourPlugAI on X'
+  url: https://x.com/yourPlugAI/status/2068350429243523152
+  credit: Gilbert Odera | Your AI Plug
+  likes: 145
+  captured: '2026-10-28'
+  posted: '2026-06-18'
+notes:
+  en: A bracketed template splits subject, material, pedestal text, landscape and lighting into separate slots, so each part can be swapped without breaking the scene. Engraved base text, rim lighting and a layered backdrop of city, mountains and sky build depth and scale.
+  zh: 方括号模板把主体、材质、底座文字、景观和光线拆成独立槽位，每部分都能替换而不破坏画面。底座刻字、轮廓光以及城市、山脉与天空的层次背景营造出纵深与尺度感。
+prompt: |
+  A high-detail, cinematic fantasy photograph of a colossal [MYTHICAL FIGURE/DEITY/GUARDIAN] standing majestically in [EPIC LOCATION]. The gigantic statue is sculpted from [MATERIAL AND TEXTURE], featuring [PHYSICAL FEATURES, POSE, AND ACCESSORIES].
+
+  The monument stands upon an ornate [PEDESTAL TYPE] with the bold engraved text "[TEXT]" clearly visible on the base. The surrounding environment includes [LANDSCAPE ELEMENTS], leading toward [DISTANT BACKGROUND FEATURES].
+
+  The scene is illuminated by [LIGHTING CONDITIONS AND TIME OF DAY], creating dramatic shadows, atmospheric depth, rim lighting, and emphasizing the immense scale of both the sculpture and the environment.
+
+  Ultra-detailed textures, cinematic composition, epic sense of scale, volumetric atmosphere, fantasy realism, masterpiece photography, highly immersive worldbuilding. --ar 1:1

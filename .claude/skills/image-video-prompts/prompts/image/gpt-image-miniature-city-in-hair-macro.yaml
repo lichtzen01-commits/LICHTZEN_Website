@@ -1,0 +1,25 @@
+id: gpt-image-miniature-city-in-hair-macro
+title:
+  en: Miniature city hidden in curly hair
+  zh: 藏在卷发里的微缩城市
+model: GPT Image 2
+mode: text-to-image
+category: realism
+tags:
+- miniature
+- macro
+- surreal
+- photorealistic
+- hair
+source:
+  name: '@krafterlab on X'
+  url: https://x.com/krafterlab/status/2051399740986740986
+  credit: krafterlab
+  captured: '2026-10-28'
+  posted: '2026-05-04'
+  via: https://github.com/freestylefly/awesome-gpt-image-2
+notes:
+  en: Puts a city inside real hair and keeps part of the forehead in frame, so the scale reads at once. An 85mm macro lens with shallow depth of field and a list of small imperfections make it look like a real photo.
+  zh: 把城市放进真实的头发里，并让部分额头留在画面中，尺度一眼就能看懂。85mm微距镜头配合浅景深，再加上一串细小的瑕疵描述，让画面像一张真实照片。
+prompt: |
+  Macro photograph of a miniature city hidden in human hair, clearly on a real human head, with part of the forehead and hairline visible, realistic skin texture with pores, tiny people walking through the streets between the hair strands, extremely small but realistic proportions, macro photography, 85mm lens, shallow depth of field, natural lighting, neutral colors, no warm tones, ultra realistic hair with visible roots, natural imperfections, slightly messy strands, realistic materials, slightly dirty buildings, no perfect surfaces, photorealistic, looks like a real photo, no illustration, no CGI, no glow

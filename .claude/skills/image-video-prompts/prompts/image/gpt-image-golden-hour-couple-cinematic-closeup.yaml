@@ -1,0 +1,25 @@
+id: gpt-image-golden-hour-couple-cinematic-closeup
+title:
+  en: Golden Hour Couple Close Up at Sunset
+  zh: 日落黄金时刻情侣特写
+model: GPT Image 2
+mode: text-to-image
+category: portrait
+tags:
+- couple
+- golden-hour
+- backlight
+- cinematic
+- close-up
+source:
+  name: '@darshal_ on X'
+  url: https://x.com/darshal_/status/2049071963520508058
+  credit: Darshal Jaitwar
+  captured: '2026-10-29'
+  posted: '2026-04-28'
+  via: https://github.com/YouMind-OpenLab/awesome-gpt-image-2
+notes:
+  en: Low sun backlighting with rim light, soft lens flare and shallow depth of field creates a filmic fragrance campaign look. A 50mm lens cue and muted earth tone grading keep skin and hair textures realistic.
+  zh: 低角度夕阳逆光配合轮廓光、柔和镜头光晕与浅景深，营造出电影感的香水广告氛围。50mm 镜头提示与低饱和大地色调让皮肤和发丝质感保持真实。
+prompt: |
+  A cinematic golden-hour close-up of a young couple in an intimate outdoor moment, framed from the chest up. The main focus is a handsome young man with dark brown tousled wavy hair, soft defined jawline, smooth light-tan skin, and a calm, distant expression as he gazes slightly upward and off to the left. He wears a black open-collar button-up shirt with a relaxed, elegant fit. Leaning into him is 1 young woman with long dark brown hair, her face mostly hidden against his shoulder and chest, creating a tender, protective mood; only part of her hair, shoulder, and thin black spaghetti-strap dress are visible. Use warm sunset backlighting with the sun low behind them on the left, creating glowing rim light around their hair and shoulders, soft lens flare, amber highlights, shallow depth of field, and a blurred natural landscape in the background with low hills. The composition should feel romantic, editorial, and filmic, like a luxury fragrance or fashion campaign, with soft skin detail, realistic textures, subtle wind in the hair, muted earth tones, and high-end cinematic color grading. Photorealistic, emotional, intimate, 50mm lens look, ultra-detailed, natural light, soft contrast.

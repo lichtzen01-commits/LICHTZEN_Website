@@ -1,0 +1,27 @@
+id: gpt-image-cellular-respiration-diagram
+title:
+  en: Cellular respiration diagram for a high school class
+  zh: 面向高中课堂的细胞呼吸示意图
+model: GPT Image 2.5
+mode: text-to-image
+category: infographic
+tags:
+- education
+- biology
+- diagram
+source:
+  name: OpenAI image prompting guide
+  url: https://developers.openai.com/api/docs/guides/image-prompting#create-scientific-and-educational-visuals
+  credit: OpenAI
+  captured: '2026-10-28'
+notes:
+  en: Written like a lesson brief that names the audience, the title, the three stages and every molecule to label, then lists what to avoid. The handout framing with a white background and simple icons keeps dense labels legible.
+  zh: 提示词像一份教学任务说明，写明受众、标题、三个阶段和每个需要标注的分子，并列出应避免的内容。白底讲义的定位配合简洁图标，让密集的标注依然清晰易读。
+prompt: |
+  Create a simple biology diagram titled "Cellular Respiration at a Glance" for high school students.
+
+  Show how glucose turns into energy inside a cell. Include glycolysis, the Krebs cycle, and the electron transport chain.
+  Use arrows to connect the steps, and label the main molecules: glucose, pyruvate, ATP, NADH, FADH2, CO2, O2, and H2O.
+  Make it look like a clean classroom handout or slide, with a white background, simple icons, clear labels, and easy-to-read text.
+
+  Avoid tiny text, extra decoration, or anything that makes the diagram hard to understand.

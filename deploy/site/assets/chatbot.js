@@ -86,11 +86,16 @@
     const send = button('제출하기', 'ltz-chat-send', async () => {
       if (!box.checked) { consent.classList.add('is-invalid'); bubble('bot', T('개인정보 수집·이용에 동의해 주세요.')); return; }
       send.disabled = true; again.disabled = true; send.textContent = T('보내는 중…');
-      const r = await window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, message: data.message, email: data.email, who: data.who || '', files: data.files, lang, bot: data.bot});
+      // Show the result within ~1.5 s; Apps Script can take several seconds, so a slow request is
+      // treated as received and only a later failure is reported.
+      const fail = () => bubble('bot', [T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.'), 'itl@lichtzen.com · +82-70-4088-6117']);
+      const pending = window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, message: data.message, email: data.email, who: data.who || '', files: data.files, lang, bot: data.bot});
+      const r = await Promise.race([pending, new Promise(ok => setTimeout(() => ok({slow: true}), 1500))]);
       row.remove(); consent.remove(); state = 'sent';
-      if (r.ok) bubble('bot', [T('문의가 접수되었습니다.'), T('담당자가 확인한 뒤 입력하신 이메일로 답변드리겠습니다.')]);
-      else if (r.test) bubble('bot', [T('지금은 테스트 사이트라 실제로 전송되지 않았습니다.'), T('정식 공개 후에는 담당자 메일로 바로 전달됩니다.')]);
-      else bubble('bot', [T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.'), (lang === 'ko' ? 'ltz@lichtzen.com · 031-419-6700' : 'itl@lichtzen.com · +82-70-4088-6117')]);
+      if (r.test) bubble('bot', [T('지금은 테스트 사이트라 실제로 전송되지 않았습니다.'), T('정식 공개 후에는 담당자 메일로 바로 전달됩니다.')]);
+      else if (r.ok || r.slow) bubble('bot', [T('문의가 접수되었습니다.'), T('담당자가 확인한 뒤 입력하신 이메일로 답변드리겠습니다.')]);
+      else fail();
+      if (r.slow) pending.then(x => { if (!x.ok) fail(); });
       const n = document.createElement('div'); n.className = 'ltz-chat-actions';
       n.appendChild(button('새 문의하기', 'ltz-chat-ghost', restart)); log.appendChild(n); scroll();
     });

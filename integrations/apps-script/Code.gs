@@ -4,8 +4,7 @@
  * 설정 방법: docs/INQUIRY_SETUP.md
  */
 const CONFIG = {
-  TO: '',                // 문의를 받을 주소. 비워 두면 이 스크립트를 만든 계정의 Gmail로 받습니다(테스트용).
-                         // 회사 운영 시 'itl@lichtzen.com' 처럼 넣습니다. 여러 개면 쉼표로.
+  TO: 'itl@lichtzen.com', // 모든 문의를 받을 주소. 여러 개면 쉼표로. 비워 두면 이 스크립트를 만든 계정의 Gmail로 받습니다.
   SEND_RECEIPT: true,    // 고객에게 접수 확인 메일 (고객 언어로)
   DRIVE_FOLDER_ID: '',   // 첨부 파일을 드라이브에도 보관하려면 폴더 ID
   MAX_FILES: 5,
@@ -16,7 +15,7 @@ const CONFIG = {
 };
 
 const RECEIPT = {
-  ko: ['[리트젠] 문의가 접수되었습니다', '문의해 주셔서 감사합니다.\n담당자가 내용을 확인한 뒤 이 메일 주소로 답변드리겠습니다.\n\n문의 분야: {topic}\n\n리트젠(LICHTZEN) · 031-419-6700 · ltz@lichtzen.com'],
+  ko: ['[리트젠] 문의가 접수되었습니다', '문의해 주셔서 감사합니다.\n담당자가 내용을 확인한 뒤 이 메일 주소로 답변드리겠습니다.\n\n문의 분야: {topic}\n\n리트젠(LICHTZEN) · 070-4088-6117 · itl@lichtzen.com'],
   en: ['[LICHTZEN] We have received your inquiry', 'Thank you for contacting LICHTZEN.\nOur team will review your inquiry and reply to this email address.\n\nTopic: {topic}\n\nLICHTZEN Co., Ltd. · +82-70-4088-6117 · itl@lichtzen.com'],
   zh: ['[LICHTZEN] 我们已收到您的咨询', '感谢您联系LICHTZEN。\n负责人确认内容后将通过此邮箱回复您。\n\n咨询领域：{topic}\n\nLICHTZEN Co., Ltd. · +82-70-4088-6117 · itl@lichtzen.com'],
   ja: ['[LICHTZEN] お問い合わせを受け付けました', 'LICHTZENへお問い合わせいただきありがとうございます。\n担当者が内容を確認のうえ、このメールアドレスにご返信いたします。\n\nお問い合わせ分野：{topic}\n\nLICHTZEN Co., Ltd. · +82-70-4088-6117 · itl@lichtzen.com'],

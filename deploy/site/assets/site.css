@@ -622,3 +622,14 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 @keyframes arc-wave{0%,30%,100%{opacity:.32}8%{opacity:.62}}
 @keyframes dot-wave{0%,30%,100%{opacity:.45;transform:scale(.55)}8%{opacity:.95;transform:scale(.9)}}
 @keyframes light-wave{0%{opacity:.5;transform:scale(0)}70%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+
+/* ===== round 10: smooth loops for icons 03/05, new 06 ===== */
+.flow-icon .a-draw,.flow-icon .a-check{animation:a-draw-loop 3.6s ease-in-out infinite}
+@keyframes a-draw-loop{0%{stroke-dashoffset:1;opacity:1}45%{stroke-dashoffset:0;opacity:1}75%{stroke-dashoffset:0;opacity:1}95%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:1;opacity:0}}
+.flow-icon .a-blink{animation:a-soft-blink 1.2s ease-in-out infinite}
+@keyframes a-soft-blink{0%,100%{opacity:1}50%{opacity:.1}}
+.flow-icon .a-road{animation:a-road 1.2s linear infinite}
+@keyframes a-road{from{transform:translateX(0)}to{transform:translateX(-12px)}}
+.flow-icon .a-cycle{transform-box:view-box;transform-origin:20px 20px;animation:a-spin 5s linear infinite;stroke:#6fa52a}
+.flow-icon .a-tool{transform-box:view-box;transform-origin:20px 20px;animation:a-tool 2.5s ease-in-out infinite}
+@keyframes a-tool{0%,100%{transform:rotate(0)}50%{transform:rotate(-18deg)}}

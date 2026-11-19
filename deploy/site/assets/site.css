@@ -367,3 +367,24 @@ body:not(.home-page) .b2b-section.pale p,body:not(.home-page) .corporate-records
 @media(max-width:600px){.ltz-chat{right:16px;bottom:16px}.ltz-chat-fab{width:52px;height:52px}.ltz-chat-fab svg{width:24px;height:24px}.ltz-chat-tip{display:none}
 .ltz-chat-panel{position:fixed;left:10px;right:10px;bottom:78px;width:auto;height:min(560px,calc(100dvh - 100px))}}
 @media(prefers-reduced-motion:reduce){.ltz-chat-panel{animation:none}.ltz-chat-fab{transition:none}}
+
+/* inquiry chat v2: the panel takes the button's place; summary + consent step (2026-11-19) */
+.ltz-chat-fab[hidden]{display:none}
+.ltz-chat-panel{bottom:0}
+.ltz-chat-panel{height:min(600px,calc(100vh - 120px))}
+.ltz-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ltz-chat-form[hidden]{display:none}
+.ltz-chat-summary{margin:10px 0 0;padding:10px 12px;background:#f4f6f2;border-radius:10px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
+.ltz-chat-summary dt{color:#5b6660;font-weight:600}
+.ltz-chat-summary dd{margin:0;white-space:pre-wrap;word-break:break-word;color:#17201e}
+.ltz-chat-consent{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:13px;line-height:1.5;cursor:pointer}
+.ltz-chat-consent input{margin-top:3px;accent-color:#477611;width:16px;height:16px;flex:none}
+.ltz-chat-consent a{color:#3d6614;font-weight:600;text-decoration:underline}
+.ltz-chat-consent.is-invalid{color:#b42318}
+.ltz-chat-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ltz-chat-log>.ltz-chat-actions{margin-top:0}
+.ltz-chat-send{border:0;border-radius:12px;background:var(--green);color:#101d24;font-weight:700;padding:10px 18px;cursor:pointer}
+.ltz-chat-send:disabled{opacity:.6;cursor:wait}
+.ltz-chat-ghost{border:1px solid #c9dcae;background:#fff;color:#2f4f10;border-radius:12px;padding:9px 14px;font-weight:600;cursor:pointer}
+.ltz-chat-ghost:hover,.ltz-chat-send:hover{filter:brightness(.97)}
+@media(max-width:600px){.ltz-chat-panel{bottom:10px;height:min(600px,calc(100dvh - 90px))}}

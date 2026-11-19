@@ -60,8 +60,23 @@
       (missing[0] || email).focus();
       return;
     }
-    form.querySelectorAll('fieldset').forEach(f => { f.hidden = true; });
-    const done = form.querySelector('.contact-done');
-    done.hidden = false; done.setAttribute('tabindex', '-1'); done.focus();
+    const btn = form.querySelector('button[type=submit]');
+    const v = id => (form.querySelector('#' + id) || {}).value || '';
+    const need = form.querySelector('input[name=need]:checked');
+    const files = [...(form.querySelector('#attachments') || {files: []}).files].map(f => f.name).join(', ');
+    if (btn) btn.disabled = true;
+    status.textContent = T('보내는 중…');
+    (window.LTZSendInquiry || (async () => ({ok: false, test: true})))({
+      source: '문의 페이지', topic: need ? need.closest('label').querySelector('strong').textContent : '', message: v('message'),
+      email: v('email'), company: v('company'), person: v('person'), phone: v('phone'), product: v('product'), files,
+    }).then(r => {
+      if (btn) btn.disabled = false;
+      status.textContent = '';
+      if (!r.ok && !r.test) { status.textContent = T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.') + ' ltz@lichtzen.com · 031-419-6700'; return; }
+      const done = form.querySelector('.contact-done');
+      if (r.ok) done.querySelector('p').textContent = T('담당자가 확인한 뒤 입력하신 이메일로 답변드리겠습니다.') + (files ? ' ' + T('첨부 파일은 답장 메일로 보내 주세요.') : '');
+      form.querySelectorAll('fieldset').forEach(f => { f.hidden = true; });
+      done.hidden = false; done.setAttribute('tabindex', '-1'); done.focus();
+    });
   });
 })();

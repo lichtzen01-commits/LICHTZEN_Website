@@ -10,7 +10,7 @@ const start=async(video,manual=false)=>{
    source.src=window.LTZ_PORTABLE_ASSET?await window.LTZ_PORTABLE_ASSET(path):path;
    delete source.dataset.src;
   }
-  video.defaultPlaybackRate=.7;video.playbackRate=.7;video.load();
+  video.defaultPlaybackRate=1;video.playbackRate=1;video.load();
  }
  video.play().catch(()=>{});
 };

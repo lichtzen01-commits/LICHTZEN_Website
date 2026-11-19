@@ -1,17 +1,37 @@
-// Bottom-right inquiry chat: topic -> message -> email -> (company/name) -> review -> send to the company mailbox.
+// Bottom-right inquiry chat: topic -> message (+ files) -> email -> (company/name) -> review -> send to the company mailbox.
+// Speaks the visitor's language: ?lang= first, otherwise the browser language (other languages fall back to English).
 (() => {
   const root = document.querySelector('[data-ltz-chat]');
   if (!root) return;
-  const T = window.LTZ_T || (x => x);
+  const SUPPORTED = ['en', 'zh', 'ja', 'es', 'hi'];
+  const param = new URLSearchParams(location.search).get('lang');
+  const browser = (navigator.languages || [navigator.language || 'ko']).map(l => String(l).toLowerCase().slice(0, 2));
+  const lang = param || (browser[0] === 'ko' ? 'ko' : (browser.find(l => SUPPORTED.includes(l)) || 'en'));
+  const T = k => ((window.LTZ_I18N_EXTRA || {})[k] || (window.LTZ_I18N_PLACEHOLDER || {})[k] || {})[lang] || k;
+
   const fab = root.querySelector('.ltz-chat-fab');
   const panel = root.querySelector('.ltz-chat-panel');
   const log = root.querySelector('.ltz-chat-log');
   const chips = root.querySelector('.ltz-chat-chips');
   const form = root.querySelector('.ltz-chat-form');
-  const input = form.querySelector('input[type=text],input[type=email]');
+  const input = form.querySelector('#ltz-chat-input');
+  const fileInput = form.querySelector('input[type=file]');
   const privacy = root.querySelector('[data-chat-privacy]');
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  let state = 'start'; let data = {};
+  let state = 'start'; let data = {files: []};
+
+  // Translate the static chat text when the page itself is Korean but the visitor is not.
+  const localize = () => {
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n;
+    while ((n = w.nextNode())) { const k = n.nodeValue.trim(); const v = T(k); if (k && v !== k) n.nodeValue = n.nodeValue.replace(k, v); }
+    input.placeholder = T(input.getAttribute('placeholder'));
+    root.querySelectorAll('[aria-label]').forEach(el => el.setAttribute('aria-label', T(el.getAttribute('aria-label'))));
+  };
+  if (lang !== 'ko' && !window.LTZ_I18N_EXTRA) {
+    const s = document.createElement('script');
+    s.src = (document.querySelector('script[src*="chatbot.js"]') || {src: '/assets/chatbot.js'}).src.replace('chatbot.js', 'i18n.js');
+    s.onload = localize; document.head.appendChild(s);
+  } else if (lang !== 'ko') localize();
 
   const open = on => {
     panel.hidden = !on; fab.hidden = on;
@@ -30,7 +50,7 @@
     log.appendChild(d); scroll(); return d;
   };
   const ask = (text, type, ph) => {
-    bubble('bot', T(text));
+    bubble('bot', [].concat(text).map(T));
     input.type = type || 'text'; input.placeholder = T(ph || '궁금한 내용을 입력해 주세요');
     form.hidden = false; input.focus();
   };
@@ -38,28 +58,39 @@
     const b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = T(label);
     b.addEventListener('click', fn); return b;
   };
+  const size = n => n > 1048576 ? (n / 1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(n / 1024)) + 'KB';
+
+  form.querySelector('.ltz-chat-attach').addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', () => {
+    const picked = [...fileInput.files]; fileInput.value = '';
+    if (!picked.length) return;
+    const all = data.files.concat(picked);
+    if (!window.LTZCheckFiles(all)) { bubble('bot', T('첨부할 수 없는 파일입니다. PDF·JPG·PNG 파일을 5MB 이하로 3개까지 보낼 수 있어요.')); return; }
+    data.files = all;
+    const d = bubble('user', picked.map(f => '📎 ' + f.name + ' (' + size(f.size) + ')')); d.classList.add('file');
+  });
 
   const review = () => {
     state = 'review'; form.hidden = true;
     const d = bubble('bot', T('아래 내용으로 보내드릴까요?'));
     const dl = document.createElement('dl'); dl.className = 'ltz-chat-summary';
-    [['문의 분야', data.topic || T('일반 문의')], ['문의 내용', data.message], ['이메일', data.email], ['회사·성함', data.who || '-']].forEach(([k, v]) => {
+    [['문의 분야', data.topic || T('일반 문의')], ['문의 내용', data.message], ['첨부 파일', data.files.map(f => f.name).join(', ') || '-'], ['이메일', data.email], ['회사·성함', data.who || '-']].forEach(([k, v]) => {
       const dt = document.createElement('dt'); dt.textContent = T(k); const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd);
     });
     const consent = document.createElement('label'); consent.className = 'ltz-chat-consent';
     const box = document.createElement('input'); box.type = 'checkbox';
     const span = document.createElement('span'); span.textContent = T('개인정보 수집·이용에 동의합니다.') + ' ';
-    const link = privacy.cloneNode(true); link.hidden = false; link.target = '_blank'; link.rel = 'noopener';
+    const link = privacy.cloneNode(true); link.hidden = false; link.target = '_blank'; link.rel = 'noopener'; link.textContent = T('내용 보기');
     span.appendChild(link); consent.append(box, span);
     const row = document.createElement('div'); row.className = 'ltz-chat-actions';
     const send = button('제출하기', 'ltz-chat-send', async () => {
       if (!box.checked) { consent.classList.add('is-invalid'); bubble('bot', T('개인정보 수집·이용에 동의해 주세요.')); return; }
       send.disabled = true; again.disabled = true; send.textContent = T('보내는 중…');
-      const r = await window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, message: data.message, email: data.email, who: data.who || '', bot: data.bot});
+      const r = await window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, message: data.message, email: data.email, who: data.who || '', files: data.files, lang, bot: data.bot});
       row.remove(); consent.remove(); state = 'sent';
       if (r.ok) bubble('bot', [T('문의가 접수되었습니다.'), T('담당자가 확인한 뒤 입력하신 이메일로 답변드리겠습니다.')]);
       else if (r.test) bubble('bot', [T('지금은 테스트 사이트라 실제로 전송되지 않았습니다.'), T('정식 공개 후에는 담당자 메일로 바로 전달됩니다.')]);
-      else bubble('bot', [T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.'), 'ltz@lichtzen.com · 031-419-6700']);
+      else bubble('bot', [T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.'), 'ltz@lichtzen.com · +82-31-419-6700']);
       const n = document.createElement('div'); n.className = 'ltz-chat-actions';
       n.appendChild(button('새 문의하기', 'ltz-chat-ghost', restart)); log.appendChild(n); scroll();
     });
@@ -67,14 +98,14 @@
     row.append(send, again); d.append(dl, consent, row); scroll();
   };
   const restart = () => {
-    data = {}; state = 'start';
+    data = {files: []}; state = 'start';
     log.querySelectorAll('.ltz-msg:not(:first-child),.ltz-chat-actions').forEach(x => x.remove());
     chips.hidden = false; ask('어떤 분야에 관심이 있으신가요?');
   };
 
   chips.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
     data.topic = b.textContent; chips.hidden = true; bubble('user', b.textContent); state = 'message';
-    ask('궁금하신 내용을 편하게 적어 주세요. 제품명, 수량, 소재나 공정 조건을 함께 알려 주시면 더 정확히 답변드릴 수 있어요.');
+    ask(['궁금하신 내용을 편하게 적어 주세요. 제품명, 수량, 소재나 공정 조건을 함께 알려 주시면 더 정확히 답변드릴 수 있어요.', '사진·도면·사양서가 있으면 클립 버튼으로 첨부해 주세요.']);
   }));
   form.addEventListener('submit', e => {
     e.preventDefault();

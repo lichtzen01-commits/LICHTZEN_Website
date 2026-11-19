@@ -388,3 +388,7 @@ body:not(.home-page) .b2b-section.pale p,body:not(.home-page) .corporate-records
 .ltz-chat-ghost{border:1px solid #c9dcae;background:#fff;color:#2f4f10;border-radius:12px;padding:9px 14px;font-weight:600;cursor:pointer}
 .ltz-chat-ghost:hover,.ltz-chat-send:hover{filter:brightness(.97)}
 @media(max-width:600px){.ltz-chat-panel{bottom:10px;height:min(600px,calc(100dvh - 90px))}}
+.ltz-chat-attach{flex:none;width:40px;border:1px solid #d5dcd5;border-radius:12px;background:#fff;display:grid;place-items:center;cursor:pointer}
+.ltz-chat-attach svg{width:20px;height:20px;fill:none;stroke:#3d4a43;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ltz-chat-attach:hover{background:#eef5e4;border-color:var(--green)}
+.ltz-msg.user.file{background:#26332a}

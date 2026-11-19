@@ -85,12 +85,13 @@ function doPost(e) {
         + '</table>'
         + '<p style="font-size:13px;color:#5b6670;margin-top:16px">' + year + '년 누적 문의 ' + total + '건 · <a href="' + sheet.getParent().getUrl() + '">문의 목록 시트 열기</a>'
         + (CONFIG.ATTACH_XLSX ? ' · 전체 목록 엑셀 첨부' : '') + '</p></div>';
-      const attachments = files.slice();
-      if (CONFIG.ATTACH_XLSX) { try { attachments.push(xlsx_(sheet.getParent(), now)); } catch (err) { console.error('xlsx', err); } }
+      const attachments = files.slice(); let xlsxNote = '';
+      if (CONFIG.ATTACH_XLSX) { try { attachments.push(xlsx_(sheet.getParent(), now)); } catch (err) { console.error('xlsx', err); xlsxNote = String(err && err.message || err).slice(0, 160); } }
+      const body = xlsxNote ? html.replace('</div>', '') + '<p style="font-size:12px;color:#b42318">엑셀 첨부 실패: ' + esc(xlsxNote) + ' (Apps Script에서 testSend를 실행해 권한을 다시 승인하세요)</p></div>' : html;
       MailApp.sendEmail({
         to: to, replyTo: email, name: 'LICHTZEN 홈페이지',
         subject: '[홈페이지 문의] ' + (d.topic || '일반 문의') + ' · ' + (who || email),
-        htmlBody: html, attachments: attachments,
+        htmlBody: body, attachments: attachments,
       });
 
       // 3) 고객 접수 확인 메일
@@ -204,8 +205,10 @@ function folder_() {
 /** 스프레드시트 전체를 엑셀(.xlsx)로 내보냅니다. */
 function xlsx_(ss, now) {
   const url = 'https://docs.google.com/spreadsheets/d/' + ss.getId() + '/export?format=xlsx';
-  const res = UrlFetchApp.fetch(url, {headers: {Authorization: 'Bearer ' + ScriptApp.getOAuthToken()}, muteHttpExceptions: true});
-  if (res.getResponseCode() !== 200) throw new Error('export ' + res.getResponseCode());
+  DriveApp.getFileById(ss.getId());                                     // needs the Drive permission; fails early with a clear message if missing
+  const res = UrlFetchApp.fetch(url, {headers: {Authorization: 'Bearer ' + ScriptApp.getOAuthToken()}, muteHttpExceptions: true, followRedirects: true});
+  const type = String(res.getHeaders()['Content-Type'] || '');
+  if (res.getResponseCode() !== 200 || /text\/html/.test(type)) throw new Error('엑셀 내보내기 ' + res.getResponseCode() + ' ' + type.split(';')[0]);
   return res.getBlob().setName('LICHTZEN_문의목록_' + Utilities.formatDate(now, 'Asia/Seoul', 'yyyyMMdd_HHmm') + '.xlsx');
 }
 

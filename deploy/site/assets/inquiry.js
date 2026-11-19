@@ -2,7 +2,7 @@
 // which mails it to the company inbox. Paste the web app URL (ends in /exec) into ENDPOINT.
 // While ENDPOINT is empty the site runs in test mode: nothing is sent and the caller shows a test notice.
 (() => {
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAOmR-UG_RMdZKGc1UigbNaD4Bgh0kCvKEPbme-Fk0_DaM4Lv9aP3-zgQ_SygQXLMU/exec';
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPNkedWcJP7cBM8hLARgtJJL6m-P8OPktOxY70qO2auh7pO234FmBTdXtNr54EhxYq/exec';
   // Any document, spreadsheet, image, drawing or archive; programs and scripts are refused (mail servers reject them too).
   const LIMIT = {count: 5, each: 10 * 1024 * 1024, total: 20 * 1024 * 1024, blocked: /\.(exe|msi|bat|cmd|com|scr|pif|cpl|dll|js|jse|vbs|vbe|wsf|wsh|ps1|sh|jar|apk|app|lnk|reg|hta)$/i};
   window.LTZ_FILE_LIMIT = LIMIT;

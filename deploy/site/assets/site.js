@@ -44,7 +44,6 @@ if(['en','zh','ja','hi','es'].includes(language)){
  const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walk.nextNode()){if(node.parentElement?.closest('script,style,textarea,option,.lamp-frame'))continue;const key=node.nodeValue.trim();const value=SITE_TRANSLATIONS[key]?.[language];if(value)node.nodeValue=node.nodeValue.replace(key,value);}
  document.querySelectorAll('[placeholder]').forEach(el=>{const v=(window.LTZ_I18N_PLACEHOLDER||{})[el.getAttribute('placeholder')]?.[language];if(v)el.setAttribute('placeholder',v);});
  document.querySelectorAll('a[href^="/"]').forEach(a=>{const u=new URL(a.getAttribute('href'),'https://lichtzen-preview.invalid');u.searchParams.set('lang',language);a.setAttribute('href',u.pathname+u.search+u.hash);});
- const note=document.createElement('p');note.className='language-content-note';note.textContent={en:'Navigation and key guidance are translated. Detailed technical source documents may remain in Korean.',zh:'导航和主要说明已翻译。详细技术原始资料可能仍为韩语。',ja:'メニューと主な案内を翻訳しています。技術原文資料には韓国語が残る場合があります。',hi:'मेनू और मुख्य जानकारी का अनुवाद किया गया है। विस्तृत तकनीकी दस्तावेज़ कोरियाई में रह सकते हैं।',es:'Los menús y la información principal están traducidos. Los documentos técnicos detallados pueden permanecer en coreano.'}[language];document.querySelector('main')?.prepend(note);
 }
 
 const labels={ko:'한국어',en:'English',zh:'中文',ja:'日本語',hi:'हिन्दी',es:'Español'};

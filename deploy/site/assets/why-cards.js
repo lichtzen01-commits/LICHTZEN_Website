@@ -60,3 +60,27 @@
     card.style.setProperty('--my', (e.clientY - r.top) + 'px');
   }));
 })();
+
+// Global business metrics (100 / 1,000 / 39) count up when the section comes into view.
+(() => {
+  const nums = [...document.querySelectorAll('.business-metrics article strong')].map(st => {
+    const node = [...st.childNodes].find(n => n.nodeType === 3 && /\d/.test(n.nodeValue));
+    if (!node) return null;
+    const txt = node.nodeValue.trim(); const to = +txt.replace(/,/g, '');
+    const span = document.createElement('span'); span.className = 'metric-num'; span.textContent = txt; span.style.minWidth = txt.length + 'ch';
+    node.replaceWith(span); return {span, to, txt};
+  }).filter(Boolean);
+  if (!nums.length || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const fmt = n => n.toLocaleString('en-US');
+  nums.forEach(n => { n.span.textContent = '0'; });
+  const io = new IntersectionObserver(es => {
+    if (!es.some(e => e.isIntersecting)) return;
+    io.disconnect();
+    nums.forEach((n, i) => setTimeout(() => {
+      const t0 = performance.now(); const dur = 1800;
+      const step = now => { const p = Math.min(1, (now - t0) / dur); n.span.textContent = fmt(Math.round(n.to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(step); else n.span.textContent = n.txt; };
+      requestAnimationFrame(step);
+    }, 200 + i * 150));
+  }, {threshold: 0.5});
+  io.observe(document.querySelector('.business-metrics'));
+})();

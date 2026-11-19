@@ -793,3 +793,22 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 }
 @media(prefers-reduced-motion:reduce){.showcase-panel,.showcase-media img{transition:none}.showcase-panel.is-active .showcase-media img{transform:none}}
 .showcase-item{color:#6f7b87}.showcase-item .showcase-num{color:#5a6570}
+
+/* clients: larger logos; direct contact centred and larger */
+.final-clients .client-logo{width:220px;height:110px;flex:0 0 220px}
+.final-clients .client-logo img{max-width:184px;max-height:74px;width:auto;height:auto;object-fit:contain}
+.final-screen .need-direct{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 28px;margin-top:22px;text-align:center}
+.final-screen .need-direct span{font-size:16px;font-weight:600;color:#4f5961}
+.final-screen .need-direct a{font-size:clamp(20px,1.8vw,26px);font-weight:800;letter-spacing:-.02em;color:#17201e;border-bottom:2px solid #8bbd3e;padding-bottom:2px;transition:color .2s,border-color .2s}
+.final-screen .need-direct a:hover{color:#3f6b10;border-color:#3f6b10}
+@media(max-width:600px){.final-clients .client-logo{width:160px;height:80px;flex-basis:160px}.final-clients .client-logo img{max-width:134px;max-height:54px}.final-screen .need-direct{gap:8px 18px}}
+@media(min-width:901px){
+ .home-page .final-screen .final-clients{padding-bottom:0}
+ .home-page .final-screen .need-finder{margin-top:20px}
+ .home-page .final-screen .need-heading h2{margin-bottom:8px}
+ .home-page .final-screen .need-heading p{margin-bottom:0}
+ .home-page .final-screen .need-card{padding-top:18px;padding-bottom:18px}
+ .final-screen .need-direct{margin-top:18px}
+}
+.metric-num{display:inline-block;font-variant-numeric:tabular-nums;text-align:right}
+@media(min-width:901px){.home-page .final-screen .need-finder{padding-top:0;margin-top:34px}.home-page .final-screen .need-heading{margin-bottom:18px}}

@@ -16,8 +16,11 @@
       const payload = Object.assign({}, d, {files, page: location.href, lang: d.lang || window.LTZ_LANG || 'ko', browserLang: navigator.language});
       // text/plain keeps this a simple request (no CORS preflight), which Apps Script needs.
       const r = await fetch(ENDPOINT, {method: 'POST', body: JSON.stringify(payload)});
-      const j = await r.json();
-      return {ok: !!j.ok};
-    } catch (e) { return {ok: false}; }
+      const text = await r.text();
+      let j = null; try { j = JSON.parse(text); } catch (e) {}
+      // No JSON back usually means a Google sign-in or authorization page: wrong deployment access or missing permission.
+      if (!j) return {ok: false, error: /accounts\.google|ServiceLogin|signin/i.test(text) ? 'login' : (/authoriz|권한/i.test(text) ? 'auth' : 'html-' + r.status)};
+      return {ok: !!j.ok, error: j.error};
+    } catch (e) { return {ok: false, error: 'network'}; }
   };
 })();

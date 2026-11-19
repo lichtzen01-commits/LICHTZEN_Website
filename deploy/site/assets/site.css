@@ -824,3 +824,4 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
  .home-page .final-screen .need-finder{margin-top:56px}
  .final-screen .need-direct{margin-top:14px}
 }
+.ltz-msg .ltz-err{font-size:12px;color:#5a6570;margin-top:4px}

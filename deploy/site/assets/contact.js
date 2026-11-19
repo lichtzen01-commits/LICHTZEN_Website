@@ -73,7 +73,7 @@
     }).then(r => {
       if (btn) btn.disabled = false;
       status.textContent = '';
-      if (!r.ok && !r.test) { status.textContent = T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.') + ' itl@lichtzen.com · +82-70-4088-6117'; return; }
+      if (!r.ok && !r.test) { status.textContent = T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.') + ' itl@lichtzen.com · +82-70-4088-6117' + (r.error ? ' (code: ' + r.error + ')' : ''); return; }
       const done = form.querySelector('.contact-done');
       if (r.ok) done.querySelector('p').textContent = T('담당자가 확인한 뒤 입력하신 이메일로 답변드리겠습니다.');
       form.querySelectorAll('fieldset').forEach(f => { f.hidden = true; });

@@ -812,3 +812,15 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 }
 .metric-num{display:inline-block;font-variant-numeric:tabular-nums;text-align:right}
 @media(min-width:901px){.home-page .final-screen .need-finder{padding-top:0;margin-top:34px}.home-page .final-screen .need-heading{margin-bottom:18px}}
+
+/* metrics: the counting number must keep the big size (it is a span inside strong) */
+.global-business .business-metrics article strong .metric-num{font-size:1em;color:#fff;margin:0;display:inline-block}
+/* final screen: bigger client cards, need-finder block lower */
+@media(min-width:901px){
+ .final-clients .client-logo{width:250px;height:125px;flex:0 0 250px}
+ .final-clients .client-logo img{max-width:210px;max-height:84px}
+ .home-page .final-screen{padding-top:104px;padding-bottom:6px}
+ .final-clients .client-marquee{margin-top:24px}
+ .home-page .final-screen .need-finder{margin-top:56px}
+ .final-screen .need-direct{margin-top:14px}
+}

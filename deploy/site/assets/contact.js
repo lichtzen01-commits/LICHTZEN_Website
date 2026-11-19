@@ -68,7 +68,7 @@
     if (btn) btn.disabled = true;
     status.textContent = T('보내는 중…');
     (window.LTZSendInquiry || (async () => ({ok: false, test: true})))({
-      source: '문의 페이지', topic: need ? need.closest('label').querySelector('strong').textContent : '', message: v('message'),
+      source: '문의 페이지', category: need ? need.value : 'other', topic: need ? need.closest('label').querySelector('strong').textContent : '', message: v('message'),
       email: v('email'), company: v('company'), person: v('person'), phone: v('phone'), product: v('product'), files: fileList,
     }).then(r => {
       if (btn) btn.disabled = false;

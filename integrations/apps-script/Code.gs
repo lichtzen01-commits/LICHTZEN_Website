@@ -1,7 +1,8 @@
 /**
  * LICHTZEN 홈페이지 문의 수신 (Google Apps Script 웹 앱)
  * 홈페이지 채팅·문의 페이지가 보낸 문의를
- *  1) 구글 스프레드시트 '문의 목록'에 한 줄씩 누적하고 (첨부 파일은 드라이브 폴더에 보관, 시트에 링크)
+ *  1) 구글 스프레드시트에 연도별 탭(2026, 2027 …)으로 한 줄씩 누적하고 (첨부 파일은 드라이브 폴더에 보관, 시트에 링크)
+ *     '통계' 탭에 연도·분류별 건수 표와 그래프를 자동으로 갱신하고
  *  2) 회사 메일로 보내면서 지금까지의 누적 목록을 엑셀(.xlsx)로 첨부하고
  *  3) 고객에게 고객 언어로 접수 확인 메일을 보냅니다.
  * 설정 방법: docs/INQUIRY_SETUP.md
@@ -28,8 +29,13 @@ const RECEIPT = {
   hi: ['[LICHTZEN] आपकी पूछताछ प्राप्त हो गई है', 'LICHTZEN से संपर्क करने के लिए धन्यवाद।\nहमारी टीम आपकी पूछताछ देखकर इसी ईमेल पते पर जवाब देगी।\n\nविषय: {topic}\n\nLICHTZEN Co., Ltd. · +82-70-4088-6117 · itl@lichtzen.com'],
 };
 
-const HEADERS = ['접수번호', '접수 시각', '상태', '문의 경로', '문의 분야', '회사·담당자', '이메일', '연락처', '관심 제품·모델', '고객 언어', '문의 내용', '첨부 파일', '보낸 페이지', '담당자', '메모'];
+const HEADERS = ['접수번호', '접수 시각', '상태', '국내/해외', '문의 경로', '분류', '고객이 고른 항목', '회사·담당자', '이메일', '연락처', '관심 제품·모델', '고객 언어', '문의 내용', '첨부 파일', '보낸 페이지', '담당자', '메모'];
 const STATUS = ['접수', '진행 중', '견적 발송', '완료', '보류'];
+const REGIONS = ['국내', '해외'];
+// 사이트가 보내는 분류 코드 -> 통계에 쓰는 분류 이름 (언어와 상관없이 같은 분류로 집계)
+const CATEGORY = {lamp: '램프 교체·소량 제작', led: 'LED UV 시스템', system: '장비·라인 도입', custom: '맞춤 설비 제작', spec: '기술 사양·견적',
+  improve: '경화·건조 품질 문제', sample: '샘플 테스트', oem: 'OEM 공급', as: '램프 A/S', other: '기타'};
+const CATEGORY_ORDER = Object.keys(CATEGORY).map(k => CATEGORY[k]);
 const LANG_NAME = {ko: '한국어', en: '영어', zh: '중국어', ja: '일본어', es: '스페인어', hi: '힌디어'};
 
 function doGet() { return json({ok: true, service: 'lichtzen-inquiry'}); }
@@ -54,16 +60,22 @@ function doPost(e) {
       const who = d.who || [d.company, d.person].filter(Boolean).join(' / ');
 
       // 1) 문의 목록에 한 줄 추가
-      const sheet = sheet_();
-      const no = Utilities.formatDate(now, 'Asia/Seoul', 'yyyy') + '-' + ('000' + sheet.getLastRow()).slice(-4);
-      sheet.appendRow([no, stamp, STATUS[0], d.source || '', d.topic || '', who, email, d.phone || '', d.product || '',
+      const year = Utilities.formatDate(now, 'Asia/Seoul', 'yyyy');
+      const sheet = sheet_(year);
+      const no = year + '-' + ('000' + sheet.getLastRow()).slice(-4);
+      const category = CATEGORY[d.category] || CATEGORY.other;
+      // 국내/해외: 한국어 화면이 아니거나 +82가 아닌 국제번호면 해외. 시트에서 직원이 고칠 수 있고, 통계는 고친 값을 따릅니다.
+      const phone = String(d.phone || '').replace(/\s/g, '');
+      const region = (d.lang && d.lang !== 'ko') || (/^\+/.test(phone) && !/^\+82/.test(phone)) ? '해외' : '국내';
+      sheet.appendRow([no, stamp, STATUS[0], region, d.source || '', category, d.topic || '', who, email, d.phone || '', d.product || '',
         LANG_NAME[d.lang] || d.lang || '한국어', message, links.join('\n'), d.page || '', '', '']);
+      try { stats_(sheet.getParent()); } catch (err) { console.error('stats', err); }
       SpreadsheetApp.flush();
       const total = sheet.getLastRow() - 1;
 
       // 2) 회사 메일 (+ 누적 목록 엑셀)
       const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
-      const info = [['접수번호', no], ['문의 분야', d.topic], ['회사·담당자', who], ['이메일', email], ['연락처', d.phone], ['관심 제품·모델', d.product],
+      const info = [['접수번호', no], ['국내/해외', region], ['분류', category], ['고객이 고른 항목', d.topic], ['회사·담당자', who], ['이메일', email], ['연락처', d.phone], ['관심 제품·모델', d.product],
         ['첨부 파일', files.length ? files.map(b => b.getName()).join(', ') : '']].filter(r => r[1]);
       const html = '<div style="font-family:sans-serif;font-size:14px;color:#17201e">'
         + '<div style="white-space:pre-wrap;line-height:1.7">' + esc(message) + '</div>'
@@ -71,7 +83,7 @@ function doPost(e) {
         + '<table style="border-collapse:collapse;font-size:13px;color:#3d4a43">'
         + info.map(r => '<tr><th style="text-align:left;padding:2px 14px 2px 0;font-weight:600;vertical-align:top">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td></tr>').join('')
         + '</table>'
-        + '<p style="font-size:13px;color:#5b6670;margin-top:16px">누적 문의 ' + total + '건 · <a href="' + sheet.getParent().getUrl() + '">문의 목록 시트 열기</a>'
+        + '<p style="font-size:13px;color:#5b6670;margin-top:16px">' + year + '년 누적 문의 ' + total + '건 · <a href="' + sheet.getParent().getUrl() + '">문의 목록 시트 열기</a>'
         + (CONFIG.ATTACH_XLSX ? ' · 전체 목록 엑셀 첨부' : '') + '</p></div>';
       const attachments = files.slice();
       if (CONFIG.ATTACH_XLSX) { try { attachments.push(xlsx_(sheet.getParent(), now)); } catch (err) { console.error('xlsx', err); } }
@@ -94,26 +106,89 @@ function doPost(e) {
   }
 }
 
-/** 문의 목록 시트: 없으면 만들고(머리줄·상태 목록·줄 고정), ID는 스크립트 속성에 기억합니다. */
-function sheet_() {
+/** 문의 목록 파일을 열거나(없으면 만들고), 그해 연도 탭을 돌려줍니다. 연도 탭은 머리줄·상태 목록·줄 고정을 갖춥니다. */
+function book_() {
   const props = PropertiesService.getScriptProperties();
   const id = CONFIG.SHEET_ID || props.getProperty('SHEET_ID');
-  let ss = null;
-  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (err) { ss = null; } }
-  if (!ss) {
-    ss = SpreadsheetApp.create('LICHTZEN 홈페이지 문의 목록');
-    props.setProperty('SHEET_ID', ss.getId());
-  }
-  let sh = ss.getSheetByName('문의 목록');
+  if (id) { try { return SpreadsheetApp.openById(id); } catch (err) {} }
+  const ss = SpreadsheetApp.create('LICHTZEN 홈페이지 문의 목록');
+  props.setProperty('SHEET_ID', ss.getId());
+  ss.getSheets()[0].setName('통계');
+  return ss;
+}
+function sheet_(year) {
+  const ss = book_();
+  let sh = ss.getSheetByName(year);
   if (!sh) {
-    sh = ss.getSheets()[0]; sh.setName('문의 목록');
+    sh = ss.insertSheet(year, 1);                                       // '통계' 바로 뒤 = 최신 연도가 앞
     sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold').setBackground('#1b2a36').setFontColor('#ffffff');
     sh.setFrozenRows(1);
-    sh.setColumnWidths(1, HEADERS.length, 120); sh.setColumnWidth(11, 420); sh.setColumnWidth(12, 260);
+    sh.setColumnWidths(1, HEADERS.length, 120); sh.setColumnWidth(13, 420); sh.setColumnWidth(14, 260);
     sh.getRange('C2:C').setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(STATUS, true).build());
-    sh.getRange('K2:L').setWrap(true);
+    sh.getRange('D2:D').setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(REGIONS, true).build());
+    sh.getRange('M2:N').setWrap(true);
   }
   return sh;
+}
+
+/** '통계' 탭을 다시 씁니다: 표 4개 + 그래프 4개 (분류·국내/해외·월별·연도별). */
+function stats_(ss) {
+  const years = ss.getSheets().map(sh => sh.getName()).filter(n => /^\d{4}$/.test(n)).sort();
+  if (!years.length) return;
+  const last = years[years.length - 1];
+  const byCat = {}, byMonth = {}, byRegion = {}, lastCatRegion = {};
+  years.forEach(y => {
+    const sh = ss.getSheetByName(y); const n = sh.getLastRow() - 1; if (n < 1) return;
+    sh.getRange(2, 1, n, 6).getValues().forEach(r => {
+      const reg = r[3] === '해외' ? '해외' : '국내'; const cat = r[5] || CATEGORY.other; const m = Number(String(r[1]).slice(5, 7)) || 0;
+      byCat[cat] = byCat[cat] || {}; byCat[cat][y] = (byCat[cat][y] || 0) + 1;
+      byRegion[y] = byRegion[y] || {국내: 0, 해외: 0}; byRegion[y][reg]++;
+      if (m) { byMonth[m] = byMonth[m] || {}; byMonth[m][y] = (byMonth[m][y] || 0) + 1; }
+      if (y === last) { lastCatRegion[cat] = lastCatRegion[cat] || {국내: 0, 해외: 0}; lastCatRegion[cat][reg]++; }
+    });
+  });
+  let st = ss.getSheetByName('통계'); if (!st) st = ss.insertSheet('통계', 0);
+  st.getCharts().forEach(c => st.removeChart(c));
+  st.clear();
+  const cats = CATEGORY_ORDER.filter(c => byCat[c]).concat(Object.keys(byCat).filter(c => CATEGORY_ORDER.indexOf(c) < 0));
+  const lastCats = cats.filter(c => lastCatRegion[c]);
+  const sum = a => a.reduce((x, y) => x + y, 0);
+  let row = 1;
+  const table = (title, data) => {
+    st.getRange(row, 1).setValue(title).setFontWeight('bold').setFontSize(13);
+    st.getRange(row + 1, 1, data.length, data[0].length).setValues(data);
+    st.getRange(row + 1, 1, 1, data[0].length).setFontWeight('bold').setBackground('#1b2a36').setFontColor('#ffffff');
+    const at = row + 1; row += data.length + 3; return at;
+  };
+  // 표 1: 올해 분류 × 국내/해외
+  const t1 = [['분류', '국내', '해외', '합계']].concat(lastCats.map(c => [c, lastCatRegion[c].국내, lastCatRegion[c].해외, lastCatRegion[c].국내 + lastCatRegion[c].해외]));
+  t1.push(['합계', sum(t1.slice(1).map(r => r[1])), sum(t1.slice(1).map(r => r[2])), sum(t1.slice(1).map(r => r[3]))]);
+  const a1 = table(last + '년 분류별 문의 수 (국내·해외)', t1);
+  // 표 1-1: 올해 국내·해외 (원그래프용)
+  const tot = t1[t1.length - 1];
+  const a11 = table(last + '년 국내·해외', [['구분', '건수'], ['국내', tot[1]], ['해외', tot[2]]]);
+  // 표 2: 연도 × 국내/해외
+  const t2 = [['연도', '국내', '해외', '합계']].concat(years.map(y => { const r = byRegion[y] || {국내: 0, 해외: 0}; return [y + '년', r.국내, r.해외, r.국내 + r.해외]; }));
+  const a2 = table('연도별 국내·해외 문의 수', t2);
+  // 표 3: 분류 × 연도
+  const t3 = [['분류'].concat(years, ['합계'])].concat(cats.map(c => { const v = years.map(y => (byCat[c] || {})[y] || 0); return [c].concat(v, [sum(v)]); }));
+  table('연도·분류별 문의 수', t3);
+  // 표 4: 월 × 연도
+  const t4 = [['월'].concat(years)].concat([1,2,3,4,5,6,7,8,9,10,11,12].map(m => [m + '월'].concat(years.map(y => (byMonth[m] || {})[y] || 0))));
+  const a4 = table('월별 문의 수', t4);
+  st.setColumnWidth(1, 170);
+  const col = Math.max(t1[0].length, t3[0].length, t4[0].length) + 2;
+  const C = ['#4f7d18', '#6c5ce7', '#e8912d', '#5b7083'];
+  const chart = (b, top, title, h) => st.insertChart(b.setPosition(top, col, 0, 0).setOption('title', title).setOption('legend', {position: 'top'})
+    .setOption('colors', C).setOption('width', 660).setOption('height', h || 340).build());
+  // 그래프 1: 올해 분류별 국내/해외 (누적 막대)
+  if (lastCats.length) chart(st.newChart().setChartType(Charts.ChartType.BAR).addRange(st.getRange(a1, 1, lastCats.length + 1, 3)).setOption('isStacked', true), 1, last + '년 분류별 문의 수 (국내·해외)', 360);
+  // 그래프 2: 국내·해외 비율 (올해)
+  chart(st.newChart().setChartType(Charts.ChartType.PIE).addRange(st.getRange(a11, 1, 3, 2)).setOption('pieHole', 0.45), 20, last + '년 국내·해외 비율', 300);
+  // 그래프 3: 연도별 국내·해외
+  chart(st.newChart().setChartType(Charts.ChartType.COLUMN).addRange(st.getRange(a2, 1, years.length + 1, 3)).setOption('isStacked', true), 36, '연도별 국내·해외 문의 수', 300);
+  // 그래프 4: 월별 추이
+  chart(st.newChart().setChartType(Charts.ChartType.COLUMN).addRange(st.getRange(a4, 1, 13, years.length + 1)), 52, '월별 문의 수', 300);
 }
 
 /** 첨부 파일 보관 폴더: 없으면 만듭니다. */
@@ -156,10 +231,10 @@ function json(o) { return ContentService.createTextOutput(JSON.stringify(o)).set
 function testSend() {
   const me = Session.getEffectiveUser().getEmail();
   const r = doPost({postData: {contents: JSON.stringify({
-    source: '시험', topic: 'UV / IR 램프 문의', message: '메탈할라이드 램프 1200mm 10개 견적 부탁드립니다.\n납기도 알려주세요.',
+    source: '시험', category: 'lamp', topic: 'UV / IR 램프 문의', message: '메탈할라이드 램프 1200mm 10개 견적 부탁드립니다.\n납기도 알려주세요.',
     email: me, who: '시험 회사 / 홍길동', lang: 'ko',
     files: [{name: 'test.txt', type: 'text/plain', data: Utilities.base64Encode('LICHTZEN test attachment')}],
   })}});
   console.log(r.getContent());
-  console.log('문의 목록 시트: ' + sheet_().getParent().getUrl());
+  console.log('문의 목록 시트: ' + book_().getUrl());
 }

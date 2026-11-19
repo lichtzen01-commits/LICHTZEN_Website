@@ -89,7 +89,7 @@
       // Show the result within ~1.5 s; Apps Script can take several seconds, so a slow request is
       // treated as received and only a later failure is reported.
       const fail = () => bubble('bot', [T('전송하지 못했습니다. 잠시 후 다시 시도하시거나 아래로 연락해 주세요.'), 'itl@lichtzen.com · +82-70-4088-6117']);
-      const pending = window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, message: data.message, email: data.email, who: data.who || '', files: data.files, lang, bot: data.bot});
+      const pending = window.LTZSendInquiry({source: '홈페이지 채팅', topic: data.topic, category: data.category || 'other', message: data.message, email: data.email, who: data.who || '', files: data.files, lang, bot: data.bot});
       const r = await Promise.race([pending, new Promise(ok => setTimeout(() => ok({slow: true}), 1500))]);
       row.remove(); consent.remove(); state = 'sent';
       if (r.test) bubble('bot', [T('지금은 테스트 사이트라 실제로 전송되지 않았습니다.'), T('정식 공개 후에는 담당자 메일로 바로 전달됩니다.')]);
@@ -109,7 +109,7 @@
   };
 
   chips.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-    data.topic = b.textContent; chips.hidden = true; bubble('user', b.textContent); state = 'message';
+    data.topic = b.textContent; data.category = b.dataset.cat || 'other'; chips.hidden = true; bubble('user', b.textContent); state = 'message';
     ask(['궁금하신 내용을 편하게 적어 주세요. 제품명, 수량, 소재나 공정 조건을 함께 알려 주시면 더 정확히 답변드릴 수 있어요.', '사진·도면·사양서가 있으면 클립 버튼으로 첨부해 주세요.']);
   }));
   form.addEventListener('submit', e => {

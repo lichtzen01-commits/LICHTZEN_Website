@@ -649,3 +649,8 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 .hero-video-toggle.is-paused .i-play{display:block}
 @media(max-width:1200px){.hero-video-toggle{left:32px}}
 @media(max-width:600px){.hero-video-toggle{left:20px;bottom:20px;width:36px;height:36px}}
+
+/* hero: show the video at full strength (the poster photo was showing through it) and darken only behind the text */
+.hero-video{opacity:1}
+.home-page .hero:after,.home .hero:after{background:linear-gradient(90deg,#061118c7 0%,#06111899 30%,#06111826 58%,#06111800 72%),linear-gradient(180deg,#07161b80 0%,#07161b00 20%,#07161b00 82%,#07161b59 100%)}
+@media(max-width:900px){.home-page .hero:after,.home .hero:after{background:linear-gradient(180deg,#07161b99 0%,#07161b66 40%,#07161b8c 100%)}}

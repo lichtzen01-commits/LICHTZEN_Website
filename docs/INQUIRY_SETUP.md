@@ -82,3 +82,20 @@
 - [ ] 회사 계정으로 스크립트를 다시 만들지, 테스트 계정 것을 그대로 쓸지 정합니다. 운영은 회사 계정을 권장합니다.
 - [ ] 코드를 고친 뒤 **배포 관리 → 수정 → 새 버전**으로 다시 배포합니다.
 - [ ] `inquiry.js`의 `ENDPOINT`가 운영 주소인지 확인하고, 실제 사이트에서 첨부 파일을 붙인 시험 문의를 보냅니다.
+
+## 5. Cloudflare Turnstile (자동 스팸·봇 차단)
+
+채팅과 문의 페이지 전송 직전에 Cloudflare가 사람인지 확인합니다. 대부분 방문자에게는 아무것도 보이지 않고, 의심스러울 때만 "사람입니다" 체크 상자가 나타납니다.
+
+1. https://dash.cloudflare.com 에서 무료 계정 → 왼쪽 메뉴 **Turnstile** → **Add widget**
+   - Widget name: LICHTZEN 문의
+   - Hostnames: `lichtzen01-commits.github.io` (정식 공개 때 `lichtzen.com`, `www.lichtzen.com` 추가)
+   - Widget mode: **Managed**
+2. 만들면 **Site Key**(공개용)와 **Secret Key**(비밀) 두 개가 나옵니다.
+3. Site Key → `deploy/site/assets/inquiry.js`의 `TURNSTILE_SITEKEY = ''` 따옴표 안에 넣습니다. (공개돼도 괜찮은 값)
+4. Secret Key → Apps Script 편집기 왼쪽 ⚙ **프로젝트 설정** → 맨 아래 **스크립트 속성** → 속성 `TURNSTILE_SECRET`, 값에 Secret Key → 저장. **이 값은 코드·저장소·메일에 적지 않습니다.**
+5. Apps Script 코드를 최신 `Code.gs`로 바꾼 뒤 **배포 → 배포 관리 → 수정 → 새 버전 → 배포** (주소는 그대로).
+
+- 두 값이 모두 비어 있으면 검사 없이 지금처럼 동작합니다.
+- Secret Key만 넣고 Site Key를 안 넣으면 모든 문의가 `(code: captcha)`로 거절되니 순서대로 넣으세요.
+- 편집기의 `testSend`는 검사를 건너뜁니다.

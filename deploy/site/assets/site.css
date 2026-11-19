@@ -827,3 +827,6 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 .ltz-msg .ltz-err{font-size:12px;color:#5a6570;margin-top:4px}
 .ltz-msg.is-sending p::after{content:"";display:inline-block;width:14px;height:14px;margin-left:8px;vertical-align:-2px;border:2px solid #c9cfd6;border-top-color:#4f7d18;border-radius:50%;animation:ltz-spin .8s linear infinite}
 @keyframes ltz-spin{to{transform:rotate(360deg)}}
+
+/* Cloudflare Turnstile: box stays empty unless Cloudflare asks the visitor to click */
+.ltz-captcha:empty{display:none}.ltz-captcha{margin:12px 0 4px;max-width:100%;overflow:hidden}

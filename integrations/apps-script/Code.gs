@@ -47,6 +47,7 @@ function doPost(e) {
     const email = String(d.email || '').trim();
     const message = String(d.message || '').trim().slice(0, 8000);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || !message) return json({ok: false, error: 'invalid'});
+    if (!e.internal && !human_(d.turnstile)) return json({ok: false, error: 'captcha'});  // Cloudflare Turnstile
     if (!allow_(email)) return json({ok: false, error: 'rate'});
 
     const lock = LockService.getScriptLock(); lock.waitLock(20000);      // 동시에 들어온 문의가 같은 줄을 쓰지 않게
@@ -219,6 +220,19 @@ function toBlob_(f) {
   const bytes = Utilities.base64Decode(f.data);
   if (!bytes.length || bytes.length > CONFIG.MAX_FILE_MB * 1024 * 1024) return null;
   return Utilities.newBlob(bytes, f.type || 'application/octet-stream', String(f.name).slice(0, 120));
+}
+
+// Cloudflare Turnstile 확인. 프로젝트 설정 > 스크립트 속성에 TURNSTILE_SECRET(비밀 키)이 있을 때만 검사합니다.
+// 비밀 키는 이 파일이나 저장소에 적지 마세요.
+function human_(token) {
+  const secret = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
+  if (!secret) return true;
+  if (!token) return false;
+  try {
+    const r = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'post', payload: {secret: secret, response: String(token).slice(0, 2048)}, muteHttpExceptions: true});
+    return JSON.parse(r.getContentText()).success === true;
+  } catch (err) { return false; }
 }
 
 function allow_(email) {

@@ -48,6 +48,8 @@
   select(radio ? radio.value : 'other');
   if (params.get('product')) form.querySelector('#product').value = params.get('product');
 
+  const capBox = form.querySelector('[data-captcha]');
+  const captcha = window.LTZCaptcha ? window.LTZCaptcha(capBox) : null;
   form.addEventListener('submit', e => {
     e.preventDefault();
     const status = form.querySelector('.form-status');
@@ -69,7 +71,7 @@
     status.textContent = T('보내는 중…');
     (window.LTZSendInquiry || (async () => ({ok: false, test: true})))({
       source: '문의 페이지', category: need ? need.value : 'other', topic: need ? need.closest('label').querySelector('strong').textContent : '', message: v('message'),
-      email: v('email'), company: v('company'), person: v('person'), phone: v('phone'), product: v('product'), files: fileList,
+      email: v('email'), company: v('company'), person: v('person'), phone: v('phone'), product: v('product'), files: fileList, captcha,
     }).then(r => {
       if (btn) btn.disabled = false;
       status.textContent = '';

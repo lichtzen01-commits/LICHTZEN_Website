@@ -392,3 +392,5 @@ body:not(.home-page) .b2b-section.pale p,body:not(.home-page) .corporate-records
 .ltz-chat-attach svg{width:20px;height:20px;fill:none;stroke:#3d4a43;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ltz-chat-attach:hover{background:#eef5e4;border-color:var(--green)}
 .ltz-msg.user.file{background:#26332a}
+.ltz-chat-form .ltz-chat-attach{width:44px;background:#fff;border:1px solid #c9d3c9}
+.ltz-chat-form .ltz-chat-attach:hover{background:#eef5e4;border-color:var(--green)}

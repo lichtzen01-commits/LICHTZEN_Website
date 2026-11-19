@@ -65,7 +65,7 @@
     const picked = [...fileInput.files]; fileInput.value = '';
     if (!picked.length) return;
     const all = data.files.concat(picked);
-    if (!window.LTZCheckFiles(all)) { bubble('bot', T('첨부할 수 없는 파일입니다. PDF·JPG·PNG 파일을 5MB 이하로 3개까지 보낼 수 있어요.')); return; }
+    if (!window.LTZCheckFiles(all)) { bubble('bot', T('첨부할 수 없는 파일입니다. 파일당 10MB, 5개까지 보낼 수 있고 실행 파일은 보낼 수 없어요.')); return; }
     data.files = all;
     const d = bubble('user', picked.map(f => '📎 ' + f.name + ' (' + size(f.size) + ')')); d.classList.add('file');
   });

@@ -64,7 +64,7 @@
     const v = id => (form.querySelector('#' + id) || {}).value || '';
     const need = form.querySelector('input[name=need]:checked');
     const fileList = [...(form.querySelector('#attachments') || {files: []}).files];
-    if (fileList.length && window.LTZCheckFiles && !window.LTZCheckFiles(fileList)) { status.textContent = T('첨부할 수 없는 파일입니다. PDF·JPG·PNG 파일을 5MB 이하로 3개까지 보낼 수 있어요.'); return; }
+    if (fileList.length && window.LTZCheckFiles && !window.LTZCheckFiles(fileList)) { status.textContent = T('첨부할 수 없는 파일입니다. 파일당 10MB, 5개까지 보낼 수 있고 실행 파일은 보낼 수 없어요.'); return; }
     if (btn) btn.disabled = true;
     status.textContent = T('보내는 중…');
     (window.LTZSendInquiry || (async () => ({ok: false, test: true})))({

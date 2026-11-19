@@ -3,9 +3,10 @@
 // While ENDPOINT is empty the site runs in test mode: nothing is sent and the caller shows a test notice.
 (() => {
   const ENDPOINT = '';
-  const LIMIT = {count: 3, each: 5 * 1024 * 1024, ext: /\.(pdf|jpe?g|png|webp)$/i};
+  // Any document, spreadsheet, image, drawing or archive; programs and scripts are refused (mail servers reject them too).
+  const LIMIT = {count: 5, each: 10 * 1024 * 1024, total: 20 * 1024 * 1024, blocked: /\.(exe|msi|bat|cmd|com|scr|pif|cpl|dll|js|jse|vbs|vbe|wsf|wsh|ps1|sh|jar|apk|app|lnk|reg|hta)$/i};
   window.LTZ_FILE_LIMIT = LIMIT;
-  window.LTZCheckFiles = list => list.length <= LIMIT.count && list.every(f => f.size <= LIMIT.each && LIMIT.ext.test(f.name));
+  window.LTZCheckFiles = list => list.length <= LIMIT.count && list.reduce((n, f) => n + f.size, 0) <= LIMIT.total && list.every(f => f.size > 0 && f.size <= LIMIT.each && !LIMIT.blocked.test(f.name));
   const b64 = f => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1] || ''); r.onerror = no; r.readAsDataURL(f); });
   window.LTZSendInquiry = async d => {
     if (d.bot) return {ok: true};                       // honeypot ticked: drop quietly

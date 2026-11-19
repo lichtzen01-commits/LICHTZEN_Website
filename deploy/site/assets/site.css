@@ -613,3 +613,12 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 @keyframes a-turn{0%,100%{transform:rotate(0)}50%{transform:rotate(-35deg)}}
 @media(max-width:900px){.flow-icon{width:48px;height:48px;margin-top:4px;border-radius:14px}.flow-icon svg{width:30px;height:30px}}
 @media(prefers-reduced-motion:reduce){.flow-icon *{animation:none!important}}
+
+/* ===== round 9: map light keeps looping; units in the title green ===== */
+.global-business .business-metrics article strong span{color:#c3ea7a}
+.is-lit .map-wave{animation:light-wave 7s cubic-bezier(.2,.6,.3,1) .1s infinite}
+.is-lit .export-arcs path{animation:arc-fade 2.8s ease-out var(--d) both,arc-wave 7s ease-in-out calc(var(--d) + .1s) infinite}
+.is-lit .map-dot .flash{animation:dot-soft 1.8s ease-out calc(var(--d) + .3s) both,dot-wave 7s ease-in-out calc(var(--d) + .4s) infinite}
+@keyframes arc-wave{0%,30%,100%{opacity:.32}8%{opacity:.62}}
+@keyframes dot-wave{0%,30%,100%{opacity:.45;transform:scale(.55)}8%{opacity:.95;transform:scale(.9)}}
+@keyframes light-wave{0%{opacity:.5;transform:scale(0)}70%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}

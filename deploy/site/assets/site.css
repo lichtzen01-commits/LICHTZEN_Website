@@ -578,3 +578,38 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
  .home-page .final-screen .need-finder{margin-top:28px}
 }
 @media(min-width:901px){.global-business .global-map-panel{width:min(100vw,calc((100vh - 400px) * 2))}.home-page .final-screen{padding-bottom:16px}}
+
+/* ===== round 8: no figures; animated line icons in a badge under each number ===== */
+.flow-worker{display:none!important}
+@media(min-width:901px){.flow-timeline::before,.flow-timeline::after,.flow-timeline li.flow-cargo{top:21px}}
+.flow-icon{display:grid;place-items:center;width:64px;height:64px;margin-top:18px;border-radius:18px;background:#fff;border:1px solid #dfe7da;box-shadow:0 6px 18px #18402c12;color:#18402c}
+.flow-icon svg{width:40px;height:40px;overflow:visible}
+.flow-timeline .flow-step{margin-top:14px}
+.flow-icon .a-glow{fill:#8bbd3e}
+.flow-icon .a-beam,.flow-icon .a-check,.flow-icon .a-pulse,.flow-icon .a-blink{stroke:#6fa52a}
+.flow-icon .a-sample{fill:#e4f2cf;stroke:#6fa52a}
+.flow-icon .a-badge{fill:#eef6e3;stroke:#6fa52a}
+.a-bars path{transform-box:fill-box;transform-origin:bottom;animation:a-grow 2.6s ease-in-out infinite}
+.a-bars path:nth-child(2){animation-delay:.25s}.a-bars path:nth-child(3){animation-delay:.5s}
+.a-scan{animation:a-scan 3.2s ease-in-out infinite}
+.a-glow,.a-beam{animation:a-glow 2s ease-in-out infinite}
+.a-draw{stroke:#6fa52a;stroke-dasharray:1;animation:a-draw 3.2s ease-in-out infinite}
+.a-blink{animation:a-blink 1s steps(1) infinite}
+.a-gear{transform-box:view-box;transform-origin:17px 18px;animation:a-spin 6s linear infinite}
+.a-check{stroke-dasharray:1;animation:a-draw 3s ease-in-out infinite}
+.a-truck{animation:a-bump .5s ease-in-out infinite alternate}
+.a-road{stroke:#8fa58a;animation:a-road 1s linear infinite}
+.a-nut{transform-box:view-box;transform-origin:27px 16.1px;animation:a-turn 2.4s ease-in-out infinite}
+.a-wrench{transform-box:view-box;transform-origin:27px 16.1px;animation:a-turn 2.4s ease-in-out infinite}
+.a-pulse{stroke-dasharray:1;animation:a-draw 2.4s linear infinite}
+@keyframes a-grow{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+@keyframes a-scan{0%,100%{transform:translate(0,0)}35%{transform:translate(-9px,4px)}70%{transform:translate(-3px,-2px)}}
+@keyframes a-glow{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes a-draw{0%{stroke-dashoffset:1}45%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-1}}
+@keyframes a-blink{0%{opacity:1}50%{opacity:0}}
+@keyframes a-spin{to{transform:rotate(360deg)}}
+@keyframes a-bump{from{transform:translateY(0)}to{transform:translateY(-.8px)}}
+@keyframes a-road{from{transform:translateX(0)}to{transform:translateX(-12px)}}
+@keyframes a-turn{0%,100%{transform:rotate(0)}50%{transform:rotate(-35deg)}}
+@media(max-width:900px){.flow-icon{width:48px;height:48px;margin-top:4px;border-radius:14px}.flow-icon svg{width:30px;height:30px}}
+@media(prefers-reduced-motion:reduce){.flow-icon *{animation:none!important}}

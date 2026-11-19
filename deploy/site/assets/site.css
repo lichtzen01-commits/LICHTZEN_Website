@@ -506,3 +506,4 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
  .is-run-ready:not(.is-run) .flow-timeline::after{clip-path:inset(0 0 100% 0)}
 }
 @media(prefers-reduced-motion:reduce){.flow-timeline::after,.flow-node{animation:none}}
+.why-reasons article p{color:#56604f}

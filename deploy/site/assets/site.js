@@ -43,6 +43,8 @@ if(['en','zh','ja','hi','es'].includes(language)){
  document.documentElement.lang=language==='zh'?'zh-Hans':language;
  const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walk.nextNode()){if(node.parentElement?.closest('script,style,textarea,option,.lamp-frame'))continue;const key=node.nodeValue.trim();const value=SITE_TRANSLATIONS[key]?.[language];if(value)node.nodeValue=node.nodeValue.replace(key,value);}
  document.querySelectorAll('[placeholder]').forEach(el=>{const v=(window.LTZ_I18N_PLACEHOLDER||{})[el.getAttribute('placeholder')]?.[language];if(v)el.setAttribute('placeholder',v);});
+ // Screen-reader labels, image alt text and tooltips use the same dictionary.
+ document.querySelectorAll('[aria-label],img[alt],[title]').forEach(el=>{for(const a of ['aria-label','alt','title']){const k=el.getAttribute(a);if(!k||!/[\uac00-\ud7a3]/.test(k))continue;const v=SITE_TRANSLATIONS[k.trim()]?.[language];if(v)el.setAttribute(a,v);}});
  // Overseas visitors write to the overseas sales mailbox.
  document.querySelectorAll('a[href^="mailto:ltz@lichtzen.com"]').forEach(a=>a.setAttribute('href',a.getAttribute('href').replace('ltz@','itl@')));
  {const w2=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let t;while(t=w2.nextNode()){if(t.nodeValue.includes('ltz@lichtzen.com'))t.nodeValue=t.nodeValue.replace(/ltz@lichtzen\.com/g,'itl@lichtzen.com');}}

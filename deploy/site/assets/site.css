@@ -633,3 +633,9 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 .flow-icon .a-cycle{transform-box:view-box;transform-origin:20px 20px;animation:a-spin 5s linear infinite;stroke:#6fa52a}
 .flow-icon .a-tool{transform-box:view-box;transform-origin:20px 20px;animation:a-tool 2.5s ease-in-out infinite}
 @keyframes a-tool{0%,100%{transform:rotate(0)}50%{transform:rotate(-18deg)}}
+/* icon 03: a part drawn like a blueprint, then its dimension lines */
+.flow-icon .a-bp path,.flow-icon .a-bp circle{stroke-dasharray:1;stroke-dashoffset:1;animation:a-bp 4.2s ease-in-out infinite}
+.flow-icon .a-bp-part{stroke:#18402c}
+.flow-icon .a-bp-hole{stroke:#6fa52a;animation-delay:.45s!important}
+.flow-icon .a-bp-dim{stroke:#6fa52a;stroke-width:1.2;animation-delay:.9s!important}
+@keyframes a-bp{0%{stroke-dashoffset:1;opacity:1}40%{stroke-dashoffset:0;opacity:1}78%{stroke-dashoffset:0;opacity:1}92%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:1;opacity:0}}

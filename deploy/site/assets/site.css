@@ -744,3 +744,10 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 @keyframes station{0%,12%,100%{box-shadow:0 0 0 7px #f2f4f6}5%{box-shadow:0 0 0 7px #f2f4f6,0 0 0 13px #6c5ce755}}
 :root{--muted:#56606a}
 .timeline-group time,.application-photo figcaption,.result-count{color:#4f5961}
+
+/* big section titles back to the brand green; larger header menu; auto-only sliders */
+.home-page main>section:not(.hero) .eyebrow,.home-page .final-screen .eyebrow{color:#4f7d18}
+@media(min-width:901px){.desktop-nav>a,.desktop-nav .nav-group>a{font-size:16px;font-weight:700}.nav-expand{font-size:15px}}
+@media(min-width:901px) and (max-width:1200px){.desktop-nav>a,.desktop-nav .nav-group>a{font-size:14px}}
+.home-page .manual-card-controls{display:none!important}
+@media(min-width:901px){.home-page .application-teasers.manual-card-row>a{flex:0 0 calc((100% - 48px)/3)}}

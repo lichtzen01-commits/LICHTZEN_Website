@@ -654,3 +654,23 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 .hero-video{opacity:1}
 .home-page .hero:after,.home .hero:after{background:linear-gradient(90deg,#061118c7 0%,#06111899 30%,#06111826 58%,#06111800 72%),linear-gradient(180deg,#07161b80 0%,#07161b00 20%,#07161b00 82%,#07161b59 100%)}
 @media(max-width:900px){.home-page .hero:after,.home .hero:after{background:linear-gradient(180deg,#07161b99 0%,#07161b66 40%,#07161b8c 100%)}}
+
+/* ===== why cards: staggered entrance, highlighted numbers, light spotlight ===== */
+.why-reasons article{position:relative;overflow:hidden;isolation:isolate}
+.why-reasons article>*{position:relative;z-index:1}
+.why-reasons article::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .35s;
+ background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),#8bbd3e2e,transparent 62%),radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#7c5cff14,transparent 70%)}
+.why-reasons article:hover::before{opacity:1}
+.why-reasons article:hover{border-color:#b9d98d;box-shadow:0 16px 34px #1f3b2b17,0 0 0 1px #8bbd3e40}
+.why-num{display:inline-block;color:#4f7d18;font-weight:800;font-variant-numeric:tabular-nums;text-align:right}
+.why-reasons article h3 .why-num{color:#3f6b10}
+@media(hover:none){
+ .why-reasons article::before{opacity:0;background:linear-gradient(110deg,transparent 30%,#8bbd3e33 48%,#7c5cff1a 55%,transparent 72%);background-size:260% 100%;background-position:130% 0}
+ .why-reasons article.is-swept::before{animation:why-sweep 1.5s ease-out}
+}
+@keyframes why-sweep{0%{opacity:1;background-position:130% 0}100%{opacity:0;background-position:-40% 0}}
+.why-lichtzen.is-in .why-reasons article{animation:why-in .7s cubic-bezier(.2,.7,.2,1) backwards}
+.why-lichtzen.is-in .why-reasons article:nth-child(1){animation-delay:.05s}.why-lichtzen.is-in .why-reasons article:nth-child(2){animation-delay:.12s}.why-lichtzen.is-in .why-reasons article:nth-child(3){animation-delay:.19s}
+.why-lichtzen.is-in .why-reasons article:nth-child(4){animation-delay:.26s}.why-lichtzen.is-in .why-reasons article:nth-child(5){animation-delay:.33s}.why-lichtzen.is-in .why-reasons article:nth-child(6){animation-delay:.4s}
+@keyframes why-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.why-lichtzen.is-in .why-reasons article,.why-reasons article.is-swept::before{animation:none}}

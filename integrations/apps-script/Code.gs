@@ -230,16 +230,44 @@ function allow_(email) {
 
 function json(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
 
-/** 편집기에서 한 번 실행: 권한 승인 → 시트·폴더 자동 생성 → 시험 메일 2통(문의 + 접수 확인). 실행 로그에 시트 주소가 나옵니다. */
+/** 편집기에서 실행: 권한 승인 → 시트·폴더 자동 생성 → 시험 메일 2통(문의 + 접수 확인).
+ *  시험으로 넣은 줄은 메일을 보낸 뒤 시트에서 자동으로 지우고 통계를 다시 계산합니다. */
 function testSend() {
   const me = Session.getEffectiveUser().getEmail();
   const r = doPost({postData: {contents: JSON.stringify({
-    source: '시험', category: 'lamp', topic: 'UV / IR 램프 문의', message: '메탈할라이드 램프 1200mm 10개 견적 부탁드립니다.\n납기도 알려주세요.',
-    email: me, who: '시험 회사 / 홍길동', lang: 'ko',
-    files: [{name: 'test.txt', type: 'text/plain', data: Utilities.base64Encode('LICHTZEN test attachment')}],
+    source: '시험', category: 'other', topic: '연결 확인', message: '[시험] 홈페이지 문의 연결 확인용입니다. 이 줄은 시트에서 자동으로 지워집니다.',
+    email: me, who: '시험', lang: 'ko',
   })}});
   console.log(r.getContent());
+  removeRows_(row => row[4] === '시험');
   console.log('문의 목록 시트: ' + book_().getUrl());
+}
+
+/** 시험·임의 문의 지우기: '문의 경로'가 '시험'이거나 이메일이 스크립트 계정인 줄을 모두 지우고 통계를 다시 계산합니다. */
+function removeTestRows() {
+  const me = Session.getEffectiveUser().getEmail().toLowerCase();
+  const n = removeRows_(row => row[4] === '시험' || String(row[8]).toLowerCase() === me);
+  console.log('지운 줄: ' + n);
+}
+
+/** 전체 초기화: 모든 연도 탭의 문의 줄을 지우고(머리줄은 남김) 통계를 비웁니다. 정식 공개 직전에 한 번 실행하세요. */
+function resetAllRows() {
+  const n = removeRows_(() => true);
+  console.log('지운 줄: ' + n + ' (첨부 폴더의 파일은 드라이브에서 직접 지우세요)');
+}
+
+/** 시트에서 줄을 직접 지운 뒤 실행: 통계 탭만 다시 계산합니다. (다음 문의가 들어올 때도 자동으로 다시 계산됩니다) */
+function refreshStats() { stats_(book_()); console.log('통계를 다시 계산했습니다.'); }
+
+function removeRows_(match) {
+  const ss = book_(); let removed = 0;
+  ss.getSheets().filter(sh => /^\d{4}$/.test(sh.getName())).forEach(sh => {
+    const n = sh.getLastRow() - 1; if (n < 1) return;
+    const rows = sh.getRange(2, 1, n, HEADERS.length).getValues();
+    for (let i = rows.length - 1; i >= 0; i--) if (match(rows[i])) { sh.deleteRow(i + 2); removed++; }
+  });
+  stats_(ss);
+  return removed;
 }
 
 /** 권한이 빠졌을 때 편집기에서 한 번 실행: 승인 안 된 권한(외부 서비스 연결 등)만 다시 묻습니다. 창의 항목을 모두 체크하고 허용하세요. */

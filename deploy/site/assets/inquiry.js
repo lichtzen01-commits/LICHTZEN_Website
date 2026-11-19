@@ -20,7 +20,7 @@
       let j = null; try { j = JSON.parse(text); } catch (e) {}
       // No JSON back usually means a Google sign-in or authorization page: wrong deployment access or missing permission.
       if (!j) return {ok: false, error: /accounts\.google|ServiceLogin|signin/i.test(text) ? 'login' : (/authoriz|권한/i.test(text) ? 'auth' : 'html-' + r.status)};
-      return {ok: !!j.ok, error: j.error};
+      return {ok: !!j.ok, error: j.error ? j.error + (j.detail ? ': ' + j.detail : '') : undefined};
     } catch (e) { return {ok: false, error: 'network'}; }
   };
 })();

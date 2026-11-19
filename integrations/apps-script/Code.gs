@@ -102,7 +102,7 @@ function doPost(e) {
     return json({ok: true});
   } catch (err) {
     console.error(err);
-    return json({ok: false, error: 'server'});
+    return json({ok: false, error: 'server', detail: String(err && err.message || err).slice(0, 180)});
   }
 }
 

@@ -241,3 +241,12 @@ function testSend() {
   console.log(r.getContent());
   console.log('문의 목록 시트: ' + book_().getUrl());
 }
+
+/** 권한이 빠졌을 때 편집기에서 한 번 실행: 승인 안 된 권한(외부 서비스 연결 등)만 다시 묻습니다. 창의 항목을 모두 체크하고 허용하세요. */
+function authorizeAll() {
+  ScriptApp.requireAllScopes(ScriptApp.AuthMode.FULL);
+  UrlFetchApp.fetch('https://www.google.com/generate_204', {muteHttpExceptions: true});
+  DriveApp.getRootFolder();
+  SpreadsheetApp.getActiveSpreadsheet();
+  console.log('권한 확인 완료: 외부 서비스 연결·드라이브·시트·메일');
+}

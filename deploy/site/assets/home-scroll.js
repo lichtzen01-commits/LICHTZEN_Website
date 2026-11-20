@@ -18,7 +18,7 @@
   if (!matchMedia('(min-width: 901px) and (pointer: fine)').matches) return;   // phones and tablets keep native scrolling
   const root = document.documentElement;
   root.classList.add('smooth-snap');
-  const sections = [...document.querySelectorAll('main>section, .global-business, .final-screen')];
+  const sections = [...document.querySelectorAll('main>section, .global-business, .final-screen, .film-stage')];
   const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);   // easeInOutCubic
   let busy = false; let lockUntil = 0; let lastWheel = 0;
 

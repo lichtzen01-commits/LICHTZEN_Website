@@ -901,3 +901,9 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 @media(max-width:359px){
  .corporate-facts .container,.engineering-steps,.service-route-grid,.support-hub-grid,.capability-card{grid-template-columns:minmax(0,1fr)!important}
 }
+/* Footer social icons (YouTube, LinkedIn) */
+.footer-social{display:flex;gap:10px;margin-top:18px}
+.footer-social .social-link{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#ffffff14;border:1px solid #ffffff26;color:#d8e1e9;transition:background .2s,color .2s,transform .2s}
+.footer-social .social-link svg{width:20px;height:20px}
+.footer-social .social-link:hover{background:#8bbd3e;border-color:#8bbd3e;color:#121b22;transform:translateY(-2px)}
+.footer-social .social-link[hidden]{display:none}

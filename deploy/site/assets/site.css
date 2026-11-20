@@ -841,3 +841,63 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 @media(min-width:601px){.ltz-chat-panel{width:400px}}
 .ltz-msg:has(.ltz-captcha){max-width:100%;align-self:stretch}
 .ltz-msg .ltz-captcha{overflow:visible}
+/* 901-1400px: English/Spanish menus are longer; keep menu, button and language picker on one row */
+@media(min-width:901px) and (max-width:1400px){.language-picker [data-language-name]{display:none}.desktop-nav{margin:0 14px}.desktop-nav>a,.desktop-nav .nav-group>a{font-size:clamp(13px,1.18vw,16px)}.header-inner{gap:14px}}
+/* Phones: no text below 11-12px (labels, breadcrumbs, footer, filters, tables were 8-10px) */
+@media(max-width:600px){
+ body:not(.home-page) .eyebrow,.contact-band .eyebrow,.why-reasons article>.why-icon+span,.corporate-facts span,.record-links a>span,.capability-image span,.application-copy .eyebrow,.conveyor-partner span,.footer-tagline{font-size:11px!important}
+ .breadcrumb,.breadcrumb a,.breadcrumb span,.footer-bottom,.footer-bottom a,.footer-bottom span,.footer-info,.footer-info a,.footer-info span,.footer-nav a,.footer-nav strong,
+ .chips .chip,.filter-help,.filter-option span,.filter-summary,.filter-summary *,.card-body small,.inline-link,.industrial-back,.industrial-tags span,
+ .conveyor-card-meta,.conveyor-card-meta *,.conveyor-filters a,.certificate-filters a,.key-info dt,.key-info dd,.source-footnote,.corporate-address span,.partner-links span,
+ .company-page time,ol time,li>time,figcaption,.application-photo figcaption,.language-picker summary span,.resources small,a small,main small,.conveyor-selection p{font-size:12px!important}
+ main td,main th{font-size:12px!important}
+ .industrial-actions p,.legacy-content p{font-size:13px}
+}
+/* Phones: big section titles scale with the screen; metric number and unit stay on one line */
+@media(max-width:600px){
+ .home-page .eyebrow{font-size:clamp(24px,8.6vw,34px)!important}
+ .global-business .business-metrics article strong{white-space:nowrap;font-size:clamp(22px,7vw,34px)}
+ .global-business .business-metrics article strong span{white-space:nowrap;margin-left:4px}
+}
+/* Very narrow screens (Z Flip cover, folded phones under 360px) */
+@media(max-width:359px){
+ .language-picker [data-language-name]{display:none}
+ .site-header .brand img{max-width:84px;height:auto}
+ .header-inner{gap:8px}
+ .need-grid{grid-template-columns:1fr!important}
+ .footer-nav{grid-template-columns:1fr 1fr!important}
+ .global-business .business-metrics{grid-template-columns:1fr!important;gap:14px}
+ .global-business .business-metrics article{text-align:left}
+ .hero h1,.page-top h1{font-size:clamp(26px,10vw,40px)}
+}
+/* Tall portrait tablets and unfolded foldables (iPad, Galaxy Tab, Z Fold, tri-fold):
+   a full-screen section with little content left large empty bands, so cap the height */
+@media(orientation:portrait) and (min-width:601px){
+ .home-page main>section:not(.hero),.home-page .global-business,.home-page .final-screen{min-height:min(100vh,880px)}
+}
+/* 601-1023px: WHY cards two per row so the text column is not squeezed */
+@media(min-width:601px) and (max-width:1023px){.why-reasons{grid-template-columns:repeat(2,1fr)!important}}
+/* Large monitors (QHD/4K at 100%): scale the whole layout so content is not a thin strip of small text */
+@media(min-width:1800px){html{zoom:1.15;--z:1.15}}
+@media(min-width:2200px){html{zoom:1.33;--z:1.33}}
+@media(min-width:3000px){html{zoom:1.75;--z:1.75}}
+/* Zoom also scales vh, so divide screen-height rules by the zoom to keep one section per screen */
+@media(min-width:1800px){
+ .home-page .hero,.home .hero{min-height:calc(100svh / var(--z))}
+ .home-page main>section,.home-page .global-business,.home-page .final-screen{min-height:calc(100vh / var(--z))}
+ .ltz-chat-panel{height:min(600px,calc((100vh - 140px) / var(--z)))}
+}
+@media(max-width:600px){.global-business .business-metrics article strong span{font-size:12px!important}}
+/* Phones: grid items may shrink below their longest word (long Spanish/English labels pushed the footer and cards wider than the screen) */
+@media(max-width:600px){
+ .footer-top>*,.footer-nav>*,.footer-brand,main section *>article{min-width:0}
+ .footer-nav a,.footer-nav strong,.footer-info,.footer-tagline,main article h2,main article h3,main article p,main article strong{overflow-wrap:anywhere}
+}
+@media(max-width:600px){
+ .corporate-facts .container>*,.engineering-steps>*,.service-route-grid>*,.capability-card>*,.support-hub-grid>*,.flow-timeline li>*,.flow-timeline>li{min-width:0}
+ .product-tabs .container{overflow-x:auto;scrollbar-width:none}
+ .service-route-grid a,.corporate-facts span,.engineering-steps *{overflow-wrap:anywhere}
+}
+@media(max-width:359px){
+ .corporate-facts .container,.engineering-steps,.service-route-grid,.support-hub-grid,.capability-card{grid-template-columns:minmax(0,1fr)!important}
+}

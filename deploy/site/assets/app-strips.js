@@ -34,5 +34,14 @@
 
   // Only cycle while the section is on screen.
   new IntersectionObserver(es => es.forEach(en => (en.isIntersecting ? start() : stop())), {threshold: 0.35}).observe(box);
+  // Fix the width of the details text to the open strip's width, so it is clipped (not re-wrapped) while a strip closes.
+  const measure = () => {
+    const o = box.querySelector('.app-strip.is-open') || strips[0];
+    const w = o.clientWidth - parseFloat(getComputedStyle(o).paddingLeft) * 2;
+    if (innerWidth > 700 && w > 0) box.style.setProperty('--strip-open-w', Math.round(w) + 'px');
+    else box.style.removeProperty('--strip-open-w');
+  };
+  let rt; addEventListener('resize', () => { box.style.removeProperty('--strip-open-w'); clearTimeout(rt); rt = setTimeout(() => setTimeout(measure, 800), 100); });
   open(0);
+  setTimeout(measure, 900);   // after the first strip has finished opening
 })();

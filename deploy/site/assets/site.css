@@ -1024,3 +1024,27 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 /* direct contact: label vertically centred with the phone/email (incl. their underline) */
 .final-screen .need-direct{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
 .final-screen .need-direct>span{line-height:1;padding-top:2px}
+/* strips v3: smooth open AND close
+   - one easing for width, details and photo
+   - details fold with grid rows (no max-height snap) and keep a fixed width, so text never re-wraps while a strip shrinks
+   - the title keeps one size */
+.app-strip{--ease:cubic-bezier(.33,0,.15,1);transition:flex-grow .75s var(--ease),border-color .5s,box-shadow .5s}
+.app-strip:not(.is-open) .app-strip-name{font-size:clamp(17px,1.5vw,22px)}
+.app-strip-info,.app-strip.is-open .app-strip-info{display:grid;grid-template-rows:0fr;max-height:none;margin-top:0;opacity:0;transform:none;
+ transition:grid-template-rows .75s var(--ease),margin-top .75s var(--ease),opacity .25s ease-out}
+.app-strip.is-open .app-strip-info{grid-template-rows:1fr;margin-top:10px;opacity:1;transition:grid-template-rows .75s var(--ease),margin-top .75s var(--ease),opacity .45s ease-in .3s}
+.app-strip-info-in{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:10px;width:var(--strip-open-w,auto);max-width:none}
+.app-strip-media img{will-change:transform,opacity;transition:opacity .6s var(--ease),filter .6s var(--ease),transform .75s var(--ease)}
+@media(max-width:700px){
+ .app-strip{transition:border-color .5s}
+ .app-strip-media{transition:max-height .75s var(--ease),padding .75s var(--ease)}
+ .app-strip-info-in{width:auto}
+}
+@media(prefers-reduced-motion:reduce){.app-strip,.app-strip *{transition:none!important}}
+.app-strip-info-in>*{flex-shrink:0}
+.app-strip-head{flex-shrink:0}
+/* photo takes only the space left over by the title and details */
+@media(min-width:701px){
+ .app-strip-media,.app-strip.is-open .app-strip-media{position:relative;padding:0!important;margin-bottom:14px}
+ .app-strip-media img{position:absolute;inset:4px 0 0;margin:auto;max-width:100%;max-height:calc(100% - 4px)}
+}

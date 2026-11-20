@@ -1078,3 +1078,8 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 .contact-map-frame iframe{display:block;width:100%;height:100%;border:0}
 .contact-flow{padding-bottom:60px}
 @media(max-width:600px){.inquiry-card{padding:22px 18px}.inquiry-card legend{font-size:19px}.need-pills-label{width:100%}.contact-map{padding-bottom:60px}.contact-map-frame{height:340px;min-height:0;border-radius:16px}}
+/* Contact v3: one centered column, full-width submit */
+.contact-flow{grid-template-columns:minmax(0,1fr);max-width:920px}
+.inquiry-lead .inline-link{font-weight:700;color:var(--ink);white-space:nowrap}
+.inquiry-card .submit-row{flex-direction:column;align-items:stretch}
+.inquiry-card .submit-row .button{width:100%;justify-content:center;padding-top:17px;padding-bottom:17px;font-size:16px}

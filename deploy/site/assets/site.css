@@ -1141,3 +1141,10 @@ body.film-scrub .need-video-thumb{visibility:hidden}
 /* Film v3: grown video fills the screen at 16:9 and sits above the header */
 body.film-scrub>.film-frame{z-index:41}
 .film-backdrop{z-index:40;background:#05090c}
+/* Nav v2: chevron drawn and centred on the label; mega menu spans the full width */
+@media(min-width:901px){
+.desktop-nav .nav-expand{font-size:0;line-height:0;width:16px;height:22px;padding:0;display:inline-grid;place-items:center;align-self:center}
+.desktop-nav .nav-expand::before{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.desktop-nav .nav-group:hover .nav-expand::before,.desktop-nav .nav-group.is-open .nav-expand::before{transform:translateY(1px) rotate(225deg)}
+.nav-panel.nav-mega{left:calc(50% - 50vw);right:calc(50% - 50vw);border-radius:0 0 18px 18px;padding-left:max(44px,calc(50vw - 660px));padding-right:max(44px,calc(50vw - 660px))}
+}

@@ -124,10 +124,17 @@ def desktop(url):
 
 
 def mobile(url):
+    # phone menu: each group opens like an accordion and lists the same pages as the desktop dropdown
     cur = current_index(url)
-    links = "".join(f'<a{" aria-current=\"page\"" if i == cur else ""} href="{html.escape(h)}">{t}</a>'
-                    for i, (t, h, _, _) in enumerate(MENU))
-    return f'<nav aria-label="모바일 메뉴" class="mobile-nav" id="mobile-nav">{links}<a href="/contact/">문의하기</a></nav>'
+    parts = []
+    for i, (t, h, sub, _) in enumerate(MENU):
+        here = ' aria-current="page"' if i == cur else ""
+        if not sub:
+            parts.append(f'<a{here} href="{html.escape(h)}">{t}</a>')
+            continue
+        links = "".join(f'<a href="{html.escape(sh)}">{st}</a>' for st, sh, _ in sub)
+        parts.append(f'<details class="mobile-group"{" open" if i == cur else ""}><summary{here}>{t}</summary><div class="mobile-sub">{links}</div></details>')
+    return f'<nav aria-label="모바일 메뉴" class="mobile-nav" id="mobile-nav">{"".join(parts)}<a href="/contact/">문의하기</a></nav>'
 
 
 FOOTER_COMPANY_OLD = re.compile(r'(<div><strong>리트젠</strong>)(.*?)(</div>)', re.S)

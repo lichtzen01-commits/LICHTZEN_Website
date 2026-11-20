@@ -1191,3 +1191,40 @@ body.film-scrub>.film-frame{z-index:41}
 .lamp-captcha{position:fixed;inset:0;z-index:60;background:#0b1319a6;display:grid;place-items:center;padding:20px}
 .lamp-captcha>div{background:#fff;border-radius:16px;padding:22px 24px;width:min(360px,100%);display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 60px #0008}
 .lamp-captcha strong{font-size:15px;color:#171c20}
+/* Mobile pass (2026-11-21) */
+.product-card .card-body p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-height:none}
+@media(max-width:600px){
+ /* product list: two compact columns instead of 40 tall cards */
+ .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ .product-card .card-body{padding:12px 12px 12px}
+ .product-card .card-body h3{font-size:14px;line-height:1.4;margin:6px 0 6px}
+ .product-card .card-body p{font-size:12px;line-height:1.55;margin:0 0 10px;-webkit-line-clamp:3}
+ .product-card .card-body .inline-link{font-size:12px;padding-top:10px}
+ /* readable small labels and easier taps */
+ .product-card .card-body small,.solution-detail small,.related-systems small{font-size:11px}
+ main [class*=tag],main .chip{font-size:12px}
+ .breadcrumb a,.breadcrumb span{display:inline-block;padding:6px 0}
+ main .inline-link{padding-top:6px;padding-bottom:6px}
+ .consent input[type=checkbox]{width:20px;height:20px;flex:none}
+ /* company tabs: show there is more to scroll */
+  .company-local-nav .container{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+}
+@media(max-width:600px){.related-system-grid a span{font-size:11.5px}.company-local-nav a{font-size:13px;padding:16px 0}}
+/* Phone menu accordion */
+.mobile-nav.open{max-height:calc(100dvh - 76px);overflow-y:auto;overscroll-behavior:contain}
+.mobile-group{border-bottom:1px solid #edf0f3}
+.home-page .mobile-group{border-color:#ffffff1f}
+.mobile-group summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:15px;cursor:pointer}
+.mobile-group summary::-webkit-details-marker{display:none}
+.mobile-group summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s;margin-right:4px}
+.mobile-group[open] summary::after{transform:translateY(2px) rotate(225deg)}
+.mobile-group summary[aria-current]{color:#5f8f22;font-weight:700}
+.home-page .mobile-group summary[aria-current]{color:#a9d46a}
+.mobile-sub{display:flex;flex-direction:column;padding:0 0 10px 14px}
+.mobile-nav .mobile-sub a{border:0;padding:9px 0;font-size:14px;opacity:.85}
+/* Spec tables on phones: two-column tables fit the screen; wider ones show a fade at the edge to scroll */
+@media(max-width:600px){
+ .table-scroll table:not(:has(tr>:nth-child(3))){min-width:0!important;width:100%}
+ .table-scroll table:not(:has(tr>:nth-child(3))) td,.table-scroll table:not(:has(tr>:nth-child(3))) th{white-space:normal;overflow-wrap:anywhere}
+ .table-scroll:has(table tr>:nth-child(3)){-webkit-mask-image:linear-gradient(90deg,#000 88%,#0004);mask-image:linear-gradient(90deg,#000 88%,#0004)}
+}

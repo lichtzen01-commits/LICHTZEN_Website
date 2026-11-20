@@ -98,7 +98,7 @@
     document.body.classList.toggle('film-scrub', scrub);
     stage.classList.toggle('is-scrub', scrub);
     // a fixed element must not sit inside a transformed (revealed) section, so the frame moves to <body>
-    (scrub ? document.body : home).appendChild(frame);
+    if (scrub) document.body.appendChild(frame); else home.insertBefore(frame, home.firstChild);   // back above the YouTube link
     if (!scrub) {
       ['width', 'transform', 'borderRadius', 'visibility'].forEach(k => { frame.style[k] = ''; });
       backdrop.style.opacity = 0;

@@ -35,10 +35,10 @@ MENU = [
         ("IR 가열·건조", "/solutions/ir-drying/"),
     ], ("/solutions/",)),
     ("기술", "/technology/", None, ("/technology/",)),
-    ("품질·인증", "/company/certifications/", None, ("/company/certifications/",)),
     ("회사소개", "/company/", [
         ("회사 개요", "/company/"),
         ("연혁", "/company/history/"),
+        ("품질·인증", "/company/certifications/"),
         ("사업부·조직·시설", "/company/organization/"),
         ("오시는 길", "/company/location/"),
     ], ("/company/",)),
@@ -73,7 +73,7 @@ GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": 
 
 
 def current_index(url):
-    # the longest matching prefix wins, so /company/certifications/ is 품질·인증
+    # the longest matching prefix wins
     best, best_len = None, 0
     for i, (_, _, _, prefixes) in enumerate(MENU):
         for p in prefixes:

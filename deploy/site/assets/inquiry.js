@@ -17,14 +17,14 @@
     s.onload = () => ok(); s.onerror = () => { tsLoad = null; no(new Error('turnstile')); };
     document.head.appendChild(s);
   }));
-  // Renders the check into box (shown only when Cloudflare needs the visitor to click) and returns {get, reset}.
+  // Renders the visible Cloudflare check ("Success!") into box and returns {get, reset}.
   window.LTZCaptcha = box => {
     if (!TURNSTILE_SITEKEY || !box) return null;
     let token = null, id = null, waiters = [];
     const ready = loadTS().then(() => {
       const l = (document.documentElement.lang || window.LTZ_LANG || '').toLowerCase().slice(0, 2);
       const language = {ko: 'ko', en: 'en', ja: 'ja', es: 'es', zh: 'zh-cn'}[l] || 'auto';
-      id = window.turnstile.render(box, {sitekey: TURNSTILE_SITEKEY, appearance: 'interaction-only', language,
+      id = window.turnstile.render(box, {sitekey: TURNSTILE_SITEKEY, appearance: 'always', size: 'flexible', language,
         callback: t => { token = t; waiters.splice(0).forEach(f => f(t)); }, 'expired-callback': () => { token = null; }, 'error-callback': () => { token = null; }});
     }).catch(() => {});
     return {

@@ -12,7 +12,7 @@
 
 ## English pages
 
-LICHTZEN Co., Ltd. (Gunpo, Korea, founded 1995) designs and manufactures UV and IR light sources, UV curing and IR/MIR drying systems, and UV LED modules. Every page below is the English version of the Korean page at the same path without /en.
+LICHTZEN Co., Ltd. (Gunpo, Korea, founded 1995) designs and manufactures UV and IR light sources, UV curing and IR/MIR drying systems, and UV LED modules. Every page below is the English version of the Korean page at the same path without /en. Chinese, Japanese, Hindi and Spanish versions are at /zh/, /ja/, /hi/ and /es/.
 
 - [UV Curing Systems, Custom Equipment & Conveyors | LICHTZEN](https://www.lichtzen.com/en/): Korean maker of UV/IR light sources and curing and drying equipment since 1995: UV lamps, UV LEDs, MIR lamps, custom UV curing systems and conveyors.
 - [About LICHTZEN | LICHTZEN](https://www.lichtzen.com/en/company/): LICHTZEN, founded 1995 in Gunpo, Korea, makes UV/IR light sources and curing equipment, with head office, factory and R&D center on one site.

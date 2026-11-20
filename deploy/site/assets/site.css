@@ -830,3 +830,9 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 
 /* Cloudflare Turnstile: box stays empty unless Cloudflare asks the visitor to click */
 .ltz-captcha:empty{display:none}.ltz-captcha{margin:12px 0 4px;max-width:100%;overflow:hidden}
+
+/* Chinese and Japanese have no spaces between words: keep-all (for Korean) would stop lines from wrapping */
+html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:break-word}
+.contact-form fieldset{min-width:0;max-width:100%}.contact-form .need-options strong,.contact-form .need-options small{overflow-wrap:anywhere}
+/* Phones: one card per row so titles are not squeezed into 3-4 characters a line */
+@media(max-width:480px){.why-reasons{grid-template-columns:1fr!important}.why-reasons article{padding:18px 70px 18px 20px}}

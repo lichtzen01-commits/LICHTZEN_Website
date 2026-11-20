@@ -92,7 +92,14 @@
 - 진행 상황은 이 문서의 표에 표시합니다.
 
 ## 2026-11-20 영문 정적 페이지 · 보안 · SEO 재점검
-- `/en/…` 영문 정적 페이지 66개 (scripts/build_en.py, 번역 docs/i18n/en.json). 국문·영문 모두 hreflang ko/en/x-default, 영문 canonical·OG·JSON-LD, sitemap에 양쪽 주소와 alternate, llms.txt 영문 목록.
+- `/en/…` 영문 정적 페이지 66개 (scripts/build_langs.py, 번역 docs/i18n/en.json). 국문·영문 모두 hreflang ko/en/x-default, 영문 canonical·OG·JSON-LD, sitemap에 양쪽 주소와 alternate, llms.txt 영문 목록.
 - 언어 선택: 한국어↔English는 실제 페이지로 이동, 나머지 4개 언어는 기존처럼 ?lang=.
 - Cloudflare Turnstile: 채팅·문의 폼 (docs/INQUIRY_SETUP.md 5장). 사이트 키·비밀 키를 넣기 전에는 검사 없이 동작.
 - SEO 6항목 재측정: description 132/132(국문 50자 이상, 영문 160자 이하, 중복 0), JSON-LD 132/132, H1 1개(도구 포함), hreflang 132/132, canonical 전부 https, 의미 있는 주소.
+
+## 2026-11-20 (2) 5개 외국어 정적 페이지 · Turnstile 켬 · SEO 보강
+- `/zh/ /ja/ /hi/ /es/` 정적 페이지 추가 (각 66쪽, 번역 docs/i18n/<언어>.json). 생성: `python3 scripts/build_langs.py deploy/site` (seo_enhance 다음, 항상 마지막).
+- 언어 선택은 6개 언어 모두 실제 페이지로 이동. hreflang 6개 언어 + x-default(en), sitemap 396개 주소.
+- 번역 점검: 대표 이름 한자 추정(成秀贤) → Sung Soo Hyun, 五星Unicon → Ohsung Unicon, 힌디어 UV/LED 표기 통일, '드라이(건조)/드로잉(도면)' 혼동 표기 수정, 뉴스 글 회사명 중복 제거, 중·일 모바일 줄바꿈.
+- FAQ 구조화 데이터(FAQPage) 추가. 뉴스 글의 옛 게시판 IP 표시 삭제.
+- Turnstile 사이트 키 적용. 비밀 키는 Apps Script 스크립트 속성 TURNSTILE_SECRET.

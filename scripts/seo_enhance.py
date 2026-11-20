@@ -90,6 +90,10 @@ def head_block(url, title, desc, h1, h, is_product, category):
               "inLanguage": "ko-KR", "isPartOf": {"@id": SITE + "/#website"}, "about": {"@id": ORG["@id"]}}]
     if url != "/":
         graph.append(breadcrumb(url, h1, h))
+    faq = [(text(q), text(a)) for q, a in re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p>", h, re.S)]
+    if faq:
+        graph.append({"@type": "FAQPage", "@id": canonical + "#faq", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]})
     if is_product:
         graph.append({"@type": "Product", "@id": canonical + "#product", "name": h1, "description": desc, "image": image,
                       "category": category, "brand": {"@type": "Brand", "name": "LICHTZEN"},

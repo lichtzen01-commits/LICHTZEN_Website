@@ -7,7 +7,7 @@
   const LIMIT = {count: 5, each: 10 * 1024 * 1024, total: 20 * 1024 * 1024, blocked: /\.(exe|msi|bat|cmd|com|scr|pif|cpl|dll|js|jse|vbs|vbe|wsf|wsh|ps1|sh|jar|apk|app|lnk|reg|hta)$/i};
   // Cloudflare Turnstile site key (public). Empty = no bot check on the page; Code.gs then also skips it unless
   // TURNSTILE_SECRET is set in Script Properties. The secret key never goes in this repo.
-  const TURNSTILE_SITEKEY = '';
+  const TURNSTILE_SITEKEY = '0x4AAAAAAGJe_vnIpU64d5Qs';
   window.LTZ_FILE_LIMIT = LIMIT;
   let tsLoad;
   const loadTS = () => tsLoad || (tsLoad = new Promise((ok, no) => {
@@ -22,8 +22,9 @@
     if (!TURNSTILE_SITEKEY || !box) return null;
     let token = null, id = null, waiters = [];
     const ready = loadTS().then(() => {
-      const lang = (document.documentElement.lang || window.LTZ_LANG || 'auto').toLowerCase();
-      id = window.turnstile.render(box, {sitekey: TURNSTILE_SITEKEY, appearance: 'interaction-only', language: lang === 'zh' ? 'zh-cn' : lang,
+      const l = (document.documentElement.lang || window.LTZ_LANG || '').toLowerCase().slice(0, 2);
+      const language = {ko: 'ko', en: 'en', ja: 'ja', es: 'es', zh: 'zh-cn'}[l] || 'auto';
+      id = window.turnstile.render(box, {sitekey: TURNSTILE_SITEKEY, appearance: 'interaction-only', language,
         callback: t => { token = t; waiters.splice(0).forEach(f => f(t)); }, 'expired-callback': () => { token = null; }, 'error-callback': () => { token = null; }});
     }).catch(() => {});
     return {

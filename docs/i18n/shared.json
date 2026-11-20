@@ -254,7 +254,7 @@
  "제품 / 컨베이어·부품": {
   "en": "Products / Conveyors·parts",
   "zh": "产品 / 输送机·零部件",
-  "ja": "製品 / コンベヤ・部品",
+  "ja": "製品 / コンベア・部品",
   "es": "Productos / Transportadores·piezas",
   "hi": "उत्पाद / कन्वेयर·पुर्ज़े"
  },
@@ -354,7 +354,7 @@
   "zh": "IR加热·干燥应用设备",
   "ja": "IR加熱・乾燥の適用装置",
   "es": "Equipo de calentamiento y secado IR",
-  "hi": "IR हीटिंग·ड्राइंग उपकरण"
+  "hi": "IR हीटिंग·ड्रायिंग उपकरण"
  },
  "PCB·인쇄·코팅 적용 장비": {
   "en": "PCB, printing & coating equipment",
@@ -472,7 +472,7 @@
   "en": "UV system for bonding",
   "zh": "粘接用UV系统",
   "ja": "接着用UVシステム",
-  "es": "Sistema UV para pegado",
+  "es": "Sistema UV para adhesión",
   "hi": "बॉन्डिंग के लिए UV सिस्टम"
  },
  "MIR 램프": {
@@ -487,13 +487,13 @@
   "zh": "MIR干燥系统",
   "ja": "MIR乾燥システム",
   "es": "Sistema de secado MIR",
-  "hi": "MIR ड्राइंग सिस्टम"
+  "hi": "MIR ड्रायिंग सिस्टम"
  },
  "카메라 모듈·LCD 본딩 UV 시스템": {
   "en": "Camera module & LCD bonding UV system",
   "zh": "摄像头模组·LCD粘接UV系统",
   "ja": "カメラモジュール・LCD接着UVシステム",
-  "es": "Sistema UV para pegado de módulos de cámara y LCD",
+  "es": "Sistema UV para unión de módulos de cámara y LCD",
   "hi": "कैमरा मॉड्यूल व LCD बॉन्डिंग UV सिस्टम"
  },
  "조도": {
@@ -624,10 +624,10 @@
  },
  "오성유니콘": {
   "en": "Ohsung Unicon",
-  "zh": "五星Unicon",
-  "ja": "オソンユニコン",
+  "zh": "Ohsung Unicon",
+  "ja": "Ohsung Unicon",
   "es": "Ohsung Unicon",
-  "hi": "ओसंग यूनिकॉन"
+  "hi": "Ohsung Unicon"
  },
  "다음글": {
   "en": "Next post",
@@ -744,7 +744,7 @@
  "컨베이어": {
   "en": "Conveyor",
   "zh": "输送机",
-  "ja": "コンベヤ",
+  "ja": "コンベア",
   "es": "Transportador",
   "hi": "कन्वेयर"
  },
@@ -794,7 +794,7 @@
   "en": "SPOT UV curing unit",
   "zh": "SPOT UV固化机",
   "ja": "SPOT UV硬化機",
-  "es": "Curador SPOT UV",
+  "es": "Unidad de curado SPOT UV",
   "hi": "SPOT UV क्योरिंग यूनिट"
  },
  "UV 램프 적용 분야": {
@@ -892,7 +892,7 @@
   "en": "Ultra-low-temperature UV system",
   "zh": "超低温UV系统",
   "ja": "超低温UVシステム",
-  "es": "Sistema UV de muy baja temperatura",
+  "es": "Sistema UV de temperatura ultrabaja",
   "hi": "अति-निम्न तापमान UV सिस्टम"
  },
  "UV 필터": {
@@ -913,7 +913,7 @@
   "en": "Handheld UV curing unit",
   "zh": "手持式UV固化机",
   "ja": "ハンディ型UV硬化機",
-  "es": "Curador UV manual",
+  "es": "Unidad de curado UV portátil",
   "hi": "हैंडहेल्ड UV क्योरिंग यूनिट"
  },
  "* 소형 챔버 타입 (Flood type)": {
@@ -1059,7 +1059,7 @@
  "컨베이어 속도 제어 기능": {
   "en": "Conveyor speed control",
   "zh": "输送机速度控制功能",
-  "ja": "コンベヤ速度制御機能",
+  "ja": "コンベア速度制御機能",
   "es": "Control de velocidad del transportador",
   "hi": "कन्वेयर गति नियंत्रण"
  },
@@ -1087,7 +1087,7 @@
  "디지털방식의 디스플레이 (내부 온도, 컨베이어 속도 등)": {
   "en": "Digital display (internal temperature, conveyor speed, etc.)",
   "zh": "数字显示（内部温度、输送速度等）",
-  "ja": "デジタル表示（内部温度、コンベヤ速度など）",
+  "ja": "デジタル表示（内部温度、コンベア速度など）",
   "es": "Pantalla digital (temperatura interna, velocidad del transportador, etc.)",
   "hi": "डिजिटल डिस्प्ले (आंतरिक तापमान, कन्वेयर गति आदि)"
  },

@@ -81,6 +81,6 @@
       const step = now => { const p = Math.min(1, (now - t0) / dur); n.span.textContent = fmt(Math.round(n.to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(step); else n.span.textContent = n.txt; };
       requestAnimationFrame(step);
     }, 200 + i * 150));
-  }, {threshold: 0.5});
+  }, {threshold: 0.15});
   io.observe(document.querySelector('.business-metrics'));
 })();

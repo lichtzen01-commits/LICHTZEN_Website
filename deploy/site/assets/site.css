@@ -878,11 +878,11 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 /* 601-1023px: WHY cards two per row so the text column is not squeezed */
 @media(min-width:601px) and (max-width:1023px){.why-reasons{grid-template-columns:repeat(2,1fr)!important}}
 /* Large monitors (QHD/4K at 100%): scale the whole layout so content is not a thin strip of small text */
-@media(min-width:1800px){html{zoom:1.15;--z:1.15}}
-@media(min-width:2200px){html{zoom:1.33;--z:1.33}}
-@media(min-width:3000px){html{zoom:1.75;--z:1.75}}
+@media(min-width:1800px) and (min-height:1050px){html{zoom:1.15;--z:1.15}}
+@media(min-width:2200px) and (min-height:1300px){html{zoom:1.33;--z:1.33}}
+@media(min-width:3000px) and (min-height:1800px){html{zoom:1.75;--z:1.75}}
 /* Zoom also scales vh, so divide screen-height rules by the zoom to keep one section per screen */
-@media(min-width:1800px){
+@media(min-width:1800px) and (min-height:1050px){
  .home-page .hero,.home .hero{min-height:calc(100svh / var(--z))}
  .home-page main>section,.home-page .global-business,.home-page .final-screen{min-height:calc(100vh / var(--z))}
  .ltz-chat-panel{height:min(600px,calc((100vh - 140px) / var(--z)))}
@@ -967,7 +967,7 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
  .home-page .apps-section .section-head h2{margin-bottom:6px}
  .app-strips{height:clamp(300px,calc(100vh - 380px),500px)}
 }
-@media(min-width:1800px){.app-strips{height:clamp(300px,calc(100vh / var(--z) - 380px),560px)}}
+@media(min-width:1800px) and (min-height:1050px){.app-strips{height:clamp(300px,calc(100vh / var(--z) - 380px),560px)}}
 /* strips v2: photo, title and details stacked in normal flow so long text never overlaps */
 .app-strip{display:flex;flex-direction:column;padding:22px}
 .app-strip-media,.app-strip.is-open .app-strip-media{position:relative;inset:auto;flex:1 1 auto;min-height:0;padding:6px 0 18px!important;display:flex;align-items:center;justify-content:center}
@@ -981,4 +981,43 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
  .app-strip-media{max-height:0;padding:0!important;overflow:hidden;transition:max-height .6s cubic-bezier(.65,0,.35,1)}
  .app-strip.is-open .app-strip-media{max-height:240px;padding:14px 0 4px!important}
  .app-strip.is-open .app-strip-media img{max-height:210px}
+}
+/* ===== Desktop home: shorter screens (most laptops/monitors are 650-950px tall inside the browser) ===== */
+@media(min-width:901px) and (max-height:1000px){
+ .home-page main>section:not(.hero) .eyebrow,.home-page .global-business .eyebrow,.home-page .final-screen .eyebrow{font-size:clamp(44px,8.4vh,80px)!important;margin-bottom:1.1vh!important;line-height:1.02}
+ .home-page main>section:not(.hero),.home-page .global-business,.home-page .final-screen{padding-bottom:20px!important}
+ .home-page main>section:not(.hero) h2,.home-page .global-business h2{font-size:clamp(26px,4.4vh,40px)!important}
+}
+/* ===== Global map: calm, continuous motion (no expanding ring) ===== */
+.global-business .map-wave{display:none!important}
+.global-business .export-arcs path{stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
+.global-business.is-lit .export-arcs path{animation:gm-draw 2.4s cubic-bezier(.45,0,.25,1) calc(var(--d) * .45) forwards,gm-breathe 9s ease-in-out calc(var(--d) * .45 + 2.4s) infinite!important}
+.global-business .map-dot .core{opacity:0}
+.global-business.is-lit .map-dot .core{animation:gm-fade 1.2s ease-out calc(var(--d) * .45 + 1.8s) forwards!important}
+.global-business .map-dot .flash{opacity:0;transform-box:fill-box;transform-origin:center}
+.global-business.is-lit .map-dot .flash{animation:gm-glow-in 1.6s ease-out calc(var(--d) * .45 + 1.8s) forwards,gm-glow 6s ease-in-out calc(var(--d) * .45 + 3.4s) infinite!important}
+.global-business.is-lit .map-home-flash{animation:gm-home 5s ease-in-out infinite!important;transform-box:fill-box;transform-origin:center}
+@keyframes gm-draw{0%{stroke-dashoffset:1;opacity:0}12%{opacity:.75}100%{stroke-dashoffset:0;opacity:.55}}
+@keyframes gm-breathe{0%,100%{opacity:.55}50%{opacity:.28}}
+@keyframes gm-fade{to{opacity:1}}
+@keyframes gm-glow-in{0%{opacity:0;transform:scale(.3)}60%{opacity:.75;transform:scale(1)}100%{opacity:.5;transform:scale(.8)}}
+@keyframes gm-glow{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:.18;transform:scale(1.05)}}
+@keyframes gm-home{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:.25;transform:scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.global-business .export-arcs path,.global-business .map-dot .core,.global-business .map-dot .flash{animation:none!important;opacity:.6;stroke-dashoffset:0}}
+/* ===== Footer: QR with brand-coloured social icons under it ===== */
+.footer-side{display:flex;flex-direction:column;align-items:center;gap:14px}
+.footer-side .footer-social{margin-top:0;justify-content:center}
+.footer-social .social-link{border:0;color:#fff;width:42px;height:42px;border-radius:12px}
+.footer-social .social-link[href*="youtube"]{background:#ff0000}
+.footer-social .social-link[data-social="linkedin"]{background:#0a66c2}
+.footer-social .social-link:hover{transform:translateY(-2px);filter:brightness(1.1);background-color:inherit}
+.footer-social .social-link[href*="youtube"]:hover{background:#ff0000}
+.footer-social .social-link[data-social="linkedin"]:hover{background:#0a66c2}
+@media(max-width:600px){.footer-side{align-items:flex-start}.footer-side .footer-social{justify-content:flex-start}}
+/* Clients + concerns screen on shorter displays: smaller logo tiles and tighter spacing */
+@media(min-width:901px) and (max-height:1000px){
+ .final-screen .client-logo{height:clamp(70px,11vh,140px)}
+ .final-screen .client-heading{margin-bottom:1.6vh}
+ .final-screen .need-heading{margin-top:2.4vh;margin-bottom:1.6vh}
+ .final-screen .need-grid{gap:10px}
 }

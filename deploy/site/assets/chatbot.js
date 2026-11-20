@@ -6,7 +6,7 @@
   const SUPPORTED = ['en', 'zh', 'ja', 'es', 'hi'];
   const param = new URLSearchParams(location.search).get('lang');
   const browser = (navigator.languages || [navigator.language || 'ko']).map(l => String(l).toLowerCase().slice(0, 2));
-  const lang = param || (browser[0] === 'ko' ? 'ko' : (browser.find(l => SUPPORTED.includes(l)) || 'en'));
+  const lang = param || document.documentElement.dataset.staticLang || (browser[0] === 'ko' ? 'ko' : (browser.find(l => SUPPORTED.includes(l)) || 'en'));
   const T = k => ((window.LTZ_I18N_EXTRA || {})[k] || (window.LTZ_I18N_PLACEHOLDER || {})[k] || {})[lang] || k;
 
   const fab = root.querySelector('.ltz-chat-fab');

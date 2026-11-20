@@ -479,7 +479,7 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 .why-heading{display:block}
 .why-heading h2{margin-bottom:14px}
 .why-heading .why-lead{margin:0;font-size:16px;line-height:1.7;color:#4a5057;max-width:none}
-@media(min-width:1201px){.why-heading .why-lead{white-space:nowrap}}
+@media(min-width:1201px){.why-heading .why-lead{white-space:nowrap}html:not([lang=ko]) .why-heading .why-lead{white-space:normal}}
 .why-reasons{border-top:0;padding-top:0;margin-top:34px;gap:20px!important}
 .why-reasons article{background:#f3f5f8;border:1px solid #dae1e8;border-radius:16px;padding:26px 28px 24px;transition:transform .2s,box-shadow .2s,border-color .2s}
 .why-reasons article:hover{transform:translateY(-3px);box-shadow:0 14px 30px #1f2e3b14;border-color:#c9dcae}

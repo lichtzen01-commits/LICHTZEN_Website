@@ -90,3 +90,9 @@
 
 - 단계가 끝날 때마다 테스트 사이트에 배포하고 링크와 변경 요약을 공유합니다.
 - 진행 상황은 이 문서의 표에 표시합니다.
+
+## 2026-11-20 영문 정적 페이지 · 보안 · SEO 재점검
+- `/en/…` 영문 정적 페이지 66개 (scripts/build_en.py, 번역 docs/i18n/en.json). 국문·영문 모두 hreflang ko/en/x-default, 영문 canonical·OG·JSON-LD, sitemap에 양쪽 주소와 alternate, llms.txt 영문 목록.
+- 언어 선택: 한국어↔English는 실제 페이지로 이동, 나머지 4개 언어는 기존처럼 ?lang=.
+- Cloudflare Turnstile: 채팅·문의 폼 (docs/INQUIRY_SETUP.md 5장). 사이트 키·비밀 키를 넣기 전에는 검사 없이 동작.
+- SEO 6항목 재측정: description 132/132(국문 50자 이상, 영문 160자 이하, 중복 0), JSON-LD 132/132, H1 1개(도구 포함), hreflang 132/132, canonical 전부 https, 의미 있는 주소.

@@ -1051,3 +1051,6 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 /* Header "문의하기" button: brand green on every page */
 .header-cta{background:var(--green);border:1px solid transparent;color:#121b22}
 .header-cta:hover{background:#9bcb4f}
+/* Contact page: map in the "찾아오시는 길" card */
+.side-card .side-map{margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:#e8ecf1}
+.side-card .side-map iframe{display:block;width:100%;height:100%;border:0}

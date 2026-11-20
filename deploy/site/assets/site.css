@@ -1162,3 +1162,11 @@ body.film-scrub>.film-frame{z-index:41}
 .mega-card small{font-size:12.5px;line-height:1.45;color:#66716c}
 }
 @media(min-width:901px) and (max-width:1180px){.mega-cards{gap:12px}.mega-card strong{font-size:13.5px}.mega-card small{font-size:11.5px}}
+/* Mega menu v4: softer panel and a dim layer over the page, so it reads the same over white or dark sections */
+@media(min-width:901px){
+.nav-panel.nav-mega.nav-cards{background:#f4f6f8;border-top:1px solid #e1e6eb;box-shadow:0 0 0 100vmax #0b131966,0 24px 48px #10181e33;clip-path:inset(0 -100vmax -100vmax -100vmax);animation:mega-in .22s var(--ease-out,ease)}
+.nav-cards .mega-head{border-bottom-color:#dfe4e9}
+.mega-card-img{background:#fff;border-color:#dfe4e9}
+@keyframes mega-in{from{opacity:0;box-shadow:0 0 0 100vmax #0b131900,0 24px 48px #10181e00}to{opacity:1}}
+}
+@media(prefers-reduced-motion:reduce){.nav-panel.nav-mega.nav-cards{animation:none}}

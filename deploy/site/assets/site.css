@@ -1138,3 +1138,6 @@ body.film-scrub>.film-frame.is-grown{pointer-events:auto}
 .film-stage.is-scrub .film-link{position:absolute;left:50%;top:calc(100vh - 36px);transform:translateX(-50%);opacity:1;color:#c9d2da;white-space:nowrap}
 .film-backdrop{position:fixed;inset:0;z-index:38;background:#0c151b;opacity:0;pointer-events:none}
 body.film-scrub .need-video-thumb{visibility:hidden}
+/* Film v3: grown video fills the screen at 16:9 and sits above the header */
+body.film-scrub>.film-frame{z-index:41}
+.film-backdrop{z-index:40;background:#05090c}

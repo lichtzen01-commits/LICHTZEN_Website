@@ -60,10 +60,10 @@
     const y = scrollY; const vw = document.documentElement.clientWidth;
     const p = Math.min(1, Math.max(0, (y - start) / (grown - start)));
     const e = ease(p);
-    const header = (document.querySelector('.site-header') || {}).offsetHeight || 0;
-    const bigW = Math.min(vw * 0.92, (vh - header - 56) * 16 / 9);
+    // grown size: the largest 16:9 box that fits the whole screen (it covers the header while it plays)
+    const bigW = Math.min(vw, vh * 16 / 9);
     const bigH = bigW * 9 / 16;
-    const to = {x: (vw - bigW) / 2, y: header + (vh - header - bigH) / 2, w: bigW};
+    const to = {x: (vw - bigW) / 2, y: (vh - bigH) / 2, w: bigW};
     const t = thumb.getBoundingClientRect();
     const from = {x: t.left, y: t.top, w: t.width || 128};
     let x = from.x + (to.x - from.x) * e, top = from.y + (to.y - from.y) * e;
@@ -72,7 +72,7 @@
     const s = w / bigW;
     frame.style.width = bigW + 'px';
     frame.style.transform = `translate(${x}px, ${top}px) scale(${s})`;
-    frame.style.borderRadius = (10 + 4 * e) / s + 'px';
+    frame.style.borderRadius = (10 * (1 - e)) / s + 'px';
     frame.style.setProperty('--film-inv', ((0.5 + 0.5 * e) / s).toFixed(3));
     const onScreen = top < vh && top + bigH * s > 0;
     frame.style.visibility = onScreen ? 'visible' : 'hidden';

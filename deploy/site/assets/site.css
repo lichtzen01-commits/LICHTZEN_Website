@@ -837,3 +837,7 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
 /* Phones: one card per row so titles are not squeezed into 3-4 characters a line */
 @media(max-width:480px){.why-reasons{grid-template-columns:1fr!important}.why-reasons article{padding:18px 70px 18px 20px}}
 .ltz-chat-summary~.ltz-captcha,.ltz-captcha{min-height:0}.ltz-msg .ltz-captcha{margin:10px 0 2px;width:100%}
+/* Room for the Cloudflare box (it cannot be narrower than 300px) */
+@media(min-width:601px){.ltz-chat-panel{width:400px}}
+.ltz-msg:has(.ltz-captcha){max-width:100%;align-self:stretch}
+.ltz-msg .ltz-captcha{overflow:visible}

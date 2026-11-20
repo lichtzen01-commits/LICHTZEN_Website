@@ -113,7 +113,7 @@ FOOTER_COMPANY_OLD = re.compile(r'(<div><strong>리트젠</strong>)(.*?)(</div>)
 FOOTER_COMPANY_NEW = ('<a href="/company/">회사 개요</a><a href="/company/history/">연혁</a>'
                       '<a href="/company/certifications/">품질·인증</a><a href="/company/greeting/">인사말</a>'
                       '<a href="/company/careers/">채용</a><a href="/company/location/">오시는 길</a>'
-                      '<a href="https://www.youtube.com/@LTZ-LICHTZEN" rel="noopener noreferrer" target="_blank">YouTube ↗</a>')
+                      '<a href="https://www.youtube.com/@LICHTZEN" rel="noopener noreferrer" target="_blank">YouTube ↗</a>')
 
 
 def main(root):

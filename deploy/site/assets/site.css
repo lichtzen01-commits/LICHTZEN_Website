@@ -1021,3 +1021,6 @@ html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:b
  .final-screen .need-heading{margin-top:2.4vh;margin-bottom:1.6vh}
  .final-screen .need-grid{gap:10px}
 }
+/* direct contact: label vertically centred with the phone/email (incl. their underline) */
+.final-screen .need-direct{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.final-screen .need-direct>span{line-height:1;padding-top:2px}

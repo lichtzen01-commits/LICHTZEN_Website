@@ -41,6 +41,7 @@ ORG = {
         "addressCountry": "KR",
     },
     "description": "UV·IR 광원과 UV 경화·IR/MIR 건조 시스템, UV LED 모듈을 설계·제조하는 광응용 기업",
+    "sameAs": ["https://www.youtube.com/@LICHTZEN", "https://www.linkedin.com/company/-%EC%A3%BC-%EB%A6%AC%ED%8A%B8%EC%A0%A0/"],
 }
 GENERIC_PRODUCT_TEXT = "제품의 적용 분야와 특징, 모델별 사양을 확인하고 필요한 공정 조건을 상담하세요."
 START, END = "<!--seo:start-->", "<!--seo:end-->"

@@ -20,6 +20,7 @@
   // Renders the visible Cloudflare check ("Success!") into box and returns {get, reset}.
   window.LTZCaptcha = box => {
     if (!TURNSTILE_SITEKEY || !box) return null;
+    box.classList.add('is-on');
     let token = null, id = null, waiters = [];
     const ready = loadTS().then(() => {
       const l = (document.documentElement.lang || window.LTZ_LANG || '').toLowerCase().slice(0, 2);
@@ -39,7 +40,7 @@
     if (!ENDPOINT) return {ok: false, test: true};
     try {
       const captcha = d.captcha; delete d.captcha;
-      const turnstile = captcha ? await captcha.get() : '';
+      const turnstile = d.token || (captcha ? await captcha.get() : ''); delete d.token;
       const files = await Promise.all((d.files || []).map(async f => ({name: f.name, type: f.type, data: await b64(f)})));
       const payload = Object.assign({}, d, {files, turnstile, page: location.href, lang: d.lang || window.LTZ_LANG || 'ko', browserLang: navigator.language});
       // text/plain keeps this a simple request (no CORS preflight), which Apps Script needs.
@@ -50,6 +51,6 @@
       if (!j) return {ok: false, error: /accounts\.google|ServiceLogin|signin/i.test(text) ? 'login' : (/authoriz|권한/i.test(text) ? 'auth' : 'html-' + r.status)};
       if (!j.ok && captcha) captcha.reset();
       return {ok: !!j.ok, error: j.error ? j.error + (j.detail ? ': ' + j.detail : '') : undefined};
-    } catch (e) { return {ok: false, error: 'network'}; }
+    } catch (e) { return {ok: false, error: 'network' + (e && e.message ? ': ' + e.message : '')}; }
   };
 })();

@@ -829,7 +829,7 @@ html.smooth-snap,html.smooth-snap:has(body.home-page){scroll-snap-type:none!impo
 @keyframes ltz-spin{to{transform:rotate(360deg)}}
 
 /* Cloudflare Turnstile: box stays empty unless Cloudflare asks the visitor to click */
-.ltz-captcha:empty{display:none}.ltz-captcha{margin:12px 0 4px;max-width:100%;overflow:hidden}
+.ltz-captcha:not(.is-on){display:none}.ltz-captcha{margin:12px 0 4px;max-width:100%;overflow:hidden}
 
 /* Chinese and Japanese have no spaces between words: keep-all (for Korean) would stop lines from wrapping */
 html[lang^="zh"] *,html[lang="ja"] *{word-break:normal!important;overflow-wrap:break-word}

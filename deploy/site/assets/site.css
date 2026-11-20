@@ -1181,3 +1181,13 @@ body.film-scrub>.film-frame{z-index:41}
 .mega-card strong,.mega-card small{padding:0 4px}
 .mega-cards{gap:16px}
 }
+/* Lamp configurator page: full screen, close (X) at the top right, Cloudflare check panel for requests */
+.lamp-page .lamp-frame,.lamp-page .lamp-workspace{height:100dvh!important}
+.lamp-close{position:fixed;top:14px;right:14px;z-index:50;width:44px;height:44px;border-radius:12px;background:#101f22e6;border:1px solid #ffffff40;display:grid;place-items:center;box-shadow:0 6px 18px #0006;transition:background .2s,transform .2s}
+.lamp-close:hover{background:#8bbd3e;transform:scale(1.05)}
+.lamp-close span,.lamp-close span::after{display:block;width:18px;height:2px;background:#fff;border-radius:2px;transform:rotate(45deg)}
+.lamp-close span::after{content:"";transform:rotate(90deg)}
+.lamp-close:hover span,.lamp-close:hover span::after{background:#101f22}
+.lamp-captcha{position:fixed;inset:0;z-index:60;background:#0b1319a6;display:grid;place-items:center;padding:20px}
+.lamp-captcha>div{background:#fff;border-radius:16px;padding:22px 24px;width:min(360px,100%);display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 60px #0008}
+.lamp-captcha strong{font-size:15px;color:#171c20}

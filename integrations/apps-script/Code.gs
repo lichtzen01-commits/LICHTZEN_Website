@@ -58,7 +58,7 @@ function doPost(e) {
       const files = (d.files || []).slice(0, CONFIG.MAX_FILES).map(toBlob_).filter(Boolean);
       const folder = folder_();
       const links = files.map(b => folder.createFile(b.copyBlob()).getUrl());
-      const who = d.who || [d.company, d.person].filter(Boolean).join(' / ');
+      const who = String(d.who || [d.company, d.person].filter(Boolean).join(' / ')).slice(0, 200);
 
       // 1) 문의 목록에 한 줄 추가
       const year = Utilities.formatDate(now, 'Asia/Seoul', 'yyyy');
@@ -68,8 +68,10 @@ function doPost(e) {
       // 국내/해외: 한국어 화면이 아니거나 +82가 아닌 국제번호면 해외. 시트에서 직원이 고칠 수 있고, 통계는 고친 값을 따릅니다.
       const phone = String(d.phone || '').replace(/\s/g, '');
       const region = (d.lang && d.lang !== 'ko') || (/^\+/.test(phone) && !/^\+82/.test(phone)) ? '해외' : '국내';
-      sheet.appendRow([no, stamp, STATUS[0], region, d.source || '', category, d.topic || '', who, email, d.phone || '', d.product || '',
-        LANG_NAME[d.lang] || d.lang || '한국어', message, links.join('\n'), d.page || '', '', '']);
+      // 고객이 입력한 글은 '='·'+'·'-'·'@'로 시작해도 시트에서 수식으로 실행되지 않게 앞에 '를 붙입니다.
+      const cell = (v, max) => { const t = String(v || '').slice(0, max || 300); return /^[=+\-@\t\r]/.test(t) ? "'" + t : t; };
+      sheet.appendRow([no, stamp, STATUS[0], region, cell(d.source, 80), category, cell(d.topic, 120), cell(who, 200), cell(email, 254), cell(d.phone, 40), cell(d.product, 200),
+        LANG_NAME[d.lang] || cell(d.lang, 10) || '한국어', cell(message, 8000), links.join('\n'), cell(d.page, 300), '', '']);
       try { stats_(sheet.getParent()); } catch (err) { console.error('stats', err); }
       SpreadsheetApp.flush();
       const total = sheet.getLastRow() - 1;

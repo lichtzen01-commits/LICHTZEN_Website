@@ -43,6 +43,54 @@ def rebase(out, base):
             open(path, "w", encoding="utf-8").write(new)
 
 
+# Content Security Policy for the published pages. GitHub Pages cannot send response headers, so the policy
+# goes in a <meta> tag. It runs after rebase() because rebase rewrites paths inside inline scripts, and the
+# policy allows each page's inline scripts by their SHA-256 hash instead of 'unsafe-inline'.
+# frame-ancestors (clickjacking) only works as a header: add it at Cloudflare or the host after the domain move.
+CSP_SOURCES = {
+    "default-src": "'self'",
+    "script-src": "'self' https://challenges.cloudflare.com",
+    "style-src": "'self' 'unsafe-inline'",
+    "img-src": "'self' data: blob: https://i.ytimg.com",
+    "font-src": "'self' data:",
+    "media-src": "'self' blob:",
+    "connect-src": "'self' https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com",
+    "frame-src": "'self' https://www.youtube-nocookie.com https://www.youtube.com https://maps.google.com https://www.google.com https://challenges.cloudflare.com",
+    "worker-src": "'self' blob:",
+    "object-src": "'none'",
+    "base-uri": "'self'",
+    "form-action": "'self'",
+}
+
+
+def add_security_meta(out):
+    import hashlib
+    count = 0
+    for path in glob.glob(os.path.join(out, "**", "*.html"), recursive=True):
+        rel = os.path.relpath(path, out).replace(os.sep, "/")
+        if rel.startswith(("tools/", "test/")):          # the sandboxed lamp tool and the sales test bundle keep their own rules
+            continue
+        text = open(path, encoding="utf-8").read()
+        if 'http-equiv="Content-Security-Policy"' in text or "<head>" not in text:
+            continue
+        hashes = []
+        for attrs, body in re.findall(r"<script([^>]*)>(.*?)</script>", text, re.S):
+            if "src=" in attrs or "application/ld+json" in attrs or "application/json" in attrs or not body.strip():
+                continue
+            digest = base64.b64encode(hashlib.sha256(body.encode("utf-8")).digest()).decode()
+            hashes.append(f"'sha256-{digest}'")
+        rules = dict(CSP_SOURCES)
+        if hashes:
+            rules["script-src"] += " " + " ".join(sorted(set(hashes)))
+        policy = "; ".join(f"{k} {v}" for k, v in rules.items()) + "; upgrade-insecure-requests"
+        tags = (f'<meta http-equiv="Content-Security-Policy" content="{policy}"/>'
+                '<meta name="referrer" content="strict-origin-when-cross-origin"/>')
+        text = re.sub(r"(<head>(?:<meta charset=\"utf-8\"/>)?)", lambda m: m.group(1) + tags, text, count=1)
+        open(path, "w", encoding="utf-8").write(text)
+        count += 1
+    return count
+
+
 def main(bundle, out, base=""):
     base = base.rstrip("/")
     src = open(bundle, encoding="utf-8").read()

@@ -38,7 +38,7 @@ jobs:
           SITE_BASE: /${{ github.event.repository.name }}
         run: |
           cp -r deploy/site _site
-          python3 -c "import sys; sys.path.insert(0, 'scripts'); import build_static_site as b; b.rebase('_site', '$SITE_BASE')"
+          python3 -c "import sys; sys.path.insert(0, 'scripts'); import build_static_site as b; b.rebase('_site', '$SITE_BASE'); print('CSP added to', b.add_security_meta('_site'), 'pages')"
           cp -r deploy/bundle _site/test
           touch _site/.nojekyll
 

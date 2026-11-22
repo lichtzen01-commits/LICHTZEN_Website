@@ -41,7 +41,7 @@ ORG = {
         "addressCountry": "KR",
     },
     "description": "UV·IR 광원과 UV 경화·IR/MIR 건조 시스템, UV LED 모듈을 설계·제조하는 광응용 기업",
-    "sameAs": ["https://www.youtube.com/@LICHTZEN", "https://www.linkedin.com/company/-%EC%A3%BC-%EB%A6%AC%ED%8A%B8%EC%A0%A0/"],
+    "sameAs": ["https://www.youtube.com/@LICHTZEN", "https://www.komachine.com/companies/lichtzen", "https://www.linkedin.com/company/-%EC%A3%BC-%EB%A6%AC%ED%8A%B8%EC%A0%A0/"],
 }
 GENERIC_PRODUCT_TEXT = "제품의 적용 분야와 특징, 모델별 사양을 확인하고 필요한 공정 조건을 상담하세요."
 START, END = "<!--seo:start-->", "<!--seo:end-->"
@@ -82,7 +82,7 @@ def first_image(h):
     return SITE + m.group(1) if m else ORG["logo"]
 
 
-def head_block(url, title, desc, h1, h, is_product, category):
+def head_block(url, title, desc, h1, h, is_product, category, published=""):
     canonical = SITE + url
     image = first_image(h)
     graph = [ORG, {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "리트젠 LICHTZEN",
@@ -99,6 +99,11 @@ def head_block(url, title, desc, h1, h, is_product, category):
         graph.append({"@type": "Product", "@id": canonical + "#product", "name": h1, "description": desc, "image": image,
                       "category": category, "brand": {"@type": "Brand", "name": "LICHTZEN"},
                       "manufacturer": {"@id": ORG["@id"]}, "url": canonical})
+    if published:   # news posts: the date comes from the old board (docs/seo/pages.json)
+        graph.append({"@type": "NewsArticle", "@id": canonical + "#article", "headline": h1[:110], "description": desc,
+                      "image": image, "datePublished": published, "dateModified": published, "inLanguage": "ko-KR",
+                      "author": {"@id": ORG["@id"]}, "publisher": {"@id": ORG["@id"]},
+                      "mainEntityOfPage": {"@id": canonical + "#webpage"}})
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))
     e = lambda s: html.escape(s, quote=True)
     og_type = "product" if is_product else ("website" if url == "/" else "article" if url.startswith("/news/") else "website")
@@ -158,7 +163,7 @@ def main(root, config):
         h1 = text(h1m.group(1)) if h1m else title
         is_product = url.startswith("/products/") and url != "/products/"
         cat = re.search(r"<dt>제품군</dt><dd>(.*?)</dd>", h)
-        h = h.replace("</head>", head_block(url, title, desc, h1, h, is_product, text(cat.group(1)) if cat else "") + "</head>", 1)
+        h = h.replace("</head>", head_block(url, title, desc, h1, h, is_product, text(cat.group(1)) if cat else "", over.get("datePublished", "")) + "</head>", 1)
         h = add_image_sizes(root, h)
         open(path, "w", encoding="utf-8").write(h)
         sitemap.append(f"<url><loc>{SITE}{url}</loc><lastmod>{today}</lastmod></url>")

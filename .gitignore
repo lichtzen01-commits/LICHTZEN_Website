@@ -1,1 +1,5 @@
 deploy/*.zip
+
+# Python cache files are created when the build scripts run
+__pycache__/
+*.pyc

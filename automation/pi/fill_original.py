@@ -122,7 +122,7 @@ s1.set("B12", INV_DATE.isoformat())        # written as text so it reads 2026-06
 s1.set("B13", PO_NO)
 s1.set("B14", PO_DATE)
 remarks_old = re.search(r'<c r="B17"[^>]*>.*?</c>', s1.x, re.S).group(0)
-REMARKS = ('\n* When making wire transfers, select the "OUR" option to cover your national banking fees. Ensure the exact '
+REMARKS = ('* When making wire transfers, select the "OUR" option to cover your national banking fees. Ensure the exact '
            'amount is transferred directly to us to prevent additional charges on your next invoice in case of non-compliance.\n'
            '* WARRANTY : 1 YEAR' + ('\n\n' + NC_NOTE if NC_NOTE else ''))
 s1.set("B17", REMARKS)

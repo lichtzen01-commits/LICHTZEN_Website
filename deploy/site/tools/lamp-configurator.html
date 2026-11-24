@@ -809,6 +809,9 @@ body.component-active #inlineDims:has(.terminal-reference-hint) #inlineDimsField
 @media(max-width:600px){.lead-construction-hint{font-size:11px;padding:6px 9px}}
 
 #sampleAgreementWrap{display:block}#signedSamplePreview[hidden]{display:none!important}
+
+/* Inside the website the page X sits at the top right; keep dialogs below it on phones so their own close buttons stay tappable. */
+@media (max-width:760px){html.ltz-site .quote-modal,html.ltz-site .agreement-modal,html.ltz-site .modal{padding-top:72px!important;align-items:flex-start!important}html.ltz-site .quote-modal>*,html.ltz-site .agreement-modal>*,html.ltz-site .modal>*{max-height:calc(100vh - 88px)!important;max-height:calc(100dvh - 88px)!important;overflow-y:auto}}
 </style>
 <style id="unified-brand-logo">nav .brand-logo img{width:116px!important;height:auto!important;max-height:54px!important;object-fit:contain!important;display:block}#v28CustomerStart .v29-brand img{height:auto!important;object-fit:contain!important}</style><style>#v28CustomerStart{display:none!important}html.ltz-site body>nav{padding-right:72px!important}@media(max-width:600px){html.ltz-site body>nav{padding-right:60px!important}html.ltz-site body>nav .brand-logo img{width:78px!important;height:auto!important}html.ltz-site body>nav .brand-logo{flex:none}}</style><script>if(/[?&]lang=/.test(location.search))document.documentElement.classList.add("ltz-site")</script></head>
 <body>

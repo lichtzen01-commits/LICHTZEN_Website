@@ -1232,3 +1232,7 @@ body.film-scrub>.film-frame{z-index:41}
 /* An open dropdown sits on a solid header: the film behind the menu bar is hidden while it is open. */
 html.mega-open .home-page .site-header,html.mega-open .home .site-header,.home-page .site-header:has(.nav-group:focus-within),.home .site-header:has(.nav-group:focus-within){background:#0d1b20;backdrop-filter:none;transition:none}
 html.mega-open .nav-panel.nav-mega.nav-cards{box-shadow:0 0 0 100vmax #0b1319d9,0 24px 48px #10181e33}
+
+/* Small English labels above headings, the finder's help line and its empty-state line are not shown. */
+.eyebrow,.filter-help{display:none!important}
+.filter-summary[hidden]{display:none!important}

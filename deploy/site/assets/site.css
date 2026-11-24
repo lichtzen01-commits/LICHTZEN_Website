@@ -1236,3 +1236,17 @@ html.mega-open .nav-panel.nav-mega.nav-cards{box-shadow:0 0 0 100vmax #0b1319d9,
 /* Small English labels above headings, the finder's help line and its empty-state line are not shown. */
 .eyebrow,.filter-help{display:none!important}
 .filter-summary[hidden]{display:none!important}
+
+/* Product finder and product cards: larger, darker text so the descriptions read easily. */
+.filter-row legend,.filter-label{font-size:14px;font-weight:700;color:#1b232a}
+.chip{font-size:14px;color:#2c363f;border-color:#c9d1da}
+.filter-option span{font-size:14px;color:#2c363f;border-color:#c9d1da}
+.filter-option span:before{color:#6b7682}
+.result-count{font-size:15px;color:#2c363f}
+.product-card .card-body small{font-size:13px;font-weight:600;letter-spacing:.02em;color:#4d7a1e}
+.product-card .card-body h3{font-size:21px;color:#141a1f}
+.product-card .card-body p{font-size:15px;line-height:1.7;color:#3a444d;max-height:none;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.product-card .inline-link{font-size:14px;color:#1b232a}
+@media(max-width:700px){.filter-row legend,.filter-label{font-size:13px}.chip,.filter-option span{font-size:13px}.product-card .card-body p{font-size:14px}.product-card .card-body h3{font-size:19px}}
+.product-card .card-body .inline-link{font-size:14px;color:#1b232a}
+.catalog-search-head .searchbox input{font-size:15px}

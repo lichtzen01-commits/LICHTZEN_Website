@@ -1250,3 +1250,10 @@ html.mega-open .nav-panel.nav-mega.nav-cards{box-shadow:0 0 0 100vmax #0b1319d9,
 @media(max-width:700px){.filter-row legend,.filter-label{font-size:13px}.chip,.filter-option span{font-size:13px}.product-card .card-body p{font-size:14px}.product-card .card-body h3{font-size:19px}}
 .product-card .card-body .inline-link{font-size:14px;color:#1b232a}
 .catalog-search-head .searchbox input{font-size:15px}
+/* Picked conditions: a clear green state, readable chips and reset. */
+.filter-option input:checked+span{border-color:#5f8f24;background:#eef6e3;color:#24400a;font-weight:600}
+.filter-option input:checked+span:before{color:#4d7a1e}
+.selected-filter{background:#1b232a;color:#fff;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer}
+.selected-filter:hover{background:#35424d}
+.filter-reset{font-size:14px;font-weight:600;color:#1b232a;padding:8px 2px;text-decoration:underline;text-underline-offset:4px}
+.filter-reset:hover{color:#4d7a1e}

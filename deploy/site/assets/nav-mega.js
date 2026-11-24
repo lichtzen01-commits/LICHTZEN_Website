@@ -25,7 +25,19 @@
   document.documentElement.classList.add('mega-js');
   const groups = [...nav.querySelectorAll('.nav-group')];
   let timer = 0;
-  const close = g => g.classList.remove('is-hover');
+  // While a menu is open the header turns solid and the first-screen film holds still,
+  // so nothing moves behind or around the dropdown; the film continues when the menu closes.
+  const film = document.querySelector('video.hero-video');
+  let resume = false;
+  const sync = () => {
+    const open = groups.some(x => x.classList.contains('is-hover'));
+    if (open === document.documentElement.classList.contains('mega-open')) return;
+    document.documentElement.classList.toggle('mega-open', open);
+    if (!film) return;
+    if (open) { resume = !film.paused; if (resume) film.pause(); }
+    else if (resume) { resume = false; film.play().catch(() => {}); }
+  };
+  const close = g => { g.classList.remove('is-hover'); sync(); };
   groups.forEach(g => {
     g.addEventListener('mouseenter', () => {
       clearTimeout(timer);
@@ -33,6 +45,7 @@
       nav.classList.toggle('is-switching', other);
       groups.forEach(x => { if (x !== g) close(x); });
       g.classList.add('is-hover');
+      sync();
     });
   });
   // stay open anywhere on the menu bar (also in the gaps between items); close shortly after leaving it

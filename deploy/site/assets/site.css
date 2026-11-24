@@ -1228,3 +1228,7 @@ body.film-scrub>.film-frame{z-index:41}
  .table-scroll table:not(:has(tr>:nth-child(3))) td,.table-scroll table:not(:has(tr>:nth-child(3))) th{white-space:normal;overflow-wrap:anywhere}
  .table-scroll:has(table tr>:nth-child(3)){-webkit-mask-image:linear-gradient(90deg,#000 88%,#0004);mask-image:linear-gradient(90deg,#000 88%,#0004)}
 }
+
+/* An open dropdown sits on a solid header: the film behind the menu bar is hidden while it is open. */
+html.mega-open .site-header,.site-header:has(.nav-group:focus-within){background:#0d1b20;backdrop-filter:none;transition:none}
+html.mega-open .nav-panel.nav-mega.nav-cards{box-shadow:0 0 0 100vmax #0b1319d9,0 24px 48px #10181e33}

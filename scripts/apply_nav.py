@@ -67,10 +67,10 @@ IMAGES = {
  "/products/?category=uvc": "/assets/optimized/5ef1a6a7eb47.webp",
  "/products/?category=components": "/assets/optimized/26a8372c9a06.webp",
  "/conveyors/": "/assets/optimized/be08f86da32c.webp",
- "/lamp/": "/assets/optimized/80ace7326584.webp",
+ "/lamp/": "/assets/optimized/80ace7326584-main.webp",
  "/selection-guide/": "/assets/optimized/a23e62ee0e74.webp",
  "/solutions/": "/assets/legacy/d103cbec0791.webp",
- "/solutions/film/": "/assets/optimized/6630029cc0f6.webp",
+ "/solutions/film/": "/assets/optimized/6630029cc0f6-main.webp",
  "/solutions/pcb-printing/": "/assets/optimized/a23e62ee0e74.webp",
  "/solutions/bonding/": "/assets/optimized/a68c5ad53dfe.webp",
  "/solutions/ir-drying/": "/assets/media/ir-drying-oven.webp",
@@ -78,7 +78,7 @@ IMAGES = {
  "/technology/#uv-lamp": "/assets/optimized/4ead903d2b00.webp",
  "/technology/#uv-led": "/assets/optimized/86a255b9898c.webp",
  "/technology/#ir": "/assets/media/mir-700.webp",
- "/technology/#compare": "/assets/optimized/80ace7326584.webp",
+ "/technology/#compare": "/assets/optimized/80ace7326584-main.webp",
  "/company/": "/assets/optimized/c0d798d248f8.webp",
  "/company/history/": "/assets/optimized/4ead903d2b00.webp",
  "/company/certifications/": "/assets/legacy/6e7e5d0cf7dc.webp",
@@ -87,7 +87,7 @@ IMAGES = {
  "/support/": "/assets/optimized/a23e62ee0e74.webp",
  "/resources/": "/assets/optimized/news-uvc-brochures.webp",
  "/support/lamp-as/": "/assets/optimized/4ead903d2b00.webp",
- "/support/#faq": "/assets/optimized/80ace7326584.webp",
+ "/support/#faq": "/assets/optimized/80ace7326584-main.webp",
  "/contact/?product=자료요청": "/assets/optimized/26a8372c9a06.webp"
 }
 GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": "/assets/optimized/4ead903d2b00.webp"}

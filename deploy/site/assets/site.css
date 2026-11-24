@@ -1257,3 +1257,8 @@ html.mega-open .nav-panel.nav-mega.nav-cards{box-shadow:0 0 0 100vmax #0b1319d9,
 .selected-filter:hover{background:#35424d}
 .filter-reset{font-size:14px;font-weight:600;color:#1b232a;padding:8px 2px;text-decoration:underline;text-underline-offset:4px}
 .filter-reset:hover{color:#4d7a1e}
+/* Applications: larger equipment photos (no caption line) and readable text. */
+.application-card .application-photo img{height:380px;padding:14px;object-fit:contain}
+.application-copy p,.application-copy ul{font-size:15px;color:#3a444d}
+.application-copy>.inline-link{font-size:14px}
+@media(max-width:700px){.application-card .application-photo img{height:260px;padding:10px}.application-copy p,.application-copy ul{font-size:14px}}

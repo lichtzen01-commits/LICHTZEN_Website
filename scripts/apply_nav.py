@@ -118,7 +118,7 @@ def desktop(url):
             f'<strong>{t}</strong><small>{d}</small></a>' for t, h, d in sub)
         parts.append(f'<div class="nav-group">{link}<button aria-expanded="false" aria-label="{label} 하위 메뉴" '
                      f'class="nav-expand" type="button">{CHEVRON}</button><div class="nav-panel nav-mega nav-cards">'
-                     f'<div class="mega-head"><strong>{label}</strong><a href="{html.escape(href)}">{label} 전체 보기 →</a></div>'
+                     f'<div class="mega-head"><strong>{label}</strong></div>'
                      f'<div class="mega-cards">{cards}</div></div></div>')
     return '<nav aria-label="주 메뉴" class="desktop-nav">' + "".join(parts) + "</nav>"
 

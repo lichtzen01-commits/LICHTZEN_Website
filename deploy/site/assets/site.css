@@ -1276,3 +1276,7 @@ html body .legacy-content .wp-block-table{overflow-x:auto;-webkit-overflow-scrol
 html body .legacy-content td{word-break:keep-all;overflow-wrap:normal}
 html body .legacy-content td:not(:first-child){white-space:nowrap}
 }
+/* Client logos: square tiles, logo centred inside */
+html body .final-clients .client-logo{width:170px!important;height:170px!important;flex:0 0 170px!important;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box}
+html body .final-clients .client-logo img{max-width:100%!important;max-height:100%!important;width:auto;height:auto;object-fit:contain}
+@media(max-width:700px){html body .final-clients .client-logo{width:120px!important;height:120px!important;flex-basis:120px!important;padding:12px}}

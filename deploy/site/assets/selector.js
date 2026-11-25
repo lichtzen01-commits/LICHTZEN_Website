@@ -27,7 +27,7 @@
     return b ? b.querySelector('strong').textContent.trim() : '';
   }
 
-  function render() {
+  let render = function () {
     const simple = state.p === 'clean' || state.p === 'replace';
     root.querySelectorAll('[data-group="m"],[data-group="l"]').forEach(f => { f.hidden = simple; });
     if (simple) { state.m = ''; state.l = ''; }
@@ -55,7 +55,7 @@
     if (lang) q.set('lang', lang);
     const base = go.getAttribute('href').split('?')[0];
     go.setAttribute('href', base + '?' + q.toString());
-  }
+  };
 
   // phones: the list sits below the questions, so offer a jump to it
   const float = root.querySelector('[data-sel-float]');
@@ -76,6 +76,19 @@
   }));
   reset.addEventListener('click', () => { Object.keys(state).forEach(k => { state[k] = ''; }); render(); syncFloat(); });
   root.querySelectorAll('.sel-check input').forEach(i => i.addEventListener('change', render));
+
+  // desktop: keep the question panel vertically centred in the space below the header
+  const panel = root.querySelector('.sel-panel');
+  const centre = () => {
+    if (!matchMedia('(min-width:901px)').matches) { panel.style.top = ''; return; }
+    const head = (document.querySelector('.site-header') || {offsetHeight: 80}).offsetHeight;
+    const free = innerHeight - head - panel.offsetHeight;
+    panel.style.top = (head + Math.max(12, free / 2)) + 'px';
+  };
+  addEventListener('resize', centre);
+  root.querySelectorAll('.sel-more').forEach(d => d.addEventListener('toggle', centre));
+  const _render = render;
+  render = function () { _render(); centre(); };
 
   // ?category=… from older links maps to a purpose
   const old = new URLSearchParams(window.LTZ_PORTABLE_SEARCH || location.search).get('purpose');

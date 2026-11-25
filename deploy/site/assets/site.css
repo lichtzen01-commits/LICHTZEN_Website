@@ -1588,3 +1588,4 @@ html body .contact-form.wizard{max-width:1200px;width:100%;margin-left:auto;marg
 }
 @media(min-width:901px) and (max-width:1279px){.sel-layout .sel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sel-section>.sel-layout{padding-left:20px;padding-right:88px}}
 @media(min-width:901px){.sel-layout .sel-card .card-image{aspect-ratio:750/386;background:#f3f5f8}.sel-layout .sel-card .card-image img{object-fit:cover;border-radius:0}}
+@media(min-width:901px){.sel-layout{align-items:start}.sel-panel{transition:top .2s ease}}

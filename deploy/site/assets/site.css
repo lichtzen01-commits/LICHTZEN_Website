@@ -1276,7 +1276,10 @@ html body .legacy-content .wp-block-table{overflow-x:auto;-webkit-overflow-scrol
 html body .legacy-content td{word-break:keep-all;overflow-wrap:normal}
 html body .legacy-content td:not(:first-child){white-space:nowrap}
 }
-/* Client logos: square tiles, logo centred inside */
-html body .final-clients .client-logo{width:170px!important;height:170px!important;flex:0 0 170px!important;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box}
-html body .final-clients .client-logo img{max-width:100%!important;max-height:100%!important;width:auto;height:auto;object-fit:contain}
-@media(max-width:700px){html body .final-clients .client-logo{width:120px!important;height:120px!important;flex-basis:120px!important;padding:12px}}
+/* Client logos: square tiles; each mark is sized to the same visual weight (width set per logo as --lw) */
+html body .final-clients .client-logo{width:170px!important;height:170px!important;flex:0 0 170px!important;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;box-sizing:border-box}
+html body .final-clients .client-logo img{width:calc(var(--lw,120) * 1px)!important;max-width:none!important;max-height:none!important;height:auto!important;object-fit:contain}
+html body.home-page .final-screen .final-clients{padding-top:44px!important;margin-bottom:0}
+@media(max-width:700px){html body .final-clients .client-logo{width:120px!important;height:120px!important;flex-basis:120px!important}
+html body .final-clients .client-logo img{width:calc(var(--lw,120) * .7px)!important}
+html body .final-clients{padding-bottom:12px!important}}

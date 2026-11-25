@@ -1574,3 +1574,8 @@ html body .contact-form.wizard{max-width:1200px;width:100%;margin-left:auto;marg
 .sel-float{display:none}
 @media(max-width:900px){.sel-float:not([hidden]){display:inline-flex;position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom));z-index:40;align-items:center;gap:10px;font:inherit;font-size:15px;font-weight:600;background:#4d7a1e;color:#fff;border:0;border-radius:999px;padding:13px 20px 13px 22px;box-shadow:0 8px 24px #1a283340;cursor:pointer;animation:selIn .2s ease both}.sel-float strong{background:#fff;color:#4d7a1e;border-radius:999px;min-width:28px;padding:2px 8px;font-size:14px;text-align:center}}
 @media(max-width:900px){.sel-float:not([hidden]){left:16px;right:auto;transform:none;white-space:nowrap;max-width:calc(100% - 104px)}.sel-float span{overflow:hidden;text-overflow:ellipsis}}
+/* Selection guide: panel on the right, 4 products per row */
+@media(min-width:901px){.sel-layout{grid-template-columns:1fr minmax(290px,340px);gap:28px}.sel-panel{order:2}.sel-results{order:1;min-width:0}.sel-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.sel-panel{padding:22px}.sel-big{padding:12px 10px}}
+@media(min-width:901px) and (max-width:1279px){.sel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.sel-layout .sel-card p{line-height:1.6!important;max-height:3.2em;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding:0!important;box-sizing:content-box;min-height:0!important}
+.sel-card .card-image img{padding:8px}

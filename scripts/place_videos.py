@@ -83,16 +83,7 @@ CONVEYOR = {  # conveyor card code → Ohsung Unicon video
     "CSL": "35-3sQHoGSU", "CA": "KEbSB21nANA", "CRO": "87jXsP5jJ98", "CX": "M1SLVlivKc8", "CME": "fXcQurk4gLQ",
     "CTO": "mwkEMrhnxFo", "CRD": "j0lkVoI5-l4",
 }
-CLIPS = {  # self-hosted short looping clips (muted, play while on screen): page: (file, caption)
-    "products/oled-amoled-uv-system/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
-    "products/display-printing-uv/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
-    "products/camera-module-bonding/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
-    "solutions/bonding/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
-    "products/linear-uv-led/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
-    "products/pcb-print-coating/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
-    "products/double-sided-pcb-uv/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
-    "solutions/pcb-printing/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
-}
+CLIPS = {}  # page: (file, caption) for short self-hosted loop clips; none placed now
 
 
 def clip_block(name, caption):

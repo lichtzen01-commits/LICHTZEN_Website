@@ -1565,5 +1565,11 @@
 "램프 종류·출력·길이와 냉각·전원 조건": "Lamp type, power, length, cooling and power supply",
 "소재·목표 온도에 맞춘 광원과 설비": "Sources and equipment for your material and target temperature",
 "스팟·선형·면형과 파장·냉각 조건": "Spot, line and area types, wavelength and cooling",
-"공정에 맞춘 광원 솔루션": "Light source solutions matched to your process"
+"공정에 맞춘 광원 솔루션": "Light source solutions matched to your process",
+"UV 램프와 UV LED 중 어떤 광원을 선택해야 하나요?": "Should I choose a UV lamp or UV LED?",
+"잉크·접착제·코팅제의 경화 파장, 소재의 열 민감도, 생산 속도와 조사 면적에 따라 달라집니다. 사용 중인 재료와 공정 조건을 알려주시면 두 방식을 비교해 맞는 광원을 제안합니다.": "It depends on the curing wavelength of your ink, adhesive or coating, how heat-sensitive the material is, line speed and the area to cure. Tell us your materials and process conditions and we will compare both and suggest the right source.",
+"샘플로 경화·건조 테스트를 먼저 해볼 수 있나요?": "Can you test curing or drying on our samples first?",
+"소재 샘플과 원하는 결과(경화 정도, 표면 상태, 온도 조건)를 알려주시면 테스트 가능 여부와 진행 방법을 검토해 안내합니다.": "Send us your material samples and the result you need (degree of cure, surface finish, temperature limits). We will check whether a test is possible and explain how it would run.",
+"기존 생산 라인에 설치할 수 있나요?": "Can the equipment be added to our existing line?",
+"컨베이어 폭과 이송 속도, 설치 공간, 전원·냉각 조건, 현장 사진을 알려주시면 기존 라인에 맞춰 장착할 수 있는 구성을 검토합니다.": "Share the conveyor width and speed, the space available, power and cooling conditions and photos of the site. We will review a configuration that fits your current line."
 }

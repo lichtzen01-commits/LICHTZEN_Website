@@ -20,7 +20,8 @@
     box.setAttribute('aria-label', label || 'video');
     box.innerHTML = `<button class="yt-modal-close" type="button" aria-label="${({ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',hi:'बंद करें',es:'Cerrar'})[lang] || 'Close'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="yt-modal-stage"></div>`;
     const f = document.createElement('iframe');
-    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1&hl=${lang}`;
+    const cc = lang !== 'ko' ? `&cc_load_policy=1&cc_lang_pref=${lang === 'zh' ? 'zh-Hans' : lang}` : '';
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1&hl=${lang}${cc}`;
     f.title = label || 'video';
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;

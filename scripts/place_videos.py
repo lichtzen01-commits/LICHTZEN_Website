@@ -94,7 +94,7 @@ def clip_block(name, caption):
 
 
 PLAY = '<span aria-hidden="true" class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>'
-SCRIPT = '<script defer src="/assets/yt-lite.js?v=20261125d"></script>'
+SCRIPT = '<script defer src="/assets/yt-lite.js?v=20261125e"></script>'
 
 
 def card(vid, caption, short=False):

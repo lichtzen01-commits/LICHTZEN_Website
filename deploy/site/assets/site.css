@@ -1404,3 +1404,10 @@ a[href$="category=components"] .mega-card-img::after{background:var(--l-part)}
 .unified-contact{background:linear-gradient(120deg,#0f1d23 0%,#13262c 55%,#1d3a1f 100%)}
 .unified-contact .button{background:#71aa35;color:#0f1d23}
 .yt-btn{background:#71aa35}
+/* Short looping process clips */
+.clip-section{padding:48px 0 0}
+.loop-clip{margin:0;max-width:960px}
+.loop-clip video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;background:#0d1b20;box-shadow:0 14px 36px #0d1b2026}
+.loop-clip figcaption{margin-top:10px;font-size:14px;font-weight:600;color:#3a444d}
+.loop-clip figcaption::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#71aa35;margin-right:8px;vertical-align:1px}
+@media(max-width:700px){.clip-section{padding-top:32px}.loop-clip video{border-radius:14px}}

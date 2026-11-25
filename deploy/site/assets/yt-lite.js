@@ -39,4 +39,14 @@
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   document.addEventListener('fullscreenchange', () => { if (box && !document.fullscreenElement) close(); });
+
+  // Short process clips: play only while on screen (muted loop), never for reduced motion.
+  const clips = document.querySelectorAll('video[data-loop-clip]');
+  if (clips.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      const v = en.target;
+      if (en.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+    }), {threshold: 0.35});
+    clips.forEach(v => io.observe(v));
+  }
 })();

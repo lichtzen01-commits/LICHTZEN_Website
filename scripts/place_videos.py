@@ -83,8 +83,27 @@ CONVEYOR = {  # conveyor card code → Ohsung Unicon video
     "CSL": "35-3sQHoGSU", "CA": "KEbSB21nANA", "CRO": "87jXsP5jJ98", "CX": "M1SLVlivKc8", "CME": "fXcQurk4gLQ",
     "CTO": "mwkEMrhnxFo", "CRD": "j0lkVoI5-l4",
 }
+CLIPS = {  # self-hosted short looping clips (muted, play while on screen): page: (file, caption)
+    "products/oled-amoled-uv-system/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
+    "products/display-printing-uv/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
+    "products/camera-module-bonding/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
+    "solutions/bonding/index.html": ("clip-display-uv", "디스플레이 패널 UV LED 경화 공정"),
+    "products/linear-uv-led/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
+    "products/pcb-print-coating/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
+    "products/double-sided-pcb-uv/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
+    "solutions/pcb-printing/index.html": ("clip-pcb-uvled", "PCB 라인형 UV LED 경화 공정"),
+}
+
+
+def clip_block(name, caption):
+    c = html.escape(caption)
+    return (f'<!--clip:start--><section class="clip-section"><div class="container"><figure class="loop-clip">'
+            f'<video aria-label="{c}" data-loop-clip="" loop="" muted="" playsinline="" poster="/assets/media/{name}.webp" preload="none">'
+            f'<source src="/assets/media/{name}.mp4" type="video/mp4"/></video><figcaption>{c}</figcaption></figure></div></section><!--clip:end-->')
+
+
 PLAY = '<span aria-hidden="true" class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>'
-SCRIPT = '<script defer src="/assets/yt-lite.js?v=20261125c"></script>'
+SCRIPT = '<script defer src="/assets/yt-lite.js?v=20261125d"></script>'
 
 
 def card(vid, caption, short=False):
@@ -122,6 +141,13 @@ def main():
         s = re.sub(r"<!--videos:start-->.*?<!--videos:end-->", "", s, flags=re.S)
         s = s.replace("</main>", block(title, ids, shorts, ch) + "</main>", 1)
         open(p, "w", encoding="utf-8").write(ensure_script(s)); n += 1
+    for page, (name, cap) in CLIPS.items():
+        p = os.path.join(ROOT, page)
+        t = open(p, encoding="utf-8").read()
+        t = re.sub(r"<!--clip:start-->.*?<!--clip:end-->", "", t, flags=re.S)
+        anchor = "<!--videos:start-->" if "<!--videos:start-->" in t else "</main>"
+        t = t.replace(anchor, clip_block(name, cap) + anchor, 1)
+        open(p, "w", encoding="utf-8").write(ensure_script(t))
     # conveyor cards: a play button over the card photo
     p = os.path.join(ROOT, "conveyors/index.html")
     s = open(p, encoding="utf-8").read()

@@ -1351,3 +1351,56 @@ html body .final-clients{padding-bottom:12px!important}}
 .yt-modal-close svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round}
 html.yt-open,html.yt-open body{overflow:hidden}
 .yt-modal:fullscreen{padding:56px 16px 16px;background:#000}
+
+/* ===== Light-source colours: UV violet, LED green, IR orange, UV-C teal, parts slate ===== */
+:root{--l-uv:#6c5ce7;--l-uv-t:#5a4bd0;--l-uv-s:#f0eefd;--l-led:#71aa35;--l-led-t:#4d7a1e;--l-led-s:#eef6e3;--l-ir:#e8912d;--l-ir-t:#b4600c;--l-ir-s:#fdf1e3;--l-uvc:#14a3ac;--l-uvc-t:#0d7c84;--l-uvc-s:#e3f6f7;--l-part:#5b7083;--l-part-t:#475a6b;--l-part-s:#edf1f4}
+[data-light=uv]{--lc:var(--l-uv);--lt:var(--l-uv-t);--ls:var(--l-uv-s)}
+[data-light=led]{--lc:var(--l-led);--lt:var(--l-led-t);--ls:var(--l-led-s)}
+[data-light=ir]{--lc:var(--l-ir);--lt:var(--l-ir-t);--ls:var(--l-ir-s)}
+[data-light=uvc]{--lc:var(--l-uvc);--lt:var(--l-uvc-t);--ls:var(--l-uvc-s)}
+[data-light=part]{--lc:var(--l-part);--lt:var(--l-part-t);--ls:var(--l-part-s)}
+.light-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1;padding:5px 9px;border-radius:999px;color:var(--lt);background:var(--ls);margin:0 8px 8px 0;vertical-align:middle}
+.product-card[data-light]{border-top:4px solid var(--lc);transition:border-color .2s,box-shadow .2s,transform .2s}
+.product-card[data-light]:hover{box-shadow:0 10px 28px color-mix(in srgb,var(--lc) 22%,transparent);transform:translateY(-3px)}
+html body .product-card[data-light] .card-body small{color:var(--lt)!important}
+.product-card[data-light] .inline-link svg{stroke:var(--lc)}
+.product-overview[data-light]{border-top:5px solid var(--lc)}
+.product-overview[data-light] .product-main-image{background:linear-gradient(160deg,var(--ls),#fff 70%)}
+.product-summary .light-tag{font-size:12px}
+/* category chips in the product finder */
+.chip[data-category]::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:#9aa6b2}
+.chip[data-category=equipment]::before,.chip[data-category=lamps]::before{background:var(--l-uv)}
+.chip[data-category=led]::before{background:var(--l-led)}
+.chip[data-category=ir]::before{background:var(--l-ir)}
+.chip[data-category=uvc]::before{background:var(--l-uvc)}
+.chip[data-category=components]::before{background:var(--l-part)}
+.chip[data-category=all]::before{display:none}
+/* menu cards that link to a product family: a coloured line under the photo */
+.mega-card-img{position:relative}
+a[href$="category=equipment"] .mega-card-img::after,a[href$="category=lamps"] .mega-card-img::after,a[href$="category=led"] .mega-card-img::after,a[href$="category=ir"] .mega-card-img::after,a[href$="category=uvc"] .mega-card-img::after,a[href$="category=components"] .mega-card-img::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--l-uv)}
+a[href$="category=led"] .mega-card-img::after{background:var(--l-led)}
+a[href$="category=ir"] .mega-card-img::after{background:var(--l-ir)}
+a[href$="category=uvc"] .mega-card-img::after{background:var(--l-uvc)}
+a[href$="category=components"] .mega-card-img::after{background:var(--l-part)}
+/* technology page: one colour per technology */
+#uv-lamp{--lc:var(--l-uv);--lt:var(--l-uv-t);--ls:var(--l-uv-s)}
+#uv-led{--lc:var(--l-led);--lt:var(--l-led-t);--ls:var(--l-led-s)}
+#ir{--lc:var(--l-ir);--lt:var(--l-ir-t);--ls:var(--l-ir-s)}
+.technology-row[id]{border-left:5px solid var(--lc)}
+.technology-row[id] .technology-visual{background:linear-gradient(160deg,var(--ls),#fff 75%)}
+.technology-row[id] h2{color:#141a1f}
+.technology-row[id] h2::before{content:'';display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--lc);margin-right:10px;vertical-align:3px;box-shadow:0 0 0 5px var(--ls)}
+.technology-row[id] .capability-list li::marker{color:var(--lc)}
+.technology-tabs a[href="#uv-lamp"]{border-bottom:3px solid var(--l-uv)}
+.technology-tabs a[href="#uv-led"]{border-bottom:3px solid var(--l-led)}
+.technology-tabs a[href="#ir"]{border-bottom:3px solid var(--l-ir)}
+
+/* ===== More brand green (logo #71AA35) in structure, not in body text ===== */
+.section-head h2::after,.b2b-section>.container>.section-head h2::after,.video-head h2::after,.faq-list>h2::after{content:'';display:block;width:44px;height:4px;border-radius:2px;background:linear-gradient(90deg,#71aa35,#a6d36a);margin-top:14px}
+.solution-card:hover,.capability-card:hover,.support-hub-grid>*:hover,.service-route-grid>*:hover,.need-card:hover{border-color:#71aa35!important;box-shadow:0 10px 26px #71aa3524!important}
+.corporate-facts strong,.business-metrics article strong{color:#4d7a1e}
+.b2b-masthead{background:linear-gradient(180deg,#f3f8ec 0%,#fff 100%)}
+.b2b-masthead h1::after,.page-top h1::after{content:'';display:block;width:56px;height:5px;border-radius:3px;background:linear-gradient(90deg,#71aa35,#a6d36a);margin-top:18px}
+.unified-contact{background:linear-gradient(120deg,#0f1d23 0%,#13262c 55%,#1d3a1f 100%)}
+.unified-contact .button{background:#71aa35;color:#0f1d23}
+.yt-btn{background:#71aa35}

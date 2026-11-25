@@ -11,7 +11,7 @@
     f.title = btn.getAttribute('aria-label') || 'video';
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
-    f.className = 'yt-frame';
+    f.className = 'yt-frame' + (btn.closest('.is-short') ? ' is-short' : '');
     btn.replaceWith(f);
   });
 })();

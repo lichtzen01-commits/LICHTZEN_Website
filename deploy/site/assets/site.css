@@ -1334,3 +1334,9 @@ html body .final-clients{padding-bottom:12px!important}}
 @media(max-width:700px){.video-section{padding:40px 0 44px}.video-head{flex-direction:column;align-items:flex-start;gap:6px}.video-head h2{font-size:22px}.yt-grid{grid-template-columns:1fr;gap:16px}.yt-btn{width:54px;height:54px;margin:-27px 0 0 -27px}.cv-channel{margin:10px 0 0}}
 /* Phones: easier tapping for checkboxes and the back link */
 @media(max-width:700px){main input[type=checkbox],main input[type=radio]{width:20px;height:20px}html body .industrial-back{display:inline-block;padding:10px 0}}
+.yt-shorts{grid-template-columns:repeat(auto-fill,minmax(180px,220px));margin-top:24px}
+.yt-grid.yt-shorts:first-child{margin-top:0}
+.yt-card.is-short .yt-thumb{aspect-ratio:9/16}
+.yt-card.is-short figcaption{font-size:14px}
+@media(max-width:700px){.yt-shorts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.yt-card.is-short figcaption{font-size:13px}}
+.yt-frame.is-short{aspect-ratio:9/16}

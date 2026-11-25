@@ -1510,3 +1510,12 @@ html body .dropzone small{font-size:13px!important;color:#58626b}
 @media(max-width:900px){.ws-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.ws-grid{grid-template-columns:1fr;gap:10px}.ws-card{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:14px;padding:16px}.ws-ico{margin:0;flex:none}.ws-card strong{flex:1}.ws-card small{flex-basis:100%;padding-left:60px;margin-top:-6px}.wz-nav .wz-next,.wz-nav .wz-submit{flex:1}}
 .wizard [hidden]{display:none!important}
+/* Wizard: centred and wider */
+html body .contact-form.wizard{max-width:1200px;width:100%;margin-left:auto;margin-right:auto}
+.wizard .wz-step legend,.wizard .wz-lead{text-align:center;width:100%}
+.wizard .wz-nav{justify-content:center}
+.wizard .wz-nav .form-status{text-align:center}
+.wizard .field-grid{max-width:900px;margin:0 auto}
+.wizard [data-step="3"] .consent,.wizard [data-step="3"] .ltz-captcha{max-width:900px;margin-left:auto;margin-right:auto;display:flex}
+.wizard .contact-done{text-align:center}
+@media(min-width:901px){.ws-card{padding:26px 26px 24px}.ws-card strong{font-size:18px}}

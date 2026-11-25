@@ -1340,3 +1340,14 @@ html body .final-clients{padding-bottom:12px!important}}
 .yt-card.is-short figcaption{font-size:14px}
 @media(max-width:700px){.yt-shorts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.yt-card.is-short figcaption{font-size:13px}}
 .yt-frame.is-short{aspect-ratio:9/16}
+/* Full-screen video player */
+.yt-modal{position:fixed;inset:0;z-index:5000;background:#05090cf2;display:flex;align-items:center;justify-content:center;padding:56px 16px 16px;animation:yt-in .2s ease}
+@keyframes yt-in{from{opacity:0}to{opacity:1}}
+.yt-modal-stage{width:min(100%,calc((100vh - 72px) * 16 / 9));aspect-ratio:16/9}
+.yt-modal.is-short .yt-modal-stage{width:min(100%,calc((100vh - 72px) * 9 / 16));aspect-ratio:9/16}
+.yt-modal-stage iframe{width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.yt-modal-close{position:absolute;top:10px;right:12px;width:44px;height:44px;border:0;border-radius:50%;background:#ffffff1f;cursor:pointer;display:grid;place-items:center}
+.yt-modal-close:hover{background:#ffffff33}
+.yt-modal-close svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round}
+html.yt-open,html.yt-open body{overflow:hidden}
+.yt-modal:fullscreen{padding:56px 16px 16px;background:#000}

@@ -1307,3 +1307,6 @@ html body .final-clients{padding-bottom:12px!important}}
 .faq-steps li::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:30px;border-radius:50%;background:#71aa35;color:#fff;display:grid;place-items:center;font-size:14px;z-index:1}
 .faq-steps li+li::after{content:'';position:absolute;top:15px;right:50%;width:100%;height:2px;background:#d6e6c2}
 @media(max-width:700px){.faq-list details>p,.faq-chips,.faq-compare,.faq-steps{margin-left:0;padding-left:0}.faq-ico{width:38px;height:38px}.faq-list summary>span:last-of-type{font-size:15px}}
+/* Menu cards: tall or square photos are shown whole on a soft backdrop instead of being cropped */
+.mega-card-img.is-whole{background:#eef1f4}
+.mega-card-img.is-whole img{object-fit:contain;padding:6px;box-sizing:border-box}

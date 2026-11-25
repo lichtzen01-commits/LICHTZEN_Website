@@ -93,6 +93,16 @@ IMAGES = {
 GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": "/assets/optimized/4ead903d2b00.webp"}
 
 
+
+def card_fit(src):
+    """Photos far from the 16:9 card shape (tall or square ones such as the building) are shown whole, not cropped."""
+    try:
+        from PIL import Image
+        w, h = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "deploy", "site", src.lstrip("/"))).size
+    except Exception:
+        return ""
+    return " is-whole" if abs(w / h - 16 / 9) > 0.45 else ""
+
 def current_index(url):
     # the longest matching prefix wins
     best, best_len = None, 0
@@ -114,7 +124,7 @@ def desktop(url):
             continue
         # a card per link: picture, name and one line about it
         cards = "".join(
-            f'<a class="mega-card" href="{html.escape(h)}"><span class="mega-card-img"><img alt="" decoding="async" height="225" loading="lazy" src="{IMAGES.get(h) or GROUP_IMAGE.get(href, "")}" width="400"/></span>'
+            f'<a class="mega-card" href="{html.escape(h)}"><span class="mega-card-img{card_fit(IMAGES.get(h) or GROUP_IMAGE.get(href, ""))}"><img alt="" decoding="async" height="225" loading="lazy" src="{IMAGES.get(h) or GROUP_IMAGE.get(href, "")}" width="400"/></span>'
             f'<strong>{t}</strong><small>{d}</small></a>' for t, h, d in sub)
         parts.append(f'<div class="nav-group">{link}<button aria-expanded="false" aria-label="{label} 하위 메뉴" '
                      f'class="nav-expand" type="button">{CHEVRON}</button><div class="nav-panel nav-mega nav-cards">'

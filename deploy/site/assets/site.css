@@ -1310,3 +1310,27 @@ html body .final-clients{padding-bottom:12px!important}}
 /* Menu cards: tall or square photos are shown whole on a soft backdrop instead of being cropped */
 .mega-card-img.is-whole{background:#eef1f4}
 .mega-card-img.is-whole img{object-fit:contain;padding:6px;box-sizing:border-box}
+/* Video cards (click to play) */
+.video-section{padding:56px 0 64px}
+.video-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px}
+.video-head h2{font-size:26px;margin:0}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.yt-grid.is-single{grid-template-columns:minmax(0,720px)}
+.yt-card{margin:0}
+.yt-thumb,.yt-frame{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;overflow:hidden;background:#0d1b20}
+.yt-thumb{position:relative;padding:0;cursor:pointer}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease-out,ease)}
+.yt-thumb:hover img{transform:scale(1.04)}
+.yt-btn{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:#71aa35e6;display:grid;place-items:center;box-shadow:0 6px 20px #0005;transition:transform .2s}
+.yt-btn svg{width:28px;height:28px;fill:#fff;margin-left:4px}
+.yt-thumb:hover .yt-btn{transform:scale(1.08)}
+.yt-card figcaption{font-size:15px;font-weight:650;color:#141a1f;margin-top:10px}
+.conveyor-card{position:relative}
+.cv-play{position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#101d24d9;color:#fff;font-size:13px;font-weight:700;padding:5px 12px 5px 5px;cursor:pointer;z-index:2}
+.cv-play .yt-btn{position:static;width:26px;height:26px;margin:0;box-shadow:none}
+.cv-play .yt-btn svg{width:13px;height:13px;margin-left:2px}
+.conveyor-card .yt-frame{position:absolute;inset:0 0 auto 0;height:auto;z-index:3;border-radius:16px 16px 0 0}
+.cv-channel{margin-left:8px}
+@media(max-width:700px){.video-section{padding:40px 0 44px}.video-head{flex-direction:column;align-items:flex-start;gap:6px}.video-head h2{font-size:22px}.yt-grid{grid-template-columns:1fr;gap:16px}.yt-btn{width:54px;height:54px;margin:-27px 0 0 -27px}.cv-channel{margin:10px 0 0}}
+/* Phones: easier tapping for checkboxes and the back link */
+@media(max-width:700px){main input[type=checkbox],main input[type=radio]{width:20px;height:20px}html body .industrial-back{display:inline-block;padding:10px 0}}

@@ -79,7 +79,7 @@ PAGES = {  # page: (heading, [video ids], [shorts ids], channel)
     "resources/index.html": ("리트젠 영상", list(V), list(k for k in S if k not in ("jwcLBUZf9ro", "Wt-tM-dFeoo", "F1OAB2viMIw")), "ltz"),
 }
 CONVEYOR = {  # conveyor card code → Ohsung Unicon video
-    "C": "nu1Qoe3wMtM", "CC": "oUZOUFQtsGA", "CCKN": "3q4ZK-6uHMw", "CTW": "3ng3IgZ-ONw", "CVA": "CwjqeNZwksc",
+    "C": "nu1Qoe3wMtM", "CC": "oUZOUFQtsGA", "CTA": "ubikOA3W7W8", "CCKN": "3q4ZK-6uHMw", "CTW": "3ng3IgZ-ONw", "CVA": "CwjqeNZwksc",
     "CSL": "35-3sQHoGSU", "CA": "KEbSB21nANA", "CRO": "87jXsP5jJ98", "CX": "M1SLVlivKc8", "CME": "fXcQurk4gLQ",
     "CTO": "mwkEMrhnxFo", "CRD": "j0lkVoI5-l4",
 }

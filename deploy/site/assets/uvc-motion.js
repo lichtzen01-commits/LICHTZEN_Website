@@ -18,7 +18,7 @@
     const num = parseFloat(m[1].replace(',', '.'));
     const dec = (m[1].split(/[.,]/)[1] || '').length;
     const [pre, post] = [raw.slice(0, m.index), raw.slice(m.index + m[1].length)];
-    const t0 = performance.now(), dur = 1400;
+    const t0 = performance.now(), dur = 2200;
     const step = now => {
       const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       el.textContent = pre + (num * e).toFixed(dec) + post;
@@ -44,7 +44,7 @@
     const tick = () => { items.forEach((li, n) => li.classList.toggle('is-on', n === i)); i = (i + 1) % items.length; };
     new IntersectionObserver(([en]) => {
       clearInterval(timer);
-      if (en.isIntersecting) { tick(); timer = setInterval(tick, 2200); } else items.forEach(li => li.classList.remove('is-on'));
+      if (en.isIntersecting) { tick(); timer = setInterval(tick, 3600); } else items.forEach(li => li.classList.remove('is-on'));
     }, {threshold: 0.35}).observe(steps);
   }
 

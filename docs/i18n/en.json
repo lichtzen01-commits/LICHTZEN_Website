@@ -2126,5 +2126,12 @@
 "인체 감지 · 램프 차단": "Person detected · lamps off",
 "진피": "Dermis",
 "표피 (살아있는 세포)": "Epidermis (living cells)",
-"해외 이메일": "Email (overseas)"
+"해외 이메일": "Email (overseas)",
+"UV-C 소독기가 놓인 병실": "Patient room with a UV-C disinfector",
+"각질층": "Stratum corneum",
+"리트젠 UV 램프": "LICHTZEN UV lamps",
+"미생물 DNA에 강하게 작용해 빠르게 살균하지만 사람의 살아있는 세포까지 닿으므로 사람이 없는 공간에서만 사용합니다.": "Acts strongly on microbial DNA and disinfects fast, but it reaches living human cells, so it is used only in unoccupied rooms.",
+"사람이 머무는 병원 대기실": "Occupied hospital waiting room",
+"표피": "Epidermis",
+"피부 바깥의 죽은 세포층에서 대부분 흡수되어 살아있는 세포에 거의 닿지 않습니다. 사람이 있는 공간에서도 사용할 수 있습니다.": "Mostly absorbed in the dead outer layer of the skin, so it barely reaches living cells. It can be used with people present."
 }

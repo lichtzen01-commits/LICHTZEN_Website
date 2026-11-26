@@ -1,6 +1,14 @@
 # 호스팅·관리 방식 검토 (2026-11-23)
 
-결정 상태: **보류.** 지금은 GitHub Pages(정적 사이트)를 유지한다. 아래는 나중에 진행할 때 이어서 볼 내용이다.
+결정 상태: **호스팅 업체는 Cloudflare (2026-11-26 회사 답변).** 공개 전까지 시험 주소는 GitHub Pages를 유지한다.
+아래 카페24·WordPress 검토는 그 전에 정리한 내용이다.
+
+## Cloudflare로 공개할 때 할 일
+- Cloudflare Pages에 사이트 연결(GitHub 저장소 연결 또는 빌드 결과 업로드), 도메인 루트용으로 빌드(SITE_BASE 없음)
+- `_headers`로 보안 헤더 전송: CSP(지금은 meta), `frame-ancestors`, HSTS 등
+- `_redirects`로 예전 주소 301 이동
+- www.lichtzen.com DNS를 Cloudflare로 연결, Turnstile 사이트 키의 허용 도메인 확인
+- 개인정보처리방침: 수탁자·국외 이전에 Cloudflare, Inc. 반영함. 시행일은 "홈페이지 개시일"로 되어 있어 공개 날 실제 날짜로 바꾸면 더 명확하다.
 
 ## 원하는 방향
 - 호스팅은 카페24로 옮긴다. GitHub을 거치지 않고 배포하고 싶다.
@@ -29,7 +37,7 @@
 - 예전 lichtzen.com의 호스팅 위치, 도메인 구입처와 DNS 관리 권한
 - 예전 홈페이지 주소 목록 (301 이동용, 예: `shop_contents/myboard_read.htm?...idx=…`)
 - 공식 대표 이메일 결정 (홈페이지 ltz@, 코머신 contact@)
-- 회사소개 탭 이름 통일 (품질·인증 / 특허·인증 등), 개인정보처리방침 빈칸
+- 회사소개 탭 이름 통일 (품질·인증 / 특허·인증 등). 개인정보처리방침 빈칸은 채움(문의 보유 5년, Cloudflare, 보호책임자 성정화 사원, 시행일 = 개시일)
 - 방문 통계 도구 여부, Search Console·네이버 서치어드바이저 등록 계정
 - 공개 날: robots `Disallow`·noindex 해제, sitemap 제출
 - 그 전에 할 것: GitHub·회사 Google 계정 2단계 인증, 새 Code.gs 배포, `TURNSTILE_SECRET` 확인

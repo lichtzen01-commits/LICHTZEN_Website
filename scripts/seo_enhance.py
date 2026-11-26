@@ -32,6 +32,11 @@ ORG = {
     "email": "ltz@lichtzen.com",
     "telephone": "+82-31-419-6700",
     "faxNumber": "+82-31-419-6226",
+    "contactPoint": [
+        {"@type": "ContactPoint", "contactType": "customer service", "telephone": "+82-31-419-6700",
+         "email": "ltz@lichtzen.com", "areaServed": "KR", "availableLanguage": ["Korean"]},
+        {"@type": "ContactPoint", "contactType": "sales", "telephone": "+82-70-4088-6117",
+         "email": "itl@lichtzen.com", "areaServed": "Worldwide", "availableLanguage": ["English", "Korean"]}],
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "구군포3길 2 (당정동)",

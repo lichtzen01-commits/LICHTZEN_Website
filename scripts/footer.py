@@ -11,10 +11,9 @@ LI = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c
 
 FOOTER = (
     '<footer class="site-footer integrated-footer contact-footer"><div class="container">'
-    '<div class="footer-contact">'
-    f'<a class="fc-card" href="tel:0314196700">{PHONE}<span class="fc-label">국내 상담</span><strong>031-419-6700</strong></a>'
-    f'<a class="fc-card" href="tel:07040886117">{GLOBE}<span class="fc-label">해외 영업</span><strong>070-4088-6117</strong></a>'
-    f'<a class="fc-card" href="mailto:ltz@lichtzen.com">{MAIL}<span class="fc-label">이메일</span><strong>ltz@lichtzen.com</strong></a>'
+    '<div class="footer-contact" data-mail-keep="">'
+    f'<div class="fc-card fc-duo">{PHONE}<span class="fc-label">국내 상담</span><a href="tel:0314196700"><strong>031-419-6700</strong></a><a class="fc-mail" href="mailto:ltz@lichtzen.com">ltz@lichtzen.com</a></div>'
+    f'<div class="fc-card fc-duo">{GLOBE}<span class="fc-label">해외 영업</span><a href="tel:07040886117"><strong>070-4088-6117</strong></a><a class="fc-mail" href="mailto:itl@lichtzen.com">itl@lichtzen.com</a></div>'
     '<a class="fc-card fc-as" href="/support/lamp-as/"><img alt="램프 A/S 접수 QR 코드" decoding="async" height="1600" loading="lazy" src="/assets/optimized/637167068a01.webp" width="1600"/>'
     '<span class="fc-label">램프 A/S 접수</span><strong>QR 또는 여기를 눌러 접수</strong></a>'
     '</div>'

@@ -48,8 +48,8 @@ if(['en','zh','ja','hi','es'].includes(language)){
  // Screen-reader labels, image alt text and tooltips use the same dictionary.
  document.querySelectorAll('[aria-label],img[alt],[title]').forEach(el=>{for(const a of ['aria-label','alt','title']){const k=el.getAttribute(a);if(!k||!/[\uac00-\ud7a3]/.test(k))continue;const v=SITE_TRANSLATIONS[k.trim()]?.[language];if(v)el.setAttribute(a,v);}});
  // Overseas visitors write to the overseas sales mailbox.
- document.querySelectorAll('a[href^="mailto:ltz@lichtzen.com"]').forEach(a=>a.setAttribute('href',a.getAttribute('href').replace('ltz@','itl@')));
- {const w2=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let t;while(t=w2.nextNode()){if(t.nodeValue.includes('ltz@lichtzen.com'))t.nodeValue=t.nodeValue.replace(/ltz@lichtzen\.com/g,'itl@lichtzen.com');}}
+ document.querySelectorAll('a[href^="mailto:ltz@lichtzen.com"]:not([data-mail-keep] *)').forEach(a=>a.setAttribute('href',a.getAttribute('href').replace('ltz@','itl@')));
+ {const w2=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let t;while(t=w2.nextNode()){if(t.nodeValue.includes('ltz@lichtzen.com')&&!t.parentElement.closest('[data-mail-keep]'))t.nodeValue=t.nodeValue.replace(/ltz@lichtzen\.com/g,'itl@lichtzen.com');}}
  if(!staticLang)document.querySelectorAll('a[href^="/"]:not([data-language-code])').forEach(a=>{const u=new URL(a.getAttribute('href'),'https://lichtzen-preview.invalid');u.searchParams.set('lang',language);a.setAttribute('href',u.pathname+u.search+u.hash);});
 }
 

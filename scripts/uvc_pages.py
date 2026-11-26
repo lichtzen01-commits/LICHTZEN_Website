@@ -111,6 +111,42 @@ SPACES = [  # name, image, wavelength, text
 ]
 
 
+# motion graphics (animated by CSS in site.css, paused off screen by uvc-motion.js)
+SKIN_FX = (
+    '<figure class="uvc-fx uvc-skin" aria-label="222nm과 254nm의 피부 도달 깊이 비교 애니메이션">'
+    '<svg viewbox="0 0 640 330" role="img"><defs>'
+    '<linearGradient id="gv" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="130"><stop offset="0" stop-color="#b9a9ff"/><stop offset="1" stop-color="#6c5ce7"/></linearGradient>'
+    '<linearGradient id="gc" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="250"><stop offset="0" stop-color="#8fe3e8"/><stop offset="1" stop-color="#14a3ac"/></linearGradient></defs>'
+    '<rect class="sk-air" x="0" y="0" width="640" height="104" rx="0"/>'
+    '<rect class="sk-dead" x="0" y="104" width="640" height="34"/>'
+    '<rect class="sk-epi" x="0" y="138" width="640" height="94"/>'
+    '<g class="sk-basal">' + "".join(f'<circle cx="{x}" cy="222" r="9"/>' for x in range(150, 640, 26)) + '</g>'
+    '<rect class="sk-derm" x="0" y="232" width="640" height="98"/>'
+    '<text class="sk-lab" x="14" y="126">각질층 (죽은 세포)</text><text class="sk-lab" x="14" y="182">표피 (살아있는 세포)</text>'
+    '<text class="sk-lab" x="14" y="226">기저세포</text><text class="sk-lab" x="14" y="290">진피</text>'
+    '<g class="sk-lamp v"><rect x="232" y="14" width="96" height="26" rx="8"/><text x="280" y="32">222nm</text></g>'
+    '<g class="sk-lamp c"><rect x="452" y="14" width="96" height="26" rx="8"/><text x="500" y="32">254nm</text></g>'
+    '<line class="sk-beam v" x1="280" y1="42" x2="280" y2="124" stroke="url(#gv)"/>'
+    '<line class="sk-beam c" x1="500" y1="42" x2="500" y2="250" stroke="url(#gc)"/>'
+    '<circle class="sk-hit v" cx="280" cy="124" r="14"/><circle class="sk-hit c" cx="500" cy="232" r="16"/>'
+    '<text class="sk-note v" x="280" y="160">각질층에서 흡수</text><text class="sk-note c" x="500" y="276">살아있는 세포까지 도달</text>'
+    '</svg><figcaption>222nm는 피부 바깥의 죽은 각질층에서 대부분 흡수되고, 254nm는 살아있는 세포층까지 도달합니다.</figcaption></figure>')
+
+ROOM_FX = (
+    '<figure class="uvc-fx uvc-room" aria-label="360° 모션 감지와 UV-C 조사 애니메이션">'
+    '<svg viewbox="0 0 420 300" role="img">'
+    '<rect class="rm-floor" x="10" y="10" width="400" height="280" rx="18"/>'
+    '<rect class="rm-bed" x="40" y="40" width="96" height="150" rx="12"/><rect class="rm-pillow" x="52" y="50" width="72" height="28" rx="8"/>'
+    '<rect class="rm-bed" x="290" y="40" width="96" height="150" rx="12"/><rect class="rm-pillow" x="302" y="50" width="72" height="28" rx="8"/>'
+    '<g class="rm-uv"><circle class="rm-ring" cx="213" cy="160" r="40"/><circle class="rm-ring r2" cx="213" cy="160" r="40"/><circle class="rm-ring r3" cx="213" cy="160" r="40"/></g>'
+    '<g class="rm-sweep"><path d="M213 160 L213 40 A120 120 0 0 1 317 100 Z"/></g>'
+    '<circle class="rm-dev" cx="213" cy="160" r="20"/><circle class="rm-core" cx="213" cy="160" r="8"/>'
+    '<g class="rm-person"><circle cx="0" cy="-16" r="9"/><rect x="-9" y="-5" width="18" height="26" rx="8"/></g>'
+    '<g class="rm-alert"><rect x="120" y="226" width="186" height="34" rx="17"/><text x="213" y="248">인체 감지 · 램프 차단</text></g>'
+    '<g class="rm-on"><rect x="140" y="226" width="146" height="34" rx="17"/><text x="213" y="248">UV-C 소독 중</text></g>'
+    '</svg><figcaption>360° 모션 센서가 사람의 접근을 감지하면 UV 조사 중이라도 램프 전원을 즉시 차단합니다.</figcaption></figure>')
+
+
 def space_cards(items, more=True):
     return '<div class="uvc-spaces">' + "".join(
         f'<article class="uvc-space">{img(i, n + " 적용 예시", 1400, 1050)}<div><span class="uvc-wave">{w}</span><h3>{n}</h3>'
@@ -146,6 +182,7 @@ def hub():
                                   ("0.007 ppm", "측정 오존 농도", "실내 기준 0.06 ppm 이하")])
                     + "</div></div>", "uvc-first")
     body += section(head("SOLUTIONS", "상황에 맞는 두 가지 UV-C 솔루션") + two_solutions())
+    body += section(head("HOW IT WORKS", "같은 UV-C, 다른 도달 깊이", "254nm는 미생물 DNA에 강하게 작용해 빠르게 살균하지만 사람의 살아있는 세포까지 닿고, 222nm는 피부 바깥에서 흡수되어 사람이 있는 공간에서도 쓸 수 있습니다.") + SKIN_FX, "uvc-dark")
     body += section(head("WHICH SPACE", "어떤 공간을 소독하시나요?", "공간의 사용 방식에 따라 적합한 자외선 소독 방식이 달라집니다.")
                     + '<div class="uvc-choose">'
                     f'<a href="{P254}" class="uvc-pick"><span class="uvc-wave">254nm 추천</span><h3>사람이 잠시 비운 공간</h3>'
@@ -209,7 +246,7 @@ def p254():
                     + f'<figure>{img("s8w4-stored", "Wonder-Ray S8W4 보관 시", 764, 1240)}<figcaption>보관 시 <strong>Ø66 × 159cm</strong></figcaption></figure>'
                     + f'<figure>{img("s8w4-open", "Wonder-Ray S8W4 작동 시", 662, 1102)}<figcaption>작동 시 <strong>Ø115 × 225cm</strong></figcaption></figure>'
                     + '</div><ul class="uvc-list">' + "".join(f"<li><strong>{t}</strong><span>{d}</span></li>" for t, d in feats) + "</ul></div>")
-    body += section(head("SAFETY", "사용 환경을 고려한 안전 설계") + '<ul class="uvc-list is-grid">' + "".join(
+    body += section(head("SAFETY", "사용 환경을 고려한 안전 설계") + ROOM_FX + '<ul class="uvc-list is-grid">' + "".join(
         f"<li><strong>{t}</strong><span>{d}</span></li>" for t, d in (
             ("인체 감지 센서", "UV 조사 중 사람의 접근을 감지하면 전원을 자동 차단합니다."),
             ("비상 정지 기능", "예상치 못한 상황에서 장비를 즉시 정지할 수 있습니다."),
@@ -269,7 +306,7 @@ def p222():
         + "</ul>")
     body += section(head("SAFETY BASIS", "피부 표피에서 흡수되는 파장",
                          "222nm은 표피의 죽은 각질 세포층에서 대부분 흡수되어 살아있는 기저세포와 눈에 도달하는 양이 매우 적습니다.")
-                    + '<div class="uvc-tlv">' + "".join(
+                    + SKIN_FX + '<div class="uvc-tlv">' + "".join(
                         f'<div class="uvc-bar"><span>{lab}</span><div><i style="--v:{min(100, v / 4.79):.1f}%"></i><b>{v} mJ/cm²</b></div></div>'
                         for lab, v in (("피부 · 222nm", 479), ("피부 · 254nm", 10), ("눈 · 222nm", 161), ("눈 · 254nm", 6)))
                     + '</div><p class="uvc-src">TLV(허용 노출 한계치)는 ACGIH(미국 산업위생전문가협의회)가 제시하는 자외선 노출 한계 기준입니다. '
@@ -383,7 +420,8 @@ def main(site):
         h = re.sub(r'<meta content="[^"]*" name="description"\s*/?>', f'<meta content="{e(desc)}" name="description"/>', h, count=1)
         path = os.path.join(site, url.strip("/"), "index.html")
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        open(path, "w", encoding="utf-8").write(h + '<main id="main" class="uvc-page">' + fn() + "</main>" + rest)
+        tail = rest.replace("</body>", '<script defer="" src="/assets/uvc-motion.js?v=20261126a"></script></body>', 1)
+        open(path, "w", encoding="utf-8").write(h + '<main id="main" class="uvc-page">' + fn() + "</main>" + tail)
     # product catalog: two cards in the UV-C family (read by selection_guide.py too)
     p = os.path.join(site, "products/index.html")
     s = open(p, encoding="utf-8").read()

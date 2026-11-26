@@ -137,7 +137,8 @@ def translate_page(D, html, path, missing, lang):
         new = tr(D, str(t), missing)
         for ko, intl in PHONES:
             new = new.replace(ko, intl)
-        new = new.replace("ltz@lichtzen.com", "itl@lichtzen.com")
+        if not t.find_parent(attrs={"data-mail-keep": True}):
+            new = new.replace("ltz@lichtzen.com", "itl@lichtzen.com")
         if new != str(t):
             t.replace_with(new)
 
@@ -160,7 +161,7 @@ def translate_page(D, html, path, missing, lang):
                 if isinstance(v, str):
                     if internal(v) and not el.has_attr("data-language-code"):
                         el[a] = "/" + lang + v
-                    elif v.startswith("mailto:ltz@"):
+                    elif v.startswith("mailto:ltz@") and not el.find_parent(attrs={"data-mail-keep": True}):
                         el[a] = v.replace("mailto:ltz@", "mailto:itl@")
                     elif v.startswith("tel:0"):
                         el[a] = "tel:+82" + v[5:]

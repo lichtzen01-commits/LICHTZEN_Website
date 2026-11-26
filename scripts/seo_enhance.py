@@ -68,7 +68,8 @@ def breadcrumb(url, h1, h):
     parts = [p for p in url.strip("/").split("/") if p]
     labels = {"products": "제품", "solutions": "적용 분야", "company": "회사소개", "support": "고객지원",
               "news": "소식", "resources": "자료실", "technology": "기술", "contact": "상담·견적",
-              "selection-guide": "제품 선정 가이드", "conveyors": "컨베이어", "lamp": "램프 사양 설계", "privacy": "개인정보처리방침"}
+              "selection-guide": "제품 선정 가이드", "conveyors": "컨베이어", "lamp": "램프 사양 설계", "privacy": "개인정보처리방침",
+              "uvc-disinfection": "UV-C 소독 솔루션"}
     for i, part in enumerate(parts):
         last = i == len(parts) - 1
         items.append({"name": h1 if last else labels.get(part, part), "url": SITE + "/" + "/".join(parts[: i + 1]) + "/"})
@@ -177,6 +178,7 @@ def main(root, config):
                 "UV 경화·IR/MIR 건조 시스템을 설계·제조합니다. 본사·공장·연구소: 경기도 군포시. ISO 9001·ISO 14001.\n\n"
                 "## 주요 페이지\n\n"
                 f"- [제품 찾기]({SITE}/products/): UV 경화 장비, UV LED, IR·MIR 건조, 램프·광원, UV-C 살균, 부품\n"
+                f"- [UV-C 소독 솔루션]({SITE}/uvc-disinfection/): Wonder-Ray® 254nm UV-C 소독기(S8W4·S8), 222nm Far-UVC 모듈, 시험·인증, 적용 공간\n"
                 f"- [적용 분야]({SITE}/solutions/): 필름·인쇄·코팅, PCB, 정밀 본딩, IR 가열·건조\n"
                 f"- [기술]({SITE}/technology/): 광원 선택과 공정 검토\n"
                 f"- [회사소개]({SITE}/company/): 연혁, 조직, 특허·인증\n"

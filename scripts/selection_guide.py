@@ -52,6 +52,8 @@ TAGS = {
     "uv-reflectors":           ("replace", "*", "*"),
     "uv-filters":              ("replace", "*", "*"),
     "far-uvc-lamps":           ("clean", "*", "*"),
+    "wonder-ray-254nm":        ("clean", "*", "*"),
+    "far-uvc-222nm":           ("clean", "*", "*"),
 }
 
 ICON = {
@@ -149,7 +151,7 @@ def build(site: Path):
     h = re.sub(r'<p>제품군을 고르고, 확인된 파장·냉각 조건으로 후보 제품을 좁혀 보세요.</p>',
                '<p>질문 세 개에 답하면 맞는 제품이 바로 아래에 좁혀집니다. 파장이나 냉각 방식을 몰라도 괜찮습니다.</p>', h)
     if "selector.js" not in h:
-        h = h.replace("</head>", '<script defer="" src="/assets/selector.js?v=20261125a"></script></head>', 1)
+        h = h.replace("</head>", '<script defer="" src="/assets/selector.js?v=20261125b"></script></head>', 1)
     page.write_text(h, encoding="utf-8")
     print("selection guide:", len(cards), "products")
 

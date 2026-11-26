@@ -75,6 +75,9 @@ PAGES = {  # page: (heading, [video ids], [shorts ids], channel)
     "support/index.html": ("측정·시연 영상", ["ZOhE1TvRvak", "1SqHTXdxlBg"], [], "ltz"),
     "technology/index.html": ("측정과 시연 영상", ["ZOhE1TvRvak", "1SqHTXdxlBg", "-GxOH3cY0eI"], [], "ltz"),
     "company/organization/index.html": ("생산 현장 영상", ["5-M4M0e4zOo"], ["aXH8LYqsWuo"], "ltz"),
+    "uvc-disinfection/index.html": ("영상으로 보기", [], ["XP6SaMh467k", "VInr9EpVvTQ", "a7gt0lDqChA", "TWGsnTVhUL8"], "ltz"),
+    "products/wonder-ray-254nm/index.html": ("영상으로 보기", [], ["XP6SaMh467k", "VInr9EpVvTQ", "a7gt0lDqChA"], "ltz"),
+    "products/far-uvc-222nm/index.html": ("영상으로 보기", [], ["TWGsnTVhUL8"], "ltz"),
     "news/medical-infection-control-exhibition-2026/index.html": ("관련 영상", [], ["VInr9EpVvTQ", "a7gt0lDqChA"], "ltz"),
     "resources/index.html": ("리트젠 영상", list(V), list(k for k in S if k not in ("jwcLBUZf9ro", "Wt-tM-dFeoo", "F1OAB2viMIw")), "ltz"),
 }

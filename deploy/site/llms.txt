@@ -5,6 +5,7 @@
 ## 주요 페이지
 
 - [제품 찾기](https://www.lichtzen.com/products/): UV 경화 장비, UV LED, IR·MIR 건조, 램프·광원, UV-C 살균, 부품
+- [UV-C 소독 솔루션](https://www.lichtzen.com/uvc-disinfection/): Wonder-Ray® 254nm UV-C 소독기(S8W4·S8), 222nm Far-UVC 모듈, 시험·인증, 적용 공간
 - [적용 분야](https://www.lichtzen.com/solutions/): 필름·인쇄·코팅, PCB, 정밀 본딩, IR 가열·건조
 - [기술](https://www.lichtzen.com/technology/): 광원 선택과 공정 검토
 - [회사소개](https://www.lichtzen.com/company/): 연혁, 조직, 특허·인증
@@ -39,6 +40,7 @@ LICHTZEN Co., Ltd. (Gunpo, Korea, founded 1995) designs and manufactures UV and 
 - [LCD & Display Printing UV System | LICHTZEN](https://www.lichtzen.com/en/products/display-printing-uv/): LCD and display printing UV system with a particle-free belt, suction system and digital temperature and speed control for curing display materials.
 - [Double-sided PCB Curing UV System | LICHTZEN](https://www.lichtzen.com/en/products/double-sided-pcb-uv/): Double-sided PCB curing UV system. Roller and value types keep top/bottom UV intensity variation within ±5%, using mercury, metal halide or ozone-free lamps.
 - [LMX & LGX Exposure Lamps | LICHTZEN](https://www.lichtzen.com/en/products/exposure-lamps/): LMX (metal halide) and LGX (gallium) exposure lamps: continuous 265–420 nm emission, 200–600 W/cm, with non-standard sizes available.
+- [Far-UVC 222 nm Disinfection Module for Occupied Spaces | LICHTZEN](https://www.lichtzen.com/en/products/far-uvc-222nm/): 222 nm Far-UVC disinfection module for use with people present. Types A (6 W), B and C; 99.9% reduction of E. coli and S. enterica (KCL); skin TLV 479 mJ/cm².
 - [FAR-UVC Lamps | LICHTZEN](https://www.lichtzen.com/en/products/far-uvc-lamps/): FAR-UVC 222 nm excimer lamp. A germicidal light source in the 200–230 nm far-UV range that inactivates pathogens within exposure guidelines.
 - [Film, PMMA, PC & PET Coating UV System | LICHTZEN](https://www.lichtzen.com/en/products/film-print-coating/): Film, PMMA, PC and PET printing and coating UV system for BLU and light guide plate production, with an ion blower and ionizer to reduce static and particles.
 - [Gallium (Ga) Lamp | LICHTZEN](https://www.lichtzen.com/en/products/gallium-uv-lamp/): Gallium (Ga) UV lamps emit 400–450 nm (peak 420 nm) for curing heavily pigmented paints and coatings over 30 μm. See specifications by model.
@@ -70,6 +72,7 @@ LICHTZEN Co., Ltd. (Gunpo, Korea, founded 1995) designs and manufactures UV and 
 - [UV Reflectors | LICHTZEN](https://www.lichtzen.com/en/products/uv-reflectors/): UV reflectors. Choose focusing, parallel or diffuse construction to suit the process. Compare reflector shapes for print curing and semiconductor bonding.
 - [WAFER TAPE REMOVER UV System | LICHTZEN](https://www.lichtzen.com/en/products/wafer-tape-remover/): WAFER TAPE REMOVER UV system. A UV curing unit for stable removal of wafer tape, built per wafer size with optional nitrogen (N₂) purging.
 - [Water & Seawater Treatment Lamps | LICHTZEN](https://www.lichtzen.com/en/products/water-treatment-lamps/): Low-pressure 253.7 nm germicidal UV lamps for wastewater, industrial and drinking water, ballast water (BWTS) and HVAC air purification.
+- [Wonder-Ray® 254 nm UV-C Disinfection Device (S8W4, S8) | LICHTZEN](https://www.lichtzen.com/en/products/wonder-ray-254nm/): Mobile 254 nm UV-C disinfector for patient rooms, ICUs and isolation rooms: 12 lamps, 99.999%+ (5 log) efficacy, 360° motion detection, 0.007 ppm ozone, KC registered.
 - [Technical Resources | LICHTZEN](https://www.lichtzen.com/en/resources/): LICHTZEN product specifications, the 2026 company profile (PDF) and UV-C disinfection materials. Request drawings and technical data by inquiry.
 - [Product Selection Guide | LICHTZEN](https://www.lichtzen.com/en/selection-guide/): Pick a product family, wavelength (365–405 nm) and cooling method to see matching LICHTZEN products. Material and irradiation width speed up a consultation.
 - [Applications | LICHTZEN](https://www.lichtzen.com/en/solutions/): Process conditions for film, printing and coating, PCB and electronics, precision bonding, and IR heating and drying, with LICHTZEN UV curing and MIR systems.
@@ -80,3 +83,6 @@ LICHTZEN Co., Ltd. (Gunpo, Korea, founded 1995) designs and manufactures UV and 
 - [Customer Support | LICHTZEN](https://www.lichtzen.com/en/support/): LICHTZEN customer support: product selection guide, specifications and catalogues, lamp service requests, and equipment and process consultation.
 - [Lamp Service Request | LICHTZEN](https://www.lichtzen.com/en/support/lamp-as/): Request inspection or service for UV lamps in use via QR code. Have the model, equipment and symptom photos ready, or call +82-31-419-6700.
 - [Technology & Light Source Selection | LICHTZEN](https://www.lichtzen.com/en/technology/): Compare wavelength, irradiation shape, cooling and process conditions for UV lamps, UV LEDs and IR (MIR/NIR) sources, and find matching LICHTZEN products.
+- [UV-C Disinfection Devices and Far-UVC 222 nm Solutions | LICHTZEN](https://www.lichtzen.com/en/uvc-disinfection/): Patient rooms disinfected fast with the 254 nm Wonder-Ray®, occupied spaces continuously with 222 nm Far-UVC. LICHTZEN UV-C disinfection, confirmed by KC registration, KTL and KTR tests and clinical evaluation.
+- [UV-C Disinfection Applications: Hospitals, Care Homes, Schools, Offices | LICHTZEN](https://www.lichtzen.com/en/uvc-disinfection/applications/): 254 nm UV-C and 222 nm Far-UVC disinfection by space: hospitals, care homes, schools, offices, public transport, restrooms, food plants, gyms and livestock barns.
+- [UV-C Disinfector Test Reports, KC Certification and Clinical Evaluation | LICHTZEN](https://www.lichtzen.com/en/uvc-disinfection/evidence/): Wonder-Ray® UV-C disinfector data: BS 8628:2022 efficacy test, clinical evaluation at hospitals and long-term care facilities, KTL and KTR test reports, KC registration and 0.007 ppm ozone.

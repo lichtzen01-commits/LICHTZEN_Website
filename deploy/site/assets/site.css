@@ -1845,3 +1845,26 @@ figcaption strong{font-size:15px;color:#26333d}figcaption span{font-size:13px;co
 html body .contact-footer .fc-card strong{word-break:keep-all;overflow-wrap:normal}
 @media(min-width:1001px) and (max-width:1500px){html body .contact-footer .fc-card strong{font-size:16px}.contact-footer .fc-card{padding:18px 16px;column-gap:12px}}
 @media(min-width:1001px){html body .contact-footer .fc-duo a strong{white-space:nowrap;font-size:clamp(14px,1.08vw,18px)}}
+/* Legacy spec tables: never wrap letter by letter (phones squeezed the label column to ~36px) */
+html body .legacy-content table th,html body .legacy-content table td{overflow-wrap:normal;word-break:keep-all}
+html body .legacy-content table tr>:first-child{width:7.5em;min-width:7.5em;white-space:normal}
+html body .table-scroll table:not(:has(tr>:nth-child(3))) tr>*{white-space:normal}
+html body .table-scroll table:not(:has(tr>:nth-child(3))) tr>:first-child{width:34%}
+@media(max-width:700px){html body .legacy-content table th,html body .legacy-content table td{min-width:4.5em;padding:8px 9px}
+html body .legacy-content table tr>:first-child{width:6.5em;min-width:6.5em}}
+/* News posts */
+.news-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:#6a7680;margin:0 0 26px;padding-bottom:16px;border-bottom:1px solid #e3e8ee}
+.news-meta span{font-weight:600;color:#3d4a53}
+.news-files{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;padding-top:22px;border-top:1px solid #e3e8ee}
+.news-files h2{width:100%;font-size:18px!important;margin:0 0 4px}
+.news-related{margin:22px 0 0}
+.news-nav{display:grid;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid #e3e8ee}
+.news-nav a{display:block;padding:14px 18px;border:1px solid #dbe5ea;border-radius:14px;color:#1f2a33;text-decoration:none;transition:border-color .2s,transform .2s}
+.news-nav a:hover{border-color:#71aa35;transform:translateY(-2px)}
+.news-nav small{display:block;font-size:12px;color:#6a7680;margin-bottom:4px}.news-nav strong{font-size:15px;line-height:1.5}
+/* Lamp A/S: tappable actions next to the QR */
+.as-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 10px}
+.as-actions .button{display:inline-flex;align-items:center;gap:8px}
+.as-hint{font-size:13px!important;color:#6a7680!important}
+.as-tel{display:inline-block;margin-top:6px;font-weight:700}
+@media(max-width:600px){.as-actions .button{width:100%;justify-content:center}}

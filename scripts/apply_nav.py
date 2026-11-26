@@ -62,7 +62,7 @@ IMAGES = {
  "/products/": "/assets/optimized/c0d798d248f8.webp",
  "/products/?category=equipment": "/assets/optimized/b624afd8869d.webp",
  "/products/?category=led": "/assets/optimized/86a255b9898c.webp",
- "/products/?category=lamps": "/assets/optimized/4ead903d2b00.webp",
+ "/products/?category=lamps": "/assets/media/lamps/mercury-uv-lamps-640.webp",
  "/products/?category=ir": "/assets/media/mir-700.webp",
  "/products/?category=uvc": "/assets/optimized/5ef1a6a7eb47.webp",
  "/uvc-disinfection/": "/assets/media/uvc/lineup.webp",
@@ -76,22 +76,22 @@ IMAGES = {
  "/solutions/bonding/": "/assets/optimized/a68c5ad53dfe.webp",
  "/solutions/ir-drying/": "/assets/media/ir-drying-oven.webp",
  "/technology/": "/assets/optimized/a23e62ee0e74.webp",
- "/technology/#uv-lamp": "/assets/optimized/4ead903d2b00.webp",
+ "/technology/#uv-lamp": "/assets/media/lamps/mercury-uv-lamps-640.webp",
  "/technology/#uv-led": "/assets/optimized/86a255b9898c.webp",
  "/technology/#ir": "/assets/media/mir-700.webp",
  "/technology/#compare": "/assets/optimized/80ace7326584-main.webp",
  "/company/": "/assets/optimized/c0d798d248f8.webp",
- "/company/history/": "/assets/optimized/4ead903d2b00.webp",
+ "/company/history/": "/assets/media/lamps/mercury-uv-lamps-640.webp",
  "/company/certifications/": "/assets/legacy/6e7e5d0cf7dc.webp",
  "/company/organization/": "/assets/optimized/497c210d2080.webp",
  "/company/location/": "/assets/optimized/9134e478c103.webp",
  "/support/": "/assets/optimized/a23e62ee0e74.webp",
  "/resources/": "/assets/optimized/news-uvc-brochures.webp",
- "/support/lamp-as/": "/assets/optimized/4ead903d2b00.webp",
+ "/support/lamp-as/": "/assets/media/lamps/mercury-uv-lamps-640.webp",
  "/support/#faq": "/assets/optimized/80ace7326584-main.webp",
  "/contact/?product=자료요청": "/assets/optimized/26a8372c9a06.webp"
 }
-GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": "/assets/optimized/4ead903d2b00.webp"}
+GROUP_IMAGE = {"/company/": "/assets/optimized/9134e478c103.webp", "/support/": "/assets/media/lamps/mercury-uv-lamps-640.webp"}
 
 
 

@@ -33,12 +33,16 @@ def rebase(out, base):
     # "/assets/x", '/products/', `/company/...` and url(/assets/...)
     inner = re.compile(r'(["\'`(])/(?=(?:' + seg + r')(?:[/?#"\'`)]|$))')
     home = re.compile(r'((?:href|action)=["\'])/(?=["\'?#])')
+    # srcset="/a.webp 1x, /b.webp 2x": the candidates after the first follow a comma, not a quote
+    srcset_next = re.compile(r'(,\s*)/(?=(?:' + seg + r')/)')
+    srcset = re.compile(r'(srcset=")([^"]*)(")')
     for path in glob.glob(os.path.join(out, "**", "*"), recursive=True):
         if not path.endswith((".html", ".js", ".css")):
             continue
         text = open(path, encoding="utf-8").read()
         new = inner.sub(lambda m: m.group(1) + base + "/", text)
         new = home.sub(lambda m: m.group(1) + base + "/", new)
+        new = srcset.sub(lambda m: m.group(1) + srcset_next.sub(lambda n: n.group(1) + base + "/", m.group(2)) + m.group(3), new)
         if new != text:
             open(path, "w", encoding="utf-8").write(new)
 

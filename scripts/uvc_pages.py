@@ -196,7 +196,7 @@ def hub():
                          "사람이 직접 하는 청소만으로는 손이 닿지 않거나 놓치는 부분이 생길 수 있습니다. 254nm UV-C 소독으로 청소 후 남을 수 있는 오염을 추가로 관리합니다.")
                     + CLINIC + link(EVID, "시험·임상 근거 자세히 보기"))
     body += section(head("APPLICATIONS", "적용 공간") + space_cards(SPACES[:8], more=False) + link(APPS, "적용 공간 자세히 보기"), "pale")
-    why = (("/assets/optimized/4ead903d2b00.webp", "리트젠 UV 램프", "1995", "SINCE", "1995년부터 쌓은 광원 기술", "UV 램프, MIR 램프, UV 경화·노광 시스템, UV LED를 개발해 온 광원 설계·시스템 기술로 UV-C 공간 살균 솔루션을 만듭니다."),
+    why = (("/assets/media/lamps/mercury-uv-lamps-640.webp", "리트젠 UV 램프", "1995", "SINCE", "1995년부터 쌓은 광원 기술", "UV 램프, MIR 램프, UV 경화·노광 시스템, UV LED를 개발해 온 광원 설계·시스템 기술로 UV-C 공간 살균 솔루션을 만듭니다."),
            (M + "lineup.webp", "Wonder-Ray 254nm 소독기와 Far-UVC 222nm 모듈", "254 · 222", "nm", "공간에 맞는 두 가지 파장", "254nm 단파장 UV-C는 무인 공간 소독에, 222nm Far-UVC는 유인 공간의 지속적인 관리에 맞춰 제공합니다."),
            (M + "cert-kc.webp", "방송통신기자재등 적합등록", "KC", "KTL · KTR", "시험과 평가로 확인한 기술", "KC 적합등록, KTL·KTR 시험성적서, 종합병원·장기요양기관 임상평가로 효과와 안전성을 확인했습니다."))
     body += section(head("WHY LICHTZEN", "왜 리트젠인가") + '<div class="uvc-why">' + "".join(

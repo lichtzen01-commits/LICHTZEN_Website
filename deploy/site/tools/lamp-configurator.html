@@ -1105,7 +1105,7 @@ function renderSpecRibbon(s){
  const el=document.getElementById('summaryLine');if(!el)return;
  const focused=document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.specPart:null;
  const scroll=el.parentElement.scrollLeft;
- el.innerHTML=entries.map(([key,labelKey,v],i)=>`${i?'<span class="spec-pipe" aria-hidden="true">|</span>':''}<button type="button" class="spec-token" data-spec-part="${key}" title="${labelKey}: ${v}"><span class="spec-label" data-label-key="${labelKey}">${({arc:'발광장',overall:'전장',power:'출력',linearPower:'선형출력',voltage:'전압',current:'전류',quartzOD:'관경',baseShape:'베이스',leftLeadLen:'좌측 리드선',rightLeadLen:'우측 리드선',terminal:'단자',coatType:'코팅'})[labelKey]}</span>: <span class="spec-value">${v}</span></button>`).join('');
+ el.innerHTML=entries.map(([key,labelKey,v],i)=>`${i?'<span class="spec-pipe" aria-hidden="true">|</span>':''}<button type="button" class="spec-token" data-spec-part="${key}"><span class="spec-label" data-label-key="${labelKey}">${({arc:'발광장',overall:'전장',power:'출력',linearPower:'선형출력',voltage:'전압',current:'전류',quartzOD:'관경',baseShape:'베이스',leftLeadLen:'좌측 리드선',rightLeadLen:'우측 리드선',terminal:'단자',coatType:'코팅'})[labelKey]}</span>: <span class="spec-value">${v}</span></button>`).join('');
  el.parentElement.scrollLeft=scroll;
  if(focused){const n=el.querySelector(`[data-spec-part="${focused}"]`);if(n)n.focus({preventScroll:true})}
 }

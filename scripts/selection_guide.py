@@ -123,7 +123,7 @@ def build(site: Path):
         + "".join(f'<button aria-pressed="false" class="sel-chip" data-q="c" data-v="{v}" type="button"><span><strong>{t}</strong></span></button>' for v, t in (("air", "공랭식"), ("water", "수랭식"), ("natural", "자연 냉각")))
         + "</div></fieldset></details>")
     checklist = "".join(
-        f'<label class="sel-check"><input type="checkbox" value="{t}"/><span>{t}</span></label>'
+        f'<label class="sel-check"><input type="checkbox"/><span>{t}</span></label>'
         for t in ("적용 소재와 경화·건조 대상", "조사 폭·면적과 이송 조건", "설치 공간과 냉각·전원 조건", "기존 장비·램프 모델명과 사진"))
 
     block = (

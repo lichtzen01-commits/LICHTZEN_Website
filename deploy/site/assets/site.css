@@ -1868,3 +1868,14 @@ html body .legacy-content table tr>:first-child{width:6.5em;min-width:6.5em}}
 .as-hint{font-size:13px!important;color:#6a7680!important}
 .as-tel{display:inline-block;margin-top:6px;font-weight:700}
 @media(max-width:600px){.as-actions .button{width:100%;justify-content:center}}
+/* mobile audit 2026-11-27 */
+html:not([lang="ko"]) .news-en{display:none}
+@media(max-width:600px){.uvc-overview .product-main-image{aspect-ratio:auto}.uvc-overview .product-main-image img{max-height:min(520px,70vh);height:auto}}
+.product-card .card-image img:is([src*="wonder-ray-s8w4"],[src*="far-uvc-type-a"],[src*="80ace7326584-main"]){object-fit:contain;padding:6px;background:#fff}
+@media(max-width:600px){.capability-card{grid-template-columns:1fr}.capability-image img{height:170px;min-height:0;padding:42px 24px 14px}.capability-card p{min-height:0}}
+@media(max-width:900px){.sel-section>.sel-layout{grid-template-columns:minmax(0,1fr)!important;padding-left:20px;padding-right:20px}.sel-layout>*{min-width:0}}
+@media(max-width:600px){.sel-layout .sel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.resource-list a{flex-wrap:wrap;row-gap:6px}.resource-list a>span{min-width:0}.resource-list small{flex:0 1 auto}.related-system-grid>a,.related-system-grid>a>div{min-width:0}main :is(h1,h2,h3,h4,p,li,small,summary,figcaption,dd,dt){overflow-wrap:break-word}}
+@media(max-width:359px){.catalog-grid{grid-template-columns:minmax(0,1fr)!important}.sel-layout .sel-grid{grid-template-columns:minmax(0,1fr)}.related-system-grid>a{grid-template-columns:90px minmax(0,1fr)}}
+@media(max-width:600px){.sel-q[data-group=p] .sel-opts{grid-template-columns:repeat(2,minmax(0,1fr))}.sel-chip{min-width:0;max-width:100%;overflow-wrap:break-word}.sel-panel,.sel-results,.sel-cta{min-width:0}.sel-cta *{overflow-wrap:break-word}}
+@media(max-width:600px){.sel-section>.sel-layout{padding-left:0;padding-right:0}.sel-cta{grid-template-columns:minmax(0,1fr)}.sel-cta .button,.sel-cta a{white-space:normal;max-width:100%}}
+@media(max-width:600px){.uvc-skin .sk-layer{font-size:11px}}

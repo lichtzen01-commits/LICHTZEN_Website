@@ -25,6 +25,8 @@ import re
 import shutil
 import subprocess
 import sys
+from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
+
 from bs4 import BeautifulSoup, Comment
 
 DOMAIN = "https://www.lichtzen.com"
@@ -69,6 +71,15 @@ def tr(D, s, missing):
         missing.add(k)
         return s
     return s.replace(k, v)
+
+
+def tr_query(D, v, missing):
+    """Contact links carry the product name (?product=...), which the inquiry form pre-fills: translate it too."""
+    if "product=" not in v or not HANGUL.search(unquote(v)):
+        return v
+    u = urlsplit(v)
+    q = [(k, tr(D, x, missing) if k == "product" else x) for k, x in parse_qsl(u.query, keep_blank_values=True)]
+    return urlunsplit(u._replace(query=urlencode(q)))
 
 
 def head_links(soup, path):
@@ -160,7 +171,7 @@ def translate_page(D, html, path, missing, lang):
                 v = el.get(a)
                 if isinstance(v, str):
                     if internal(v) and not el.has_attr("data-language-code"):
-                        el[a] = "/" + lang + v
+                        el[a] = "/" + lang + tr_query(D, v, missing)
                     elif v.startswith("mailto:ltz@") and not el.find_parent(attrs={"data-mail-keep": True}):
                         el[a] = v.replace("mailto:ltz@", "mailto:itl@")
                     elif v.startswith("tel:0"):
